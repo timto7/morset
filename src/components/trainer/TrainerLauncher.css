@@ -1,0 +1,63 @@
+@import "../colourScheme.css";
+@import "../pageAnimations.css";
+
+#TrainerLauncherContainer {
+  animation: 0.2s ease 0s 1 peekDown;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+button .iconBtnText {
+  margin-left: 10px;
+}
+
+.formControl {
+  padding: 10px;
+}
+
+#launchPrimary {
+  display: flex;
+  text-align: left;
+  height: 50px;
+}
+
+#launchSecondary {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+}
+
+.MuiMenu-list {
+  background-color: var(--dropdownBG);
+}
+
+.MuiPaper-elevation8 {
+  box-shadow: none !important;
+  border: 1px solid var(--shadow);
+}
+
+@media (max-width: 600px) {
+  #TrainerLauncherContainer {
+    grid-template-columns: 100%;
+  }
+
+  #launchSecondary {
+    justify-content: flex-start;
+    margin: 20px 0px 0px -20px;
+  }
+}
+
+#stepperContainer {
+  display: grid;
+  grid-template-columns: 40px 60px 40px;
+  align-items: end;
+}
+
+div.Input {
+  margin-bottom: 5px;
+}
+
+.charStepper {
+  background-color: red;
+}

@@ -1,0 +1,112 @@
+@import "../colourScheme.css";
+@import "../pageAnimations.css";
+
+#logoContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 40%;
+  user-select: none;
+}
+
+.logoLarge {
+  position: absolute;
+  top: -10%;
+  left: 30%;
+  width: 40%;
+  height: 100%;
+  mask: url("../../images/MorseLogo.svg");
+  background-color: var(--textAlt);
+  mask-repeat: no-repeat;
+  animation: 0.2s ease 0s 1 peekDown;
+  transition: background-color 0.5s ease;
+}
+
+#homeOptionContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: 0.2s ease 0s 1 peekUp;
+  margin-top: -5%;
+  user-select: none;
+}
+
+.homeOptionOuter {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+  margin-left: 40px;
+  margin-right: 40px;
+  box-sizing: border-box;
+}
+
+.homeOptionOuter .homeOptionInner {
+  position: absolute;
+  border-radius: 6px;
+  bottom: 0;
+  width: 200px;
+  height: 280px;
+  margin-bottom: 0px;
+  background-color: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+  border: 1px solid var(--home-outline-idle);
+  transition: margin-bottom 0.3s ease, background-color 0.5s ease,
+    box-shadow 0.3s ease, border 0.3s;
+}
+
+.homeOptionOuter:hover .homeOptionInner {
+  margin-bottom: 20px;
+  background-color: var(--tlk-brand-2);
+  box-shadow: 0px 4px 32px 8px var(--home-shadow);
+  border: 1px solid var(--home-outline);
+}
+
+.homeOptionOuter .homeIconContainer {
+  align-self: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  margin: 30px auto;
+  color: var(--idle);
+  transition: color 0.3s ease;
+}
+
+.homeOptionOuter:hover .homeIconContainer {
+  color: var(--text);
+}
+
+.homeOptionOuter p {
+  margin: 90px 10px 10px 10px;
+  padding: 10px;
+  font-size: 18px;
+  opacity: 0;
+  transition: margin 0.3s ease, opacity 0.3s ease;
+}
+
+.homeOptionOuter:hover p {
+  margin: 70px 10px 10px 10px;
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  #homeOptionContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #logoContainer {
+    height: 240px;
+    padding-top: 0px;
+  }
+
+  .logoLarge {
+    width: 240px;
+    height: 240px;
+    left: calc(50% - 120px);
+    top: -22.45px;
+  }
+}

@@ -1,0 +1,27 @@
+/* define all colors as variables */
+:root {
+  --border: #000;
+  --shadow: #000;
+  --text: #000;
+  --textAlt: #222;
+  --inactive: rgba(0, 0, 0, 0.3);
+  --background: #fff;
+  --tlk-red: #ff4495;
+  --tlk-green: #1abc9c;
+  --tlk-blue: #0781ff;
+  --tlk-purple: #d211fe;
+  --tlk-bright-orange: #ff4b12;
+  --tlk-orange: #ed8a19;
+  --tlk-light-blue: #40c4ff;
+  --tlk-gray: #546e7a;
+  --tlk-brand-1: #ececec;
+  --tlk-brand-2: #fff;
+  --tlk-brand-3: #ddd;
+  --tlk-brand-4: #ccc;
+  --tlk-brand-5: #bbb;
+  --tlk-brand-6: #aaa;
+  --tlk-brand-7: #999;
+  --tlk-contrast: #000;
+  --shadow: #000;
+  --home-outline: "#fff";
+}

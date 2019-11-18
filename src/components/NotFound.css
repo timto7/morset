@@ -1,0 +1,68 @@
+@import "./colourScheme.css";
+@import "./pageAnimations.css";
+
+@keyframes borderFade {
+  0% {
+    border-right: 1px solid rgba(var(--shadow), 0);
+  }
+  100% {
+    border-right: 1px solid var(--shadow);
+  }
+}
+
+#NFErrorContainer {
+  display: grid;
+  grid-template-columns: 200px calc(100% - 221px);
+  margin-top: 10px;
+}
+
+#NFMessageContainer {
+  max-width: 600px;
+  margin: 25px 0px 0px 25px;
+  animation: 0.2s ease 0s 1 peekLeft;
+}
+
+#NFMessageContainer h3 {
+  color: var(--text);
+  transition: color 0.5s ease;
+}
+
+#NFMessageContainer p {
+  color: var(--textAlt);
+  transition: color 0.5s ease;
+}
+
+#NFMorseContainer {
+  position: relative;
+  text-align: right;
+  font-size: 24px;
+  margin-top: 20px;
+  padding-right: 20px;
+  animation: 0.2s ease 0s 1 peekRight;
+  border-right: 1px solid var(--shadow);
+  transition: border-right 0.5s ease;
+}
+
+#NFMorseContainer h1 {
+  color: var(--tlk-blue);
+  margin: 0;
+  letter-spacing: 4px;
+}
+
+@media (max-width: 600px) {
+  #NFErrorContainer {
+    grid-template-columns: 100%;
+  }
+
+  #NFMessageContainer {
+    margin: 20px;
+  }
+
+  #NFMorseContainer {
+    text-align: center;
+    margin-top: 20px;
+    padding-right: 0px;
+    border-right: 1px solid rgba(127, 127, 127, 0);
+    transition: none;
+  }
+}

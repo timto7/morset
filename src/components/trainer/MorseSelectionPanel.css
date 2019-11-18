@@ -1,0 +1,48 @@
+@import "../colourScheme.css";
+
+.morseSelectionPanel {
+  width: 250px;
+  height: 300px;
+  color: var(--text);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.morseSelectionPanelTitle {
+  width: 100%;
+  height: 20px;
+  overflow: visible;
+}
+
+.morseButtonContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.morseSelectionPanel .panelActions {
+  position: relative;
+  display: inline-block;
+  margin: 0px 0px 0px 8px;
+  top: -2px;
+  color: var(--textAlt);
+  opacity: 0;
+  overflow: visible;
+  height: 1px;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.morseSelectionPanel.custom:hover .panelActions {
+  opacity: 0.8;
+  pointer-events: all;
+}
+
+.morseSelectionPanel.custom:hover .panelActions:hover {
+  opacity: 1;
+}

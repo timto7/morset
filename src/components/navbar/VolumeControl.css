@@ -1,0 +1,74 @@
+@import "../colourScheme.css";
+
+.VolumeControl .volumeSliderContainer input[type="range"][orient="vertical"] {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 8px;
+  height: 150px;
+  padding: 0px 5px;
+  margin-top: 15px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+}
+
+.VolumeControl .volumeSliderContainer {
+  position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  top: 48px;
+  width: 44px;
+  height: 170px;
+  margin-left: -2px;
+  padding-left: 1px;
+  padding-top: 0.5px;
+  background-color: var(--tlk-brand-1);
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  border: solid 1px var(--border);
+  border-bottom: solid 1px var(--shadow);
+  transition: opacity 0.2s, top 0.2s, background-color 0.5s ease;
+  z-index: 1001;
+  align-content: center;
+  justify-content: center;
+}
+
+.VolumeControl:hover .volumeSliderContainer,
+.VolumeControl .volumeSliderContainer:hover {
+  opacity: 1;
+  top: 49.5px;
+  pointer-events: all;
+}
+
+.VolumeControl
+  .volumeSliderContainer
+  input[type="range"][orient="vertical"]::-webkit-slider-thumb {
+  justify-self: center;
+}
+
+.VolumeControl
+  .volumeSliderContainer
+  input[type="range"][orient="vertical"]::-moz-focus-outer {
+  border: none;
+  outline: none !important;
+}
+
+.VolumeControl .volumeSliderContainer div {
+  width: 40px;
+  height: 100px;
+  margin-top: 20px;
+}
+
+#volLabel {
+  color: var(--textAlt);
+  width: 40px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  font-weight: 200;
+  padding-bottom: 10px;
+}

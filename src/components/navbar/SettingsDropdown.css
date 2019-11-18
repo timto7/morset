@@ -1,0 +1,59 @@
+@import "../colourScheme.css";
+
+#settingsAciveIndicator {
+  position: absolute;
+  width: 40px;
+  height: 0px;
+  background-color: var(--tlk-blue);
+  top: 60px;
+  pointer-events: none;
+  transition: top 0.3s ease, height 0.3s ease;
+}
+
+#settingsAciveIndicator.show {
+  top: 57px;
+  height: 3px;
+}
+
+#settingsDDContainer {
+  position: absolute;
+  width: 300px;
+  height: 340px;
+  background-color: var(--tlk-brand-1);
+  top: 68px;
+  margin-left: -260px;
+  opacity: 0;
+  pointer-events: none;
+  border: solid 1px var(--border);
+  border-bottom: solid 1px var(--shadow);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: opacity 0.2s ease, top 0.2s ease, background-color 0.5s ease,
+    border-bottom 0.5s ease, border 0.5s ease;
+}
+
+#settingsDDContainer.show {
+  top: 70px;
+  opacity: 1;
+  pointer-events: all;
+}
+
+#settingsContent {
+  width: 300%;
+  height: calc(100% - 56px);
+  position: relative;
+  top: 0px;
+  left: 0px;
+  transition: left 0.2s ease;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-width: 100%;
+}
+
+#settingsContent.pane-1 {
+  left: -100%;
+}
+
+#settingsContent.pane-2 {
+  left: -200%;
+}

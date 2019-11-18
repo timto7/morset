@@ -1,0 +1,70 @@
+@import "../colourScheme.css";
+
+.Input {
+  width: 60px;
+  position: relative;
+}
+
+.Input input {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--textAlt);
+  caret-color: var(--tlk-blue);
+  border-bottom: 1px solid var(--prompt);
+  box-sizing: border-box;
+  padding-bottom: 4px;
+  font-size: 14px;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  box-sizing: border-box;
+  transition: color 0.5s ease, border-bottom 0.2s ease;
+}
+
+.Input input:focus {
+  color: var(--text);
+}
+
+.Input:hover input {
+  border-bottom: 1px solid var(--text);
+}
+
+.Input .inputBorderHighlight {
+  display: inline-block;
+  position: absolute;
+  height: 2px;
+  background-color: var(--tlk-blue);
+  width: 0%;
+  left: 50%;
+  bottom: 0px;
+  pointer-events: none;
+}
+
+.Input:focus-within .inputBorderHighlight {
+  transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
+  width: 100%;
+  left: 0%;
+}
+
+.Input input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.InputPrompt {
+  font-size: 0.8571428571428571rem;
+  transform: translate(2px, 2px) scale(0.75);
+  color: var(--prompt);
+  position: absolute;
+  left: -10px;
+  top: -25px;
+  pointer-events: none;
+}

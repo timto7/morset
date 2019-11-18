@@ -1,0 +1,40 @@
+@import "../colourScheme.css";
+
+.MorseButton .MorseButtonAddRemove {
+  width: 20px;
+  height: 20px;
+  color: var(--tlk-green);
+  font-size: 20px;
+  line-height: 16px;
+  overflow: show;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 800;
+  padding-left: auto;
+  margin-right: 4px;
+  transition: font-size 0.2s ease, opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.MorseButton.custom .MorseButtonAddRemove {
+  pointer-events: all;
+}
+
+.MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove {
+  opacity: 0.8;
+}
+
+.MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove:hover {
+  font-size: 26px;
+  line-height: 16px;
+  opacity: 1;
+}
+
+.MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove:active {
+  font-size: 20px;
+}
+
+.MorseButton .selected .MorseButtonAddRemove {
+  color: var(--tlk-red);
+}

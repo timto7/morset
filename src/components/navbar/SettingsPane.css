@@ -1,0 +1,26 @@
+@import "../colourScheme.css";
+
+.SettingsPane {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.SettingsPane h4 {
+  color: var(--textAlt);
+  margin: 26px 0px 10px 0px;
+  font-weight: 300;
+  transition: color 0.5s ease;
+}
+
+.SettingsPane h4:first-of-type {
+  margin: 0px 0px 10px 0px;
+}
+
+.sliderGrid {
+  display: grid;
+  grid-template-columns: 180px 60px;
+  grid-column: auto;
+  display: flex;
+  justify-content: space-between;
+}
