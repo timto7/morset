@@ -1,0 +1,45 @@
+@import "../colourScheme.css";
+
+.sessionButton {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: 30px;
+    align-items: flex-end;
+    color: var(--idle);
+    cursor: pointer;
+    user-select: none;
+    transition: color .5s ease;
+    margin-right: 10px;
+}
+
+.sessionButton:hover {
+    color: var(--tlk-blue);
+}
+
+.sessionButton:active {
+    opacity: 0.65;
+}
+
+.sessionButton:hover.abort {
+    color: var(--tlk-red);
+}
+
+.sessionButton:hover.restart {
+    color: var(--tlk-orange);
+}
+
+.sessionButton:hover.go {
+    color: var(--tlk-green);
+}
+
+.sessionButton .sessionButtonIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.sessionButton span {
+    font-size: 20px;
+    line-height: 28px;
+}
+

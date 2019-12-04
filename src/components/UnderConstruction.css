@@ -1,0 +1,58 @@
+@import "./colourScheme.css";
+@import "./pageAnimations.css";
+
+#UnderConstructionContainer {
+  display: grid;
+  grid-template-columns: 100px calc(100% - 221px);
+  margin-top: 10px;
+}
+
+#UnderConstructionMessage {
+  max-width: 600px;
+  margin: 25px 0px 0px 25px;
+  animation: 0.2s ease 0s 1 peekLeft;
+}
+
+#UnderConstructionMessage h3 {
+  color: var(--text);
+  transition: color 0.5s ease;
+}
+
+#UnderConstructionMessage p {
+  color: var(--textAlt);
+  transition: color 0.5s ease;
+}
+
+#UnderConstructionIcon {
+  position: relative;
+  text-align: right;
+  font-size: 24px;
+  margin-top: 40px;
+  padding-right: 20px;
+  color: var(--textAlt);
+  transition: color .5s ease;
+  animation: 0.2s ease 0s 1 peekRight;
+}
+
+#UnderConstructionIcon h1 {
+  color: var(--tlk-blue);
+  margin: 0;
+  letter-spacing: 4px;
+}
+
+@media (max-width: 600px) {
+  #UnderConstructionContainer {
+    grid-template-columns: 100%;
+  }
+
+  #UnderConstructionMessage {
+    margin: 20px;
+  }
+
+  #UnderConstructionIcon {
+    text-align: center;
+    margin-top: 20px;
+    padding-right: 0px;
+    transition: none;
+  }
+}

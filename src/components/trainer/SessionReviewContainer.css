@@ -1,0 +1,65 @@
+@import "../colourScheme.css";
+
+#SessionReviewContainer {
+  position: fixed;
+  float: left;
+  height: calc(100% - 60px);
+  margin: 0px auto;
+  left: 0px;
+  right: 0px;
+  top: 60px;
+  bottom: 0px;
+  background-color: var(--tlk-brand-2);
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  caret-color: var(--tlk-blue);
+  transition: background-color 0.5s ease, opacity 0.3s ease;
+}
+
+#SessionReviewContainer.visible {
+  opacity: 1;
+  pointer-events: all;
+  transition: background-color 0.5s ease, opacity 0.0s ease;
+}
+
+#sessionReviewContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 10px 20px;
+  box-sizing: border-box;
+}
+
+#SessionReviewContainer #sessionReviewHeader {
+  transform: translateY(-20px);
+  transition: transform .2s ease;
+}
+
+#SessionReviewContainer.visible #sessionReviewHeader {
+  transform: translateY(0px);
+}
+
+#SessionReviewContainer #sessionReviewHeader p {
+  margin: 0;
+}
+
+#SessionReviewContainer #sessionReviewHeader p:first-of-type {
+  font-size: 44px;
+  font-weight: 300;
+}
+
+#SessionReviewContainer #sessionReviewHeader p:last-of-type {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--textAlt);
+  transition: color .5s ease;
+}
+
+#sessionReviewComparisonPanel span {
+  text-transform: uppercase;
+}
+
+#sessionReviewComparisonPanel span.erroneous {
+  background-color: var(--tlk-red);
+}
