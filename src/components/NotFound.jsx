@@ -16,7 +16,6 @@ const NotFound = () => {
         <p>
           We couldn't find the page you were looking for. Use the navigation bar
           above to go somewhere sensible, or go <Link to="/">home</Link>.
-          Cheers!
         </p>
       </div>
     </div>

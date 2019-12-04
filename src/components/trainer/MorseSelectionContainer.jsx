@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MorseSelectionContainer.css";
 import Panel from "./MorseSelectionPanel";
 import { makeTranslatedObject } from "../../services/morse/morse-translation";
@@ -27,6 +27,28 @@ const numbersTrans = makeTranslatedObject(numbers);
 const extendedTrans = makeTranslatedObject(extended);
 const punctuationTrans = makeTranslatedObject(punctuation);
 
+const storedCustomChars = window.localStorage.getItem("customChars");
+if (storedCustomChars === null || storedCustomChars === undefined || typeof storedCustomChars != "string") {
+  customChars = "abc";
+  window.localStorage.setItem("customChars", "abc");
+} else {
+  customChars = storedCustomChars;
+}
+
+function getValidCount(c) {
+  if (c === null || c === undefined || Number.isNaN(c)) {
+    return 2;
+  } else if (c < 2) {
+    return 2;
+  } else if (c > charOrder.length) {
+    return charOrder.length;
+  }
+  return Number(c);
+}
+const storedCharCount = window.localStorage.getItem("charCount");
+lastCount = getValidCount(storedCharCount);
+window.localStorage.setItem("charCount", lastCount);
+
 const useStyles = makeStyles(theme => ({
   formControl: {
     minWidth: 120,
@@ -42,6 +64,10 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
     selection: 0,
     openSB: false
   });
+
+  useEffect(() => {
+    selectedCharsDidChange(charOrder.substring(0, lastCount));
+  }, []);
 
   const handleCloseSB = (event, reason) => {
     if (reason === "clickaway") {
@@ -63,6 +89,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
           : customChars
       );
     }
+    window.localStorage.setItem("selectionMode", event.target.value);
   };
 
   function charCountDidChange(count) {
@@ -73,6 +100,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
     }
     lastCount = count;
     selectedCharsDidChange(charOrder.substring(0, count));
+    window.localStorage.setItem("charCount", count);
   }
 
   function addCustomChars(chars) {
@@ -82,6 +110,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
       }
     }
     selectedCharsDidChange(customChars);
+    window.localStorage.setItem("customChars", customChars);
   }
 
   function removeCustomChars(chars) {
@@ -91,6 +120,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
       }
     }
     selectedCharsDidChange(customChars);
+    window.localStorage.setItem("customChars", customChars);
   }
 
   return (
@@ -115,9 +145,9 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
           </Select>
         </FormControl>
         <CharStepper
-          initialValue={2}
+          initialValue={lastCount}
           min={2}
-          max={50}
+          max={charOrder.length}
           prompt="characters"
           valueDidChange={charCountDidChange}
           visible={state.selection === 0 ? true : false}

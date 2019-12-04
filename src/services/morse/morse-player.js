@@ -14,9 +14,11 @@ let dotLength,
   toneFreq = 600,
   envelopeTime = 0.002,
   playing = false,
-  envelope = true;
+  envelope = true,
+  preDelay = 0,
+  postDelay = 0;
 
-setSpeed(10, 18);
+setSpeed(15, 18);
 
 const runAudiofy = (str, callback) => {
   if (callback) {
@@ -48,6 +50,7 @@ const audiofy = (str, callback = undefined) => {
     morseGain.gain.setValueAtTime(0.0, t);
 
     t += 0.05; // To prevent initial pop
+    t += preDelay;
 
     str.split("").forEach(function(char) {
       if (char === " ") {
@@ -75,6 +78,7 @@ const audiofy = (str, callback = undefined) => {
         t += dotLength; // intra-char gap
       }
     });
+    t += postDelay;
 
     oscillator.connect(morseGain);
     morseGain.connect(panner);
@@ -86,14 +90,16 @@ const audiofy = (str, callback = undefined) => {
   }
 };
 
-export function play(str, callback = undefined) {
+export function play(str, callback = undefined, timingOptions = undefined) {
+  setTimingOptions(timingOptions);
   if (!morsetrans.isValidMorse(str)) {
     str = morseTranslation.translateTextToMorse(str);
   }
   runAudiofy(str, callback);
 }
 
-export function playMorse(morse, callback = undefined) {
+export function playMorse(morse, callback = undefined, timingOptions = undefined) {
+  setTimingOptions(timingOptions);
   if (morsetrans.isValidMorse(morse)) {
     runAudiofy(morse, callback);
   } else {
@@ -102,9 +108,27 @@ export function playMorse(morse, callback = undefined) {
   }
 }
 
-export function playText(text, callback = undefined) {
+export function playText(text, callback = undefined, timingOptions = undefined) {
+  setTimingOptions(timingOptions);
   text = morseTranslation.translateTextToMorse(text);
   runAudiofy(text, callback);
+}
+
+export function setTimingOptions(timingOptions) {
+  if (timingOptions !== undefined) {
+    if ("preDelay" in timingOptions) {
+      preDelay = timingOptions["preDelay"];
+    } else {
+      preDelay = 0;
+    }
+    if ("postDelay" in timingOptions) {
+      postDelay = timingOptions["postDelay"];
+    } else {
+      postDelay = 0;
+    }
+  } else {
+    preDelay = postDelay = 0;
+  }
 }
 
 export function stop() {

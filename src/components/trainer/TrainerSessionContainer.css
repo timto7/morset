@@ -5,6 +5,8 @@
   float: left;
   height: calc(100% - 60px);
   width: 100%;
+  max-width: 1200px;
+  margin: 0px auto;
   left: 0px;
   right: 0px;
   top: 60px;
@@ -12,6 +14,7 @@
   background-color: var(--tlk-brand-2);
   opacity: 0;
   pointer-events: none;
+  box-sizing: border-box;
   caret-color: var(--tlk-blue);
   transition: background-color 0.5s ease, opacity 0.3s ease;
 }
@@ -27,23 +30,48 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   background-color: var(--session-background);
-  width: calc(100% - 60px);
-  height: calc(100% - 80px);
+  width: calc(100% - 40px);
+  height: calc(100% - 90px);
   max-width: 1200px;
   max-height: 400px;
   padding: 20px;
   box-sizing: border-box;
-  top: 0;
+  top: 10px;
   bottom: 0;
-  left: 20px;
-  right: 20px;
+  left: 0px;
+  right: 0px;
   margin: 60px auto auto auto;
-  box-sizing: border-box;
   resize: none;
   outline: none;
   font-size: 20px;
   border: solid 1px var(--home-outline);
   box-shadow: 0px 4px 32px 8px var(--home-shadow);
   border-radius: 6px;
-  transition: background-color 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+  transform: translateY(20px);
+  transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease, border 0.5s ease, transform .3s ease;
+}
+
+#TrainerSessionContainer.inSession textarea {
+  transform: translateY(0px);
+}
+
+#TrainerSessionContainer #sessionOptionContainer {
+  position: absolute;
+  display: flex;
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  z-index: 100;
+  height: 40px;
+  top: 30px;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  box-sizing: border-box;
+  margin: 0px auto;
+  transform: translateY(-20px);
+  transition: transform .3s ease;
+}
+
+#TrainerSessionContainer.inSession #sessionOptionContainer {
+  transform: translateY(0px);
 }

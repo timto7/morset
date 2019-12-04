@@ -29,7 +29,7 @@ export function translateTextToMorse(str) {
   return translation;
 }
 
-function getKeyByValue(object, value) {
+export function getKeyByValue(object, value) {
   return Object.keys(object).find(key => object[key] === value);
 }
 

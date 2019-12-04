@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MorseButtonAddRemove.css";
+import RemoveIcon from "@material-ui/icons/RemoveCircle";
+import AddIcon from "@material-ui/icons/AddCircle";
 
 const MorseButtonAddRemove = ({ selected, onClick }) => {
   function didClick(event) {
@@ -15,7 +17,7 @@ const MorseButtonAddRemove = ({ selected, onClick }) => {
         event.stopPropagation();
       }}
     >
-      {selected ? "−" : "+"}
+      {selected ? <RemoveIcon /> : <AddIcon />}
     </div>
   );
 };

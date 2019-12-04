@@ -67,7 +67,7 @@
 }
 
 .MorseButton .morseButtonTextContainer .btnSpeaker {
-  color: var(--tlk-bright-orange);
+  color: var(--tlk-yellow);
   opacity: 0;
   margin-left: -21px;
   transition: opacity 0.12s ease, margin-left 0.12s ease;

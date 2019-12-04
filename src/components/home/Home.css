@@ -26,7 +26,7 @@
   display: flex;
   justify-content: center;
   animation: 0.2s ease 0s 1 peekUp;
-  margin-top: -5%;
+  margin-top: calc(-5% - 30px);
   user-select: none;
 }
 

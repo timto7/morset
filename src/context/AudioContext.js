@@ -69,12 +69,8 @@ export function AudioProvider(props) {
   const initialEnv = getValidFreq(storedEnv);
   Morse.setEnvelope(initialEnv);
 
-  const play = (string, callback = undefined) => {
-    if (callback) {
-      Morse.play(string, callback);
-    } else {
-      Morse.play(string);
-    }
+  const play = (string, callback = undefined, timingOptions = undefined) => {
+      Morse.play(string, callback, timingOptions);
   };
 
   const setVolume = volume => {
@@ -85,9 +81,9 @@ export function AudioProvider(props) {
     Morse.setFrequency(freq);
   };
 
-  const setSpeed = speed => {
-    Morse.setSpeed(speed);
-  };
+  // const setSpeed = speed => {
+  //   Morse.setSpeed(speed);
+  // };
 
   const setPanning = panning => {
     const panningScale = panning / 100.0;
