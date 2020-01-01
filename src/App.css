@@ -40,3 +40,12 @@ p a:hover:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
+
+
+#App {
+  overflow: visible;
+}
+
+main {
+  overflow: visible;
+}

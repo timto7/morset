@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./navBar.css";
 import ThemeContext from "../../context/ThemeContext";
 import AudioContext from "../../context/AudioContext";
@@ -9,12 +9,24 @@ import VolumeControl from "./VolumeControl";
 import SettingsControl from "./SettingsControl";
 import InfoIcon from "../common/IconButton";
 import { NavLink } from "react-router-dom";
+import InfoModal from "./InfoModal";
+
 
 const NavBar = () => {
   const { toggle } = useContext(ThemeContext);
   const { setVolume } = useContext(AudioContext);
   const { stop } = useContext(AudioContext);
 
+  const [showInfo, setShowInfo] = useState(false);
+
+  function toggleInfo() {
+    setShowInfo(!showInfo);
+  }
+
+  function closeInfo() {
+    setShowInfo(false);
+  }
+  
   return (
     <div id="navContainer">
       <div id="navContent">
@@ -58,10 +70,11 @@ const NavBar = () => {
             tooltip={"Light/Dark Mode"}
             onClick={() => toggle()}
           />
-          <InfoIcon className="infoBtn" icon={info} tooltip={"Info"} />
+          <InfoIcon className="infoBtn" icon={info} tooltip={"Info"} onClick={() => toggleInfo()}/>
           <SettingsControl />
         </div>
       </div>
+      <InfoModal visible={showInfo} close={() => closeInfo()} />
     </div>
   );
 };

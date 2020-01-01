@@ -1,4 +1,5 @@
 @import "../colourScheme.css";
+@import "../pageAnimations.css";
 
 #SessionReviewContainer {
   position: fixed;
@@ -7,37 +8,91 @@
   margin: 0px auto;
   left: 0px;
   right: 0px;
-  top: 60px;
+  top: 90px;
   bottom: 0px;
   background-color: var(--tlk-brand-2);
   opacity: 0;
   pointer-events: none;
   box-sizing: border-box;
   caret-color: var(--tlk-blue);
-  transition: background-color 0.5s ease, opacity 0.3s ease;
+  overflow: auto;
+  transition: background-color 0.5s ease, opacity 0.3s ease, top .3s ease;
 }
 
 #SessionReviewContainer.visible {
   opacity: 1;
   pointer-events: all;
-  transition: background-color 0.5s ease, opacity 0.0s ease;
+  top: 60px;
+  transition: background-color 0.5s ease, opacity 0.0s ease, top .3s ease;
+}
+
+#SessionReviewContainer #reviewOptionContainer #reviewOptionContent {
+  width: 100%;
+  position: block;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0px 20px 0px 20px;
+}
+
+#SessionReviewContainer #reviewOptionContainer {
+  width: 100%;
+  padding-top: 30px;
+  box-sizing: border-box;
+  margin: 0px auto;
+  transition: top .2s ease;
 }
 
 #sessionReviewContent {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px 10px 20px;
+  padding: 0px 20px 10px 20px;
   box-sizing: border-box;
 }
 
-#SessionReviewContainer #sessionReviewHeader {
-  transform: translateY(-20px);
-  transition: transform .2s ease;
+#sessionReviewStatsContainer {
+  margin-right: 20px;
+  position: relative;
 }
 
-#SessionReviewContainer.visible #sessionReviewHeader {
-  transform: translateY(0px);
+#sessionReviewContent table {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  color: var(--text);
+  transition: color .5s ease;
+  position: relative;
+}
+
+#sessionReviewContent table tr {
+  width: 100%;
+}
+
+#sessionReviewContent table tr th {
+  width: calc(100% / 6);
+  color: var(--text);
+  font-weight: 300;
+  letter-spacing: 2px;
+  height: 20px;
+  overflow: visible;
+  margin: none;
+  user-select: none;
+  transition: color .5s ease;
+}
+
+#sessionReviewContent table tr td {
+  padding: 8px 0px 8px 0px;
+}
+
+#sessionReviewContent table tr td:first-of-type {
+  font-weight: bold;
+  font-family: Courier, Monaco, monospace !important;
 }
 
 #SessionReviewContainer #sessionReviewHeader p {
@@ -45,21 +100,86 @@
 }
 
 #SessionReviewContainer #sessionReviewHeader p:first-of-type {
-  font-size: 44px;
+  font-size: 58px;
   font-weight: 300;
-}
-
-#SessionReviewContainer #sessionReviewHeader p:last-of-type {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--textAlt);
+  margin-bottom: 10px;
+  text-align: center;
   transition: color .5s ease;
 }
 
-#sessionReviewComparisonPanel span {
-  text-transform: uppercase;
+#SessionReviewContainer #sessionReviewHeader p:last-of-type {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--textAlt);
+  text-align: center;
+  transition: color .5s ease;
+  margin-bottom: 40px;
 }
 
-#sessionReviewComparisonPanel span.erroneous {
-  background-color: var(--tlk-red);
+#sessionTextReviewContainer .sessionTextReviewPanel {
+  margin: 40px 0px 70px 20px;
+  height: auto;
 }
+
+#sessionTextReviewContainer .sessionTextReviewPanel .sessionTextReviewHeader {
+  color: var(--text);
+  font-weight: 300;
+  letter-spacing: 2px;
+  height: 20px;
+  overflow: visible;
+  position: absolute;
+  margin: none;
+  transform: translateY(-50px);
+  user-select: none;
+  transition: color .5s ease;
+}
+
+#sessionTextReviewContainer .sessionTextReviewPanel span {
+  text-transform: uppercase;
+  display: inline-block;
+  white-space: pre;
+  color: var(--text);
+  transition: color .5s ease;
+  font-size: 20px;
+  font-family: Courier, Monaco, monospace !important;
+  display: inline-flexbox;
+  transition: color .5s ease;
+}
+
+#sessionTextReviewContainer .sessionTextReviewPanel span.result_missed {
+  border-bottom: solid 2px var(--tlk-yellow);
+  background-color: var(--mark-miss);
+  padding-bottom: 0px;
+}
+
+#sessionTextReviewContainer .sessionTextReviewPanel span.result_sub {
+  border-bottom: solid 2px var(--tlk-red);
+  background-color: var(--mark-sub);
+  padding-bottom: 0px;
+}
+
+#sessionTextReviewContainer .sessionTextReviewPanel span.result_extra {
+  border-bottom: solid 2px var(--tlk-yellow);
+  background-color: var(--mark-extra);
+  padding-bottom: 0px;
+}
+
+#sessionTextReviewContainer {
+  max-height: 30vh;
+}
+
+@media (max-width: 1000px) {
+  #sessionReviewContent {
+    grid-template-columns: 100%;
+  }
+
+  #sessionReviewStatsContainer {
+    margin-right: 0px;
+    margin-bottom: 30px;
+  }
+
+  #sessionTextReviewContainer .sessionTextReviewPanel {
+    margin: 40px 0px 70px 0px;
+  }
+}
+

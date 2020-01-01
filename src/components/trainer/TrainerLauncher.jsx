@@ -35,7 +35,7 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
 
   const [state, setState] = useState({
     source: 0,
-    format: 0
+    spacing: 0
   });
 
   const handleChange = event => {
@@ -62,15 +62,15 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
       </div>
       <div id="launchSecondary">
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="format-simple" color="primary">
-            format
+          <InputLabel htmlFor="spacing-simple" color="primary">
+            spacing
           </InputLabel>
           <Select
-            value={state.format}
+            value={state.spacing}
             onChange={handleChange}
             inputProps={{
-              name: "format",
-              id: "format-simple"
+              name: "spacing",
+              id: "spacing-simple"
             }}
             color="primary"
           >
@@ -91,7 +91,7 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
             }}
             color="primary"
           >
-            <MenuItem value={0}>Tone Generator</MenuItem>
+            <MenuItem value={0}>Character Select</MenuItem>
           </Select>
         </FormControl>
       </div>

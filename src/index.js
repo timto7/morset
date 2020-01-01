@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import Loading from "./components/Loading";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AudioProvider } from "./context/AudioContext";
 
@@ -13,9 +13,9 @@ ReactDOM.render(
   <ThemeProvider>
     <Suspense fallback={<Loading />}>
       <AudioProvider>
-        <BrowserRouter>
+        <HashRouter>
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </AudioProvider>
     </Suspense>
   </ThemeProvider>,

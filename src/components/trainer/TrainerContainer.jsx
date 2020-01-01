@@ -28,7 +28,7 @@ const TrainerContainer = () => {
     if (event.keyCode === 27) {
      stop();
      doNotMark = true;
-     setState(prevState => ({ ...prevState, inSession: false }));
+     setState(prevState => ({ ...prevState, inSession: false, showResults: false }));
     }
     if ((event.ctrlKey || event.metaKey) && event.which === 13) {
       if (state.inSession === false) {
@@ -39,11 +39,27 @@ const TrainerContainer = () => {
 
   useEffect(() => {
     document.addEventListener("keydown", keyPress, false);
-
     return () => {
       document.removeEventListener("keydown", keyPress, false);
     };
   });
+
+  useEffect(() => {
+    if (restartRequired) {
+      restartRequired = false;
+      beginSession();
+    }
+  }, [state.showResults])
+
+
+
+  useEffect(() => {
+    if (state.inSession || state.showResults) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "scroll";
+    }
+  }, [state.inSession, state.showResults])
 
   const { play, stop, isPlaying} = useContext(AudioContext);
 
@@ -59,7 +75,7 @@ const TrainerContainer = () => {
 
   function beginSession() {
     if (isPlaying() === false) {
-      setState(prevState => ({ ...prevState, inSession: true }));
+      setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
       latestAnswer = "";
       latestScript = Composer.createScriptFromChars(state.selectedChars);
       play(latestScript, playbackFinished, {
@@ -97,16 +113,28 @@ const TrainerContainer = () => {
     restartRequired = true;
   }
 
+  function closeResultsClicked() {
+    setState(prevState => ({ ...prevState, showResults: false }));
+  }
+
+  function retryClicked() {
+    restartRequired = true;
+    setState(prevState => ({ ...prevState, showResults: false}));
+  }
+
   return (
-    <div id="TrainerContainer">
+    <div id="TrainerContainer" className={`${state.inSession ? "inSession" : ""}`}>
+      <div id="TrainerConfigContent" className={`${state.inSession ? "inSession" : ""} ${state.showResults ? "showingResults" : ""}`}>
       <Launcher noChars={noChars} beginWasClicked={() => beginWasClicked()} />
       <MorseSelection
         selectedChars={state.selectedChars}
         selectedCharsDidChange={selectedCharsDidChange}
         beginWasClicked={beginWasClicked}
       />
+      </div>
+      
+      <SessionReviewContainer visible={state.showResults} latestScript={latestScript} latestAnswer={latestAnswer} closeResultsClicked={() => closeResultsClicked()} retryClicked={() => retryClicked()}/>
       <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} />
-      <SessionReviewContainer visible={state.showResults} latestScript={latestScript} latestAnswer={latestAnswer} />
     </div>
   );
 };

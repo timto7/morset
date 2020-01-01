@@ -1,0 +1,78 @@
+@import "../colourScheme.css";
+
+#infoModalBG {
+	position: absolute;
+	display: flex;
+	width: 100vw;
+	height: calc(100vh - 60px);
+	top: 60px;
+	align-content: center;
+	justify-content: center;
+	background-color: var(--info-background);
+	pointer-events: none;
+	opacity: 0;
+	z-index: -1;
+	transition: opacity .3s ease, background-color .5s ease;
+}
+
+#infoModalBG.visible {
+	pointer-events: all;
+	opacity: 1;
+}
+
+#infoModalBG #infoModalContainer {
+	position: relative;
+	width: 360px;
+	height: 280px;
+	top: 30px;
+	background-color: blue;
+	margin: auto auto;
+	background-color: var(--tlk-brand-1);
+	border-radius: 6px;
+	box-shadow: 0px 4px 32px 8px var(--home-shadow);
+	box-sizing: border-box;
+	border: 1px solid var(--home-outline);
+	transition: background-color .5s ease, top .3s ease, box-shadow .5s ease, border .5s ease;
+}
+
+#infoModalBG.visible #infoModalContainer {
+	top: 0px;
+}
+
+#infoModalBG #infoModalContainer #infoModalContent {
+	height: 100%;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 50% 25% 25%;
+	user-select: text;
+}
+
+#infoModalBG #infoModalContainer #infoModalContent  #infoLogoContainer {
+	user-select: none;
+}
+
+#infoModalBG #infoModalContainer #infoModalContent #infoLogo {
+	mask: url("../../images/MorseLogo.svg");
+	background-color: var(--text);
+	mask-repeat: no-repeat;
+	transition: background-color 0.5s ease;
+	width: 140px;
+	height: 140px;
+	margin: 0 auto;
+}
+
+#infoModalBG #infoModalContainer #infoVersion {
+	justify-self: center;
+	color: var(--text);
+	font-size: 18px;
+	font-weight: 300;
+	user-select: text;
+	transition: color .5s ease;
+}
+
+#infoDoneBtnContainer {
+	width: auto;
+	height: 50px;
+	justify-self: center;
+	align-self: center;
+}

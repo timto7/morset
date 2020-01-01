@@ -119,7 +119,11 @@ const lightTheme = [
   "--session-background: #fff",
   "--home-shadow: rgba(0, 0, 0, 0.16);",
   "--home-outline: rbga(255, 255, 255, 0)",
-  "--home-outline-idle: rbga(255, 255, 255, 0)"
+  "--home-outline-idle: rbga(255, 255, 255, 0)",
+  "--mark-miss: rgba(241, 196, 14, 0.4)",
+  "--mark-sub: rgba(231, 77, 60, 0.4)",
+  "--mark-extra: rgba(241, 196, 14, 0.4)",
+  "--info-background: rgba(255, 255, 255, 0.65)"
 ];
 
 const darkTheme = [
@@ -152,5 +156,9 @@ const darkTheme = [
   "--session-background: #1f1f28",
   "--home-shadow: rgba(52, 152, 219, 0.16);",
   "--home-outline: #3498db",
-  "--home-outline-idle: rbga(52, 152, 219, 0)"
+  "--home-outline-idle: rbga(52, 152, 219, 0)",
+  "--mark-miss: rgba(241, 196, 14, 0.5)",
+  "--mark-sub: rgba(231, 77, 60, 0.5)",
+  "--mark-extra: rgba(241, 196, 14, 0.5)",
+  "--info-background: rgba(40, 40, 51, 0.65)"
 ];
