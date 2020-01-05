@@ -51,8 +51,6 @@ const TrainerContainer = () => {
     }
   }, [state.showResults])
 
-
-
   useEffect(() => {
     if (state.inSession || state.showResults) {
       document.body.style.overflow = "hidden";
@@ -61,7 +59,7 @@ const TrainerContainer = () => {
     }
   }, [state.inSession, state.showResults])
 
-  const { play, stop, isPlaying} = useContext(AudioContext);
+  const { play, stop, isPlaying, getPreDelay, getPostDelay, getSessionCharAmount } = useContext(AudioContext);
 
   noChars = state.selectedChars.length > 0 ? false : true;
 
@@ -77,10 +75,10 @@ const TrainerContainer = () => {
     if (isPlaying() === false) {
       setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
       latestAnswer = "";
-      latestScript = Composer.createScriptFromChars(state.selectedChars);
+      latestScript = Composer.createScriptFromChars(state.selectedChars, { limit: getSessionCharAmount() });
       play(latestScript, playbackFinished, {
-        "preDelay": 0.5,
-        "postDelay": 1.5
+        "preDelay": parseFloat(getPreDelay()),
+        "postDelay": parseFloat(getPostDelay())
       });
     }
   }

@@ -1,0 +1,21 @@
+@import "../colourScheme.css";
+
+.SpeedEntry {
+	display: grid;
+	height: 29px;
+	grid-template-columns: auto 10px auto;
+	grid-template-rows: 100%;
+	justify-content: baseline;
+	align-content: baseline;
+	align-self: flex-end;
+	justify-content: flex-start;
+	margin-left: 20px;
+}
+
+.SpeedEntry .speedEntrySlash {
+	text-align: center;
+	text-justify: center;
+	color: var(--textAlt);
+	user-select: none;
+	transition: color .5s ease;
+}

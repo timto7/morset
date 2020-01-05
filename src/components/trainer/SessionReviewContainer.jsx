@@ -6,25 +6,25 @@ import RetryBtn from "./SessionButton";
 import RetryIcon from "@material-ui/icons/Refresh";
 import Marker from "../../services/trainer/marker";
 
-let overallScore, noOfErrors, stats = [], latestResults, scriptText, resultText;
+let overallScore, noOfErrors, stats = [], latestResults, scriptText, resultText, mistakesPresent, missesPresent, extraPresent;
 
 const getResultType = c => {
   let resultType;
-      switch (c) {
-        case "m":
-          resultType="result_missed";
-          break;
-        case "s":
-          resultType="result_sub";
-          break;
-        case "e":
-          resultType="result_extra";
-          break;
-        default:
-          resultType="";
-          break;
-      }
-      return resultType;
+    switch (c) {
+      case "m":
+        resultType="result_text result_missed";
+        break;
+      case "s":
+        resultType="result_text result_sub";
+        break;
+      case "e":
+        resultType="result_text result_extra";
+        break;
+      default:
+        resultType="result_text";
+        break;
+    }
+    return resultType;
 }
 
 const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResultsClicked, retryClicked}) => {
@@ -40,7 +40,28 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
     resultText = latestAnswer.split("").map((c, index) =>
       <span key={index} className={`${getResultType(latestResults.errorPlacements2.charAt(index))}`}>{c}</span>
     );
+    mistakesPresent = latestResults.mistakesPresent;
+    missesPresent = latestResults.missesPresent;
+    extraPresent = latestResults.extraPresent;
   }, [visible]);
+
+  let transcriptKey; 
+  if (mistakesPresent || missesPresent) {
+    transcriptKey = 
+    <div className="reviewKeyContainer">
+      {mistakesPresent && <div className="reviewKeyContent"><div className="keyCircle red" /><span className="keyText">mistake</span></div>}
+      {missesPresent && <div className="reviewKeyContent"><div className="keyCircle yellow" /><span className="keyText">missed</span></div>}
+    </div>;
+  }
+
+  let userInputKey;
+  if (mistakesPresent || extraPresent) {
+    userInputKey = 
+    <div className="reviewKeyContainer">
+      {mistakesPresent && <div className="reviewKeyContent"><div className="keyCircle red" /><span className="keyText">mistake</span></div>}
+      {extraPresent && <div className="reviewKeyContent"><div className="keyCircle yellow" /><span className="keyText">extra</span></div>}
+    </div>;
+  }
 
   return (
     <div
@@ -67,8 +88,8 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
           </table>
         </div>
         <div id="sessionTextReviewContainer">
-          <div className="sessionTextReviewPanel"><p className="sessionTextReviewHeader">sent transcript</p>{scriptText}</div>
-          <div className="sessionTextReviewPanel"><p className="sessionTextReviewHeader">user entry</p>{resultText}</div>
+          <div className="sessionTextReviewPanel"><p className="sessionTextReviewHeader">sent transcript</p>{transcriptKey}{scriptText}</div>
+          <div className="sessionTextReviewPanel"><p className="sessionTextReviewHeader">user entry</p>{userInputKey}{resultText}</div>
           </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ let dotLength,
   pauseLength,
   spaceLength,
   toneFreq = 600,
-  envelopeTime = 0.002,
+  envelopeTime = 0.0025,
   playing = false,
   envelope = true,
   preDelay = 0,
@@ -148,6 +148,7 @@ export function setSpeed(overallSpeed, charSpeed) {
     (60 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
   pauseLength = (3 * farns) / 19;
   spaceLength = (7 * farns) / 19;
+  envelopeTime = 0.0025 * (1 / (charSpeed / 18));
 }
 
 export function setVolume(vol) {
@@ -155,10 +156,6 @@ export function setVolume(vol) {
     Math.pow(vol / 100.0, 2.0),
     audioCtx.currentTime
   );
-}
-
-export function getVolume() {
-  return masterGain.gain.value * 100;
 }
 
 export function setFrequency(freq) {
@@ -185,7 +182,6 @@ export default {
   stop,
   setSpeed,
   setVolume,
-  getVolume,
   setFrequency,
   setPanning,
   setEnvelope,

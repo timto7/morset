@@ -134,7 +134,7 @@
   transition: color .5s ease;
 }
 
-#sessionTextReviewContainer .sessionTextReviewPanel span {
+#sessionTextReviewContainer .sessionTextReviewPanel .result_text {
   text-transform: uppercase;
   display: inline-block;
   white-space: pre;
@@ -166,6 +166,43 @@
 
 #sessionTextReviewContainer {
   max-height: 30vh;
+}
+
+.reviewKeyContainer {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.reviewKeyContent {
+  padding-right: 14px;
+}
+
+.reviewKeyContent .keyText {
+  color: var(--textAlt);
+  font-weight: 300;
+  transition: color .5s ease;
+}
+
+.keyCircle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.keyCircle.red {
+  background-color: var(--mark-sub);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.keyCircle.yellow {
+  background-color: var(--mark-miss);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 @media (max-width: 1000px) {

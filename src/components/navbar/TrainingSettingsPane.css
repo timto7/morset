@@ -1,0 +1,13 @@
+#delaySettingsContainer {
+  display: flex;
+}
+
+.settingsInputContainer {
+  margin-right: 30px;
+}
+
+.settingsInputContainer span {
+  font-size: 14px;
+  color: var(--textAlt);
+  transition: color .5s ease;
+}

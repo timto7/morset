@@ -21,7 +21,7 @@
 #TrainerConfigContent {
   opacity: 1.0;
   transition: opacity .3s ease;
-  transition-delay: 0.05s;
+  transition-delay: 0.1s;
 }
 
 #TrainerConfigContent.inSession, #TrainerConfigContent.showingResults {

@@ -13,7 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Translator from "../../services/morse/morse-translation";
 
-const charOrder = "kmrsuaptlowinjefyvgqzhbcdx1928374650";
+const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
 let customChars = "abc";
 let lastCount = 2;
 

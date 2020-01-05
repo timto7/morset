@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import SpeedEntry from "../common/SpeedEntry";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -61,6 +62,7 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
         </Button>
       </div>
       <div id="launchSecondary">
+        <SpeedEntry />
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="spacing-simple" color="primary">
             spacing
@@ -75,7 +77,6 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
             color="primary"
           >
             <MenuItem value={0}>Random</MenuItem>
-            <MenuItem value={1}>Not Random</MenuItem>
           </Select>
         </FormControl>
         <FormControl className={classes.formControl}>

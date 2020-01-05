@@ -19,7 +19,9 @@ export function getResult(a, b) {
     }
   }
 
-  let x = n, y = m, step, err = "", err2 = "", hits = {}, misses = {}, subs = {}, extra = {};
+  let x = n, y = m, step, err = "", err2 = "", hits = {}, misses = {}, subs = {}, extra = {},
+  mistakesPresent = false, missesPresent = false, extraPresent = false;
+
   while (x > 0 && y > 0) {
     step = Math.min(distanceMatrix[x - 1][y - 1], distanceMatrix[x - 1][y], distanceMatrix[x][y - 1]);
     if (distanceMatrix[x][y] === step) {
@@ -32,27 +34,32 @@ export function getResult(a, b) {
       err2 += "e";
       x--;
       extra[b.charAt(x)] = extra[b.charAt(x)] + 1 || 1;
+      extraPresent = true;
     } else if (distanceMatrix[x][y - 1] === step) { // insertion / missing
       err += "m";
       y--;
       misses[a.charAt(y)] = misses[a.charAt(y)] + 1 || 1;
+      missesPresent = true;
     } else { // substitution
       err += "s";
       err2 += "s";
       x--;
       y--;
       subs[a.charAt(y)] = subs[a.charAt(y)] + 1 || 1;
+      mistakesPresent = true;
     }
   }
   while (x > 0) { // too many pre-pended
     err2 += "e";
     x--;
     extra[b.charAt(x)] = extra[b.charAt(x)] + 1 || 1;
+    extraPresent = true;
   }
   while (y > 0) { // too many appended
     err += "m";
     y--;
     misses[a.charAt(y)] = misses[a.charAt(y)] + 1 || 1;
+    missesPresent = true;
   }
 
   // create stats
@@ -90,7 +97,10 @@ export function getResult(a, b) {
     hits: hits,
     misses: misses,
     extra: extra,
-    stats: stats
+    stats: stats,
+    mistakesPresent: mistakesPresent,
+    missesPresent: missesPresent,
+    extraPresent: extraPresent
   }
 
   return results;

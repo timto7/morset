@@ -81,10 +81,6 @@ export function AudioProvider(props) {
     Morse.setFrequency(freq);
   };
 
-  // const setSpeed = speed => {
-  //   Morse.setSpeed(speed);
-  // };
-
   const setPanning = panning => {
     const panningScale = panning / 100.0;
     Morse.setPanning(panningScale);
@@ -102,6 +98,55 @@ export function AudioProvider(props) {
     return Morse.isPlaying();
   };
 
+  const setSpeed = (overall, char) => {
+    Morse.setSpeed(overall, char);
+    window.localStorage.setItem("overallSpeed", overall);
+    window.localStorage.setItem("charSpeed", char);
+  };
+
+  const getSpeed = () => {
+    let os = window.localStorage.getItem("overallSpeed");
+    if (os === null || os === undefined || Number.isNaN(os)) os = 15;
+    let cs = window.localStorage.getItem("charSpeed");
+    if (cs === null || cs === undefined || Number.isNaN(cs)) cs = 18;
+    return [os, cs];
+  }
+  const speeds = getSpeed();
+  setSpeed(speeds[0], speeds[1]);
+  
+  const getSessionCharAmount = () => {
+    let ca = parseInt(window.localStorage.getItem("charAmount"));
+    if (ca === null || ca === undefined || Number.isNaN(ca)) ca = 100;
+    return ca;
+  }
+
+  const setSessionCharAmount = ca => {
+    window.localStorage.setItem("charAmount", ca);
+  }
+  setSessionCharAmount(getSessionCharAmount());
+
+  const getPreDelay = () => {
+    let pd = window.localStorage.getItem("preDelay");
+    if (pd === null || pd === undefined || Number.isNaN(pd)) pd = 0.5;
+    return pd;
+  }
+
+  const setPreDelay = pd => {
+    window.localStorage.setItem("preDelay", pd);
+  }
+  setPreDelay(getPreDelay());
+
+  const getPostDelay = () => {
+    let pd = window.localStorage.getItem("postDelay");
+    if (pd === null || pd === undefined || Number.isNaN(pd)) pd = 2.0;
+    return pd;
+  }
+
+  const setPostDelay = pd => {
+    window.localStorage.setItem("postDelay", pd);
+  }
+  setPostDelay(getPostDelay());
+
   return (
     <AudioContext.Provider
       value={{
@@ -111,7 +156,15 @@ export function AudioProvider(props) {
         setFrequency,
         setPanning,
         setEnvelope,
-        isPlaying
+        isPlaying,
+        setSpeed,
+        getSpeed,
+        getPreDelay,
+        setPreDelay,
+        getPostDelay,
+        setPostDelay,
+        getSessionCharAmount,
+        setSessionCharAmount
       }}
     >
       {props.children}

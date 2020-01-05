@@ -15,6 +15,7 @@ const Stepper = ({
   valueDidChange,
   visible
 }) => {
+
   const validateValue = val => {
     val = parseInt(Number(val));
     if (min !== undefined) {
@@ -25,6 +26,7 @@ const Stepper = ({
     }
     return val;
   };
+  
   const [placeVal, setPlaceVal] = useState(validateValue(initialValue));
   const [value, setValue] = useState(validateValue(initialValue));
 
