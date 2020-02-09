@@ -32,7 +32,7 @@ const InfoModal = ({visible, close}) => {
 					<div id="infoLogoContainer">
 						<div id="infoLogo" />
 					</div>
-					<span id="infoVersion">Version: 1.0.0</span>
+					<span id="infoVersion">Version: 1.1.0</span>
 					<div id="infoDoneBtnContainer">
 						<Button
 							variant="contained"

@@ -8,8 +8,12 @@ const Home = () => {
   document.title = "MorseT - Home";
   return (
     <div>
-      <div id="logoContainer">
+      <div id="welcomeContainer">
         <span className="logoLarge"></span>
+        <div id="welcomeTextContainer">
+          <span id="welcomeTitle">Welcome.</span>
+          <span id="welcomeText">This is a tool to help you learn morse code, or simply translate it.</span>
+        </div>
       </div>
       <div id="homeOptionContainer">
         <div className="homeOptionOuter">

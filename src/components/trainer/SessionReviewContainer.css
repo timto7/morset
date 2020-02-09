@@ -30,7 +30,7 @@
   width: 100%;
   position: block;
   display: flex;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   height: 50px;
   box-sizing: border-box;
@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0px 20px 10px 20px;
   box-sizing: border-box;
@@ -88,6 +88,10 @@
 
 #sessionReviewContent table tr td {
   padding: 8px 0px 8px 0px;
+}
+
+#sessionReviewContent table tr td.resultTableZero {
+  opacity: 0.4;
 }
 
 #sessionReviewContent table tr td:first-of-type {

@@ -12,6 +12,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Translator from "../../services/morse/morse-translation";
+import SpacingContainer from "./SpacingSelectionContainer";
 
 const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
 let customChars = "abc";
@@ -144,6 +145,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
             <MenuItem value={1}>Custom</MenuItem>
           </Select>
         </FormControl>
+        <SpacingContainer />
         <CharStepper
           initialValue={lastCount}
           min={2}

@@ -13,16 +13,16 @@ export default function SpeedEntry() {
   const validateOverall = val => {
     val = parseInt(Number(val));
     if (Number.isNaN(val)) return 15;
-    if (val > charSpeed) return charSpeed;
     if (val < 1) return 1;
+    if (val > charSpeed) setCharSpeed(validateChar(val));
     return val;
   };
 
   const validateChar = val => {
     val = parseInt(Number(val));
     if (Number.isNaN(val)) return 18;
-    if (val < overallSpeed) return overallSpeed;
     if (val < 1) return 1;
+    if (val < overallSpeed) setOverallSpeed(validateOverall(val));
     return val;
   };
   

@@ -116,7 +116,7 @@ export function AudioProvider(props) {
   
   const getSessionCharAmount = () => {
     let ca = parseInt(window.localStorage.getItem("charAmount"));
-    if (ca === null || ca === undefined || Number.isNaN(ca)) ca = 100;
+    if (ca === null || ca === undefined || Number.isNaN(ca)) ca = 50;
     return ca;
   }
 
@@ -147,6 +147,32 @@ export function AudioProvider(props) {
   }
   setPostDelay(getPostDelay());
 
+  const getRandomSpacing = () => {
+    let rs = window.localStorage.getItem("randomSpacing");
+    if (window.localStorage.getItem("randomSpacing") === "false") {
+      rs = false;
+    } else {
+      rs = true;
+    }
+    return rs;
+  }
+
+  const setRandomSpacing = rs => {
+    window.localStorage.setItem("randomSpacing", rs);
+  }
+  setRandomSpacing(getRandomSpacing());
+
+  const getCharSpacing = () => {
+    let cs = window.localStorage.getItem("charSpacing");
+    if (cs === null || cs === undefined || Number.isNaN(cs)) cs = 10;
+    return cs;
+  }
+
+  const setCharSpacing = cs => {
+    window.localStorage.setItem("charSpacing", cs);
+  }
+  setCharSpacing(getCharSpacing());
+
   return (
     <AudioContext.Provider
       value={{
@@ -164,7 +190,11 @@ export function AudioProvider(props) {
         getPostDelay,
         setPostDelay,
         getSessionCharAmount,
-        setSessionCharAmount
+        setSessionCharAmount,
+        getRandomSpacing,
+        setRandomSpacing,
+        getCharSpacing,
+        setCharSpacing
       }}
     >
       {props.children}

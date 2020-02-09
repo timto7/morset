@@ -27,7 +27,7 @@ const MorseButton = ({
   return (
     <div className={`MorseButton ${custom ? "custom" : ""}`}>
       <Button
-        style={{ padding: 0, width: "220px" }}
+        style={{ padding: "0px", height: "25px", width: "200px" }}
         onClick={() => {
           if (isPlaying() === false) {
             play(morse.replace(/−/g, "-").replace(/·/g, "."), () => {

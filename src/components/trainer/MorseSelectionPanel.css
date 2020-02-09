@@ -1,13 +1,14 @@
 @import "../colourScheme.css";
 
 .morseSelectionPanel {
-  width: 250px;
-  height: 300px;
+  width: 220px;
+  height: 400px;
   color: var(--text);
   font-weight: 300;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   margin-top: 20px;
+  border-right: 10px solid transparent;
 }
 
 .morseSelectionPanelTitle {
@@ -30,16 +31,18 @@
   display: inline-block;
   margin: 0px 0px 0px 8px;
   top: -2px;
+  left: -4px;
   color: var(--textAlt);
   opacity: 0;
   overflow: visible;
   height: 1px;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, left 0.2s ease;
 }
 
 .morseSelectionPanel.custom:hover .panelActions {
   opacity: 0.8;
+  left: 0px;
   pointer-events: all;
 }
 

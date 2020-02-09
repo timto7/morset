@@ -35,8 +35,7 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({
-    source: 0,
-    spacing: 0
+    source: 0
   });
 
   const handleChange = event => {
@@ -64,22 +63,6 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
       <div id="launchSecondary">
         <SpeedEntry />
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="spacing-simple" color="primary">
-            spacing
-          </InputLabel>
-          <Select
-            value={state.spacing}
-            onChange={handleChange}
-            inputProps={{
-              name: "spacing",
-              id: "spacing-simple"
-            }}
-            color="primary"
-          >
-            <MenuItem value={0}>Random</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
           <InputLabel htmlFor="source-simple" color="primary">
             source
           </InputLabel>
@@ -91,6 +74,7 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
               id: "source-simple"
             }}
             color="primary"
+            disabled={true}
           >
             <MenuItem value={0}>Character Select</MenuItem>
           </Select>

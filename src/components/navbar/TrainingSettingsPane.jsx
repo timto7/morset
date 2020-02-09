@@ -7,7 +7,7 @@ import LimitInput from "../common/Input";
 
 const validateCharAmount = val => {
   val = Number.parseInt(val);
-  if (Number.isNaN(val)) return 100;
+  if (Number.isNaN(val)) return 50;
   if (val < 1) return 1;
   return val;
 };

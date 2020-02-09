@@ -14,8 +14,7 @@ import InfoModal from "./InfoModal";
 
 const NavBar = () => {
   const { toggle } = useContext(ThemeContext);
-  const { setVolume } = useContext(AudioContext);
-  const { stop } = useContext(AudioContext);
+  const { setVolume, stop } = useContext(AudioContext);
 
   const [showInfo, setShowInfo] = useState(false);
 

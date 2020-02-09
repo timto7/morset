@@ -1,22 +1,38 @@
 export function createScriptFromChars(chars, options = undefined) {
-    let script = "", prevWasSpace = false, limit = 30;
+    let script = "", limit = 30, randomSpacing = true, charSpacing = null, spaceCountdown = 0;
+
+    const setSpacing = () => {
+        if (randomSpacing) {
+            spaceCountdown = Math.floor(Math.random() * (limit / (Math.random() * limit / 2) + 1)) + (Math.floor(Math.random() * 3) + 1);
+        } else  {
+            spaceCountdown = charSpacing;
+        }
+    }
 
     if (options !== undefined) {
         if ("limit" in options) {
           limit = options["limit"];
         }
-    }
-    
-    for (let i = 0; i < limit; i++) {
-        if (!prevWasSpace && i > 0 && i < limit - 2 && (Math.floor(Math.random() * 8) === 0)) {
-            script += " ";
-            prevWasSpace = true;
-        } else {
-            script += chars.charAt(Math.floor(Math.random() * chars.length));
-            prevWasSpace = false;
+        if ("randomSpacing" in options) {
+            randomSpacing = options["randomSpacing"];
+        }
+        if ("charSpacing" in options) {
+            charSpacing = options["charSpacing"];
         }
     }
-    return script;
+    
+    setSpacing();
+
+    for (let i = 0; i < limit; i++) {
+        if (!spaceCountdown && i > 0) {
+            script += " ";
+            setSpacing();
+        } else {
+            script += chars.charAt(Math.floor(Math.random() * chars.length));
+            spaceCountdown--;
+        }
+    }
+    return script.trim();
 }
 
 export default {

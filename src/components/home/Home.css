@@ -1,24 +1,44 @@
 @import "../colourScheme.css";
 @import "../pageAnimations.css";
 
-#logoContainer {
+#welcomeContainer {
   position: relative;
-  width: 100%;
-  padding-top: 40%;
+  display: grid;
+  grid-template-columns: 300px auto;
+  column-gap: 20px;
   user-select: none;
+  margin: auto;
+  max-width: 800px;
+  margin-top: 100px;
+  animation: 0.2s ease 0s 1 peekDown;
+}
+
+#welcomeTextContainer {
+  display: grid;
+  grid-template-rows: 40px auto;
+}
+
+#welcomeTitle {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.5s ease;
+}
+
+#welcomeText {
+  font-size: 20px;
+  padding-top: 20px;
+  color: var(--text);
+  transition: color 0.5s ease;
 }
 
 .logoLarge {
-  position: absolute;
-  top: -10%;
-  left: 30%;
-  width: 40%;
-  height: 100%;
+  width: 320px;
+  height: 320px;
+  margin-top: -100px;
   mask: url("../../images/MorseLogo.svg");
-  background-color: var(--textAlt);
+  background: linear-gradient(-71deg, var(--logo-colour1), var(--logo-colour2) 95%);
   mask-repeat: no-repeat;
-  animation: 0.2s ease 0s 1 peekDown;
-  transition: background-color 0.5s ease;
 }
 
 #homeOptionContainer {
@@ -26,8 +46,8 @@
   display: flex;
   justify-content: center;
   animation: 0.2s ease 0s 1 peekUp;
-  margin-top: calc(-5% - 30px);
   user-select: none;
+  margin-bottom: 30px;
 }
 
 .homeOptionOuter {
@@ -35,8 +55,7 @@
   width: 200px;
   height: 300px;
   cursor: pointer;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 0px 40px 0px 40px;
   box-sizing: border-box;
 }
 
@@ -60,6 +79,13 @@
   background-color: var(--tlk-brand-2);
   box-shadow: 0px 4px 32px 8px var(--home-shadow);
   border: 1px solid var(--home-outline);
+  background-color: var(--tlk-brand-1);
+}
+
+.homeOptionOuter:hover .homeOptionInner:active {
+  margin-bottom: 14px;
+  box-shadow: 0px 0px 16px 1px var(--home-shadow);
+  transition-duration: 0.12s;
 }
 
 .homeOptionOuter .homeIconContainer {
@@ -98,15 +124,21 @@
     align-items: center;
   }
 
-  #logoContainer {
-    height: 240px;
-    padding-top: 0px;
+  #welcomeContainer {
+    grid-template-columns: none;
+    grid-template-rows: 300px auto;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  #welcomeTextContainer {
+    margin-top: -80px;
   }
 
   .logoLarge {
-    width: 240px;
-    height: 240px;
-    left: calc(50% - 120px);
-    top: -22.45px;
+    width: 380px;
+    height: 380px;
   }
 }

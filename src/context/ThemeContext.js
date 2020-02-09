@@ -20,10 +20,6 @@ export function ThemeProvider(props) {
         main: "#3498db",
         contrastText: "#fff"
       },
-      secondary: {
-        main: "#1abc9c",
-        contrastText: "#000"
-      },
       text: {
         light: "#000",
         dark: "#fff"
@@ -95,7 +91,7 @@ const lightTheme = [
   "--dropdownBG: #fff;",
   "--prompt: rgba(0, 0, 0, 0.54);",
   "--shadow: rgba(0, 0, 0, 0.2);",
-  "--idle: rgba(0, 0, 0, 0.4)",
+  "--idle: rgba(0, 0, 0, 0.45)",
   "--text: #000;",
   "--textAlt: #222;",
   "--inactive: rgba(0, 0, 0, 0.3);",
@@ -123,7 +119,9 @@ const lightTheme = [
   "--mark-miss: rgba(241, 196, 14, 0.4)",
   "--mark-sub: rgba(231, 77, 60, 0.4)",
   "--mark-extra: rgba(241, 196, 14, 0.4)",
-  "--info-background: rgba(255, 255, 255, 0.65)"
+  "--info-background: rgba(255, 255, 255, 0.65)",
+  "--logo-colour1: #3498db;",
+  "--logo-colour2: #1abc9c;"
 ];
 
 const darkTheme = [
@@ -132,7 +130,7 @@ const darkTheme = [
   "--dropdownBG: #40424f;",
   "--prompt: rgba(255, 255, 255, 0.7);",
   "--shadow: rgba(255, 255, 255, 0.03);",
-  "--idle: rgba(255, 255, 255, 0.4)",
+  "--idle: rgba(255, 255, 255, 0.45)",
   "--text: #fff;",
   "--textAlt: #eee;",
   "--inactive: rgba(0, 0, 0, 0.3);",
@@ -160,5 +158,7 @@ const darkTheme = [
   "--mark-miss: rgba(241, 196, 14, 0.5)",
   "--mark-sub: rgba(231, 77, 60, 0.5)",
   "--mark-extra: rgba(241, 196, 14, 0.5)",
-  "--info-background: rgba(40, 40, 51, 0.65)"
+  "--info-background: rgba(40, 40, 51, 0.65)",
+  "--logo-colour1: #3498db;",
+  "--logo-colour2: #9b59b6;"
 ];

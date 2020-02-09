@@ -6,7 +6,15 @@ import RetryBtn from "./SessionButton";
 import RetryIcon from "@material-ui/icons/Refresh";
 import Marker from "../../services/trainer/marker";
 
-let overallScore, noOfErrors, stats = [], latestResults, scriptText, resultText, mistakesPresent, missesPresent, extraPresent;
+let overallScore, 
+  noOfErrors, 
+  stats = [], 
+  latestResults, 
+  scriptText, 
+  resultText, 
+  mistakesPresent, 
+  missesPresent, 
+  extraPresent;
 
 const getResultType = c => {
   let resultType;
@@ -82,7 +90,14 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
             <tbody>
               <tr><th></th><th>overall</th><th>hit</th><th>mistake</th><th>miss</th><th>extra</th></tr>
               {stats.map(r => (
-                <tr key={r["char"]}><td>{r["char"]}</td><td>{r["overall"]}%</td><td>{r["hits"]}</td><td>{r["wrong"]}</td><td>{r["misses"]}</td><td>{r["extra"]}</td></tr>
+                <tr key={r["char"]}>
+                  <td>{r["char"]}</td>
+                  <td>{r["overall"]}%</td>
+                  <td>{r["hits"]}</td>
+                  <td className={`${!r["wrong"] ? "resultTableZero" : ""}`}>{r["wrong"]}</td>
+                  <td className={`${!r["misses"] ? "resultTableZero" : ""}`}>{r["misses"]}</td>
+                  <td className={`${!r["extra"] ? "resultTableZero" : ""}`}>{r["extra"]}</td>
+                </tr>
               ))}
             </tbody>
           </table>

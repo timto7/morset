@@ -5,12 +5,15 @@ import Home from "./components/home/Home";
 import NotFound from "./components/NotFound";
 import { Route, Redirect, Switch } from "react-router-dom";
 import UnderConstruction from "./components/UnderConstruction";
+import { sortScrollbars } from "./services/scroll-bar-sort";
 
 const TrainerContainer = lazy(() =>
   import("./components/trainer/TrainerContainer")
 );
 
 export default function App() {
+  sortScrollbars();
+
   return (
     <div className="App">
       <NavBar />

@@ -31,7 +31,7 @@ const MorseSelectionContainer = ({
   return (
     <div
       className={`morseSelectionPanel ${custom ? "custom" : ""}`}
-      style={{ width: `${columns * 250}px` }}
+      style={{ width: `${columns * 220}px` }}
     >
       <span className="morseSelectionPanelTitle">{title}</span>
       <div className="panelActions">
