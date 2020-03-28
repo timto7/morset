@@ -25,7 +25,6 @@ button .iconBtnText {
 #launchSecondary {
   display: flex;
   justify-content: flex-end;
-  height: 50px;
 }
 
 .MuiMenu-list {
@@ -37,7 +36,7 @@ button .iconBtnText {
   border: 1px solid var(--shadow);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   #TrainerLauncherContainer {
     grid-template-columns: 100%;
   }

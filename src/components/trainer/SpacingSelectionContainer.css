@@ -14,7 +14,8 @@
   width: 200px;
   height: 40px;
   padding: 12px 16px;
-  z-index: 1;
+  transform: translateY(-14px);
+  z-index: 900;
   opacity: 0;
   background-color: var(--tlk-brand-1);
   pointer-events: none;
@@ -27,12 +28,12 @@
 }
 
 #spacingPopover.notRandom {
-  height: 84px;
+  height: 94px;
 }
 
 #spacingPopover.show {
   opacity: 1;
-  transform: translateY(5px);
+  transform: translateY(-10px);
   pointer-events: all;
 }
 
@@ -48,13 +49,13 @@
 }
 
 #spacingSegmentBottom {
-  padding-top: 10px;
+  padding-top: 20px;
   opacity: 0;
   transition: opacity .2s ease;
 }
 
 #spacingSegmentBottom.notRandom {
-  padding-top: 10px;
+  padding-top: 20px;
   opacity: 1;
 }
 

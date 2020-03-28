@@ -18,6 +18,7 @@ export default function Input(props) {
         type="number"
         onFocus={handleFocus}
         onKeyDown={props.onKeyDown}
+        {...(props.tabentry === false && { tabIndex: "-1" })}
       />
       <div className="inputBorderHighlight"></div>
       <span className="InputPrompt">{props.prompt}</span>

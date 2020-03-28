@@ -39,13 +39,14 @@
   align-self: center;
   opacity: 1;
   height: 25px;
+  line-height: 22px;
 }
 
 .MorseButton .morseButtonTextContainer span:last-of-type {
   margin-left: 5px;
   color: var(--idle);
   font-size: 30px;
-  line-height: 16px;
+  line-height: 15px;
   height: 25px;
   opacity: 0.72;
   letter-spacing: 1px;

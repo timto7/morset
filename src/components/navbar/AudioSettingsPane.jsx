@@ -12,10 +12,13 @@ const SSlider = withStyles({
 })(Slider);
 
 const SSwitch = withStyles({
-  root: { marginLeft: -10 }
+  root: { 
+    marginLeft: -10,
+    marginTop: "23px"
+  }
 })(Switch);
 
-const AudioSettingsPane = () => {
+const AudioSettingsPane = ({visible}) => {
   const { setFrequency, setPanning } = useContext(AudioContext);
 
   const initialFreq = getValidFreq(window.localStorage.getItem("frequency"));
@@ -73,12 +76,14 @@ const AudioSettingsPane = () => {
           max={1200}
           aria-labelledby="input-slider"
           color="primary"
+          {...(visible === false && { tabIndex: "-1" })}
         />
         <Input
           className="freqInput"
           value={freq}
           onChange={handleFreqInputChange}
           onBlur={handleFreqBlur}
+          tabentry={visible}
         />
       </div>
       <h4>Stereo Position</h4>
@@ -90,20 +95,23 @@ const AudioSettingsPane = () => {
           max={100}
           aria-labelledby="input-slider"
           color="primary"
+          {...(visible === false && { tabIndex: "-1" })}
         />
         <Input
           className="freqInput"
           value={stereo}
           onChange={handleStereoInputChange}
           onBlur={handleStereoBlur}
+          tabentry={visible}
         />
       </div>
-      <h4>Amplitude Envelope</h4>
+      <h4 style={{width: "calc(100% - 50px)", float: "left", marginTop: "32px"}}>Amplitude Envelope</h4>
       <SSwitch
         checked={env}
         onChange={toggleEnvelope}
         color="primary"
         inputProps={{ "aria-label": "primary checkbox" }}
+        {...(visible === false && { tabIndex: "-1" })}
       />
     </div>
   );

@@ -17,14 +17,15 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "none !important"
     },
     textTransform: "none",
-    fontSize: "14px",
+    fontSize: "13px",
     fontWeight: "400",
     margin: "none",
     marginRight: "12px",
+    marginBottom: "20px",
     height: "32px",
-    width: "150px",
+    width: "auto",
+    maxWidth: "250px",
     marginTop: "auto",
-    marginBottom: "4px",
     padding: "none",
     justifyContent: "center",
     borderRadius: "16px"
@@ -47,8 +48,6 @@ const SpacingSelectionContainer = () => {
   });
 
   const { getRandomSpacing, setRandomSpacing, getCharSpacing, setCharSpacing } = useContext(AudioContext);
-  
-  const [show, setShow] = useState(false);
 
   const initialCharSpacing = getCharSpacing();
   const [spacing, setSpacing] = useState(initialCharSpacing);
@@ -56,6 +55,7 @@ const SpacingSelectionContainer = () => {
   const initialRandomSpacing = getRandomSpacing();
   const [random, setRandom] = useState(initialRandomSpacing);
 
+  const [show, setShow] = useState(false);
   const toggleShow = () => {
     setShow(!show);
   };
@@ -96,7 +96,7 @@ const SpacingSelectionContainer = () => {
         onClick={toggleShow}
         style={show ? {backgroundColor: "rgba(52, 152, 219, 0.5)"} : {}}
       >
-        <span>Spacing: {random ? "Random" : getCharSpacing()}</span>
+        <span>Character Spacing: {random ? "Random" : getCharSpacing()}</span>
       </SpacingButton>
       <div id="spacingPopover" className={`${show ? "show" : ""} ${!random ? "notRandom" : ""}`}>
         <div id="spacingSegmentTop">
@@ -108,7 +108,7 @@ const SpacingSelectionContainer = () => {
             inputProps={{ "aria-label": "primary checkbox" }} />
         </div>
         <div id="spacingSegmentBottom" className={`${!random ? "notRandom" : ""}`}>
-          <span>spacing:</span>
+          <span>character spacing: </span>
           <SpacingInput
             onChange={handleCharSpacingInputChange}
             value={spacing}

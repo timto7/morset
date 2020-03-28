@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Translator from "../../services/morse/morse-translation";
 import SpacingContainer from "./SpacingSelectionContainer";
+import DurationContainer from "./DurationSelectionContainer";
 
 const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
 let customChars = "abc";
@@ -53,7 +54,8 @@ window.localStorage.setItem("charCount", lastCount);
 const useStyles = makeStyles(theme => ({
   formControl: {
     minWidth: 120,
-    marginRight: "20px"
+    marginRight: "20px",
+    marginBottom: "20px"
   },
   selectEmpty: {}
 }));
@@ -145,7 +147,8 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
             <MenuItem value={1}>Custom</MenuItem>
           </Select>
         </FormControl>
-        <SpacingContainer />
+        <SpacingContainer style={{paddingBottom: "20px"}} />
+        <DurationContainer style={{paddingBottom: "20px"}} />
         <CharStepper
           initialValue={lastCount}
           min={2}

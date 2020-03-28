@@ -58,9 +58,9 @@ const SettingsDropdown = ({ show }) => {
           id="settingsContent"
           className={index === 0 ? "pane-0" : index === 1 ? "pane-1" : "pane-2"}
         >
-          <AudioPane></AudioPane>
-          <TrainingPane></TrainingPane>
-          <TranslationPane></TranslationPane>
+          <AudioPane visible={index === 0 ? true : false}></AudioPane>
+          <TrainingPane visible={index === 1 ? true : false}></TrainingPane>
+          <TranslationPane visible={index === 2 ? true : false}></TranslationPane>
         </div>
       </div>
     </div>

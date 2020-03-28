@@ -26,7 +26,7 @@ const validateEnd = val => {
   return val;
 };
 
-const TrainingSettingsPane = () => {
+const TrainingSettingsPane = ({visible}) => {
   const { getPreDelay, setPreDelay, getPostDelay, setPostDelay, getSessionCharAmount, setSessionCharAmount } = useContext(AudioContext);
   
   const intialCharAmount = getSessionCharAmount();
@@ -107,6 +107,7 @@ const TrainingSettingsPane = () => {
           value={charAmount}
           onBlur={handleCharAmountInputBlur}
           onKeyDown={handleCharAmountInputKeyDown}
+          tabentry={visible}
         />
       </div>
       <h4>Session Timing Delays (seconds)</h4>
@@ -119,6 +120,7 @@ const TrainingSettingsPane = () => {
             value={startDelay}
             onBlur={handleStartInputBlur}
             onKeyDown={handleStartInputKeyDown}
+            tabentry={visible}
           />
         </div>
         <div className="settingsInputContainer">
@@ -129,6 +131,7 @@ const TrainingSettingsPane = () => {
             value={endDelay}
             onBlur={handleEndInputBlur}
             onKeyDown={handleEndInputKeyDown}
+            tabentry={visible}
           />
         </div>
       </div>

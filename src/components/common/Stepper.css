@@ -4,8 +4,7 @@
   align-items: end;
   opacity: 0;
   pointer-events: none;
-  margin-right: 20px;
-  margin-left: -20px;
+  margin: 0px 20px 20px -20px;
   transition: opacity 0.2s ease, margin-right 0.2s ease, margin-left 0.2s ease;
 }
 
@@ -16,11 +15,14 @@
   opacity: 1;
 }
 
-.StepperContainer.Input {
-  margin-bottom: 5px;
+.StepperContainer .Input {
+  margin-bottom: 0px;
 }
 
-.IconButton.disabled,
+.StepperContainer .IconButton {
+  bottom: -4px;
+}
+
 .IconButton.disabled {
   opacity: 0.5;
   pointer-events: none;
