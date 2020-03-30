@@ -5,14 +5,16 @@ import AbortIcon from "@material-ui/icons/Close";
 import RefreshBtn from "./SessionButton";
 import RefreshIcon from "@material-ui/icons/Refresh";
 
-const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didChangeText }) => {
+const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didChangeText, testDuration = 10, startDelay = 0.5 }) => {
   const textareaRef = useRef();
+  let runProgressBar = false;
 
   useLayoutEffect(() => {
     if (textareaRef !== undefined) {
       textareaRef.current.focus();
       textareaRef.current.value = "";
     }
+    runProgressBar = true;
   });
 
   return (
@@ -22,9 +24,13 @@ const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didC
     >
       <div id="sessionOptionContainer">
         <AbortBtn actionType={"abort"} label="Abort" Icon={AbortIcon} onClick={abortClicked} />
-        <RefreshBtn actionType={"restart"} label="Restart" Icon={RefreshIcon} onClick={restartClicked} />
+        <RefreshBtn actionType={"restart"} label="Restart" Icon={RefreshIcon} onClick={() => {
+          restartClicked()
+        }} />
       </div>
-      <div id="sessionProgressBar" />
+      <div id="sessionProgressBar"
+        style={ inSession ? { transitionDuration: `${testDuration - 0.35}s`, transitionDelay: `${startDelay}s`, width : "100%"} : {}}
+      />
       <textarea ref={textareaRef} spellCheck={false} readOnly={!inSession} onChange={didChangeText} />
     </div>
   );

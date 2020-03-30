@@ -89,7 +89,7 @@ export function createScriptFromChars(chars, options = undefined) {
 
     let i = 0;
     while ((durationType === 1 && i < charLimit)) {
-      if (!spaceCountdown && i > 0) {
+      if (!spaceCountdown && i > 0 && i < charLimit - 1) {
         script += " ";
         setSpacing();
       } else {
@@ -103,7 +103,13 @@ export function createScriptFromChars(chars, options = undefined) {
       }
       appendTime(script.slice(-1));
     }
-    return script.trim();
+
+    const composition = {
+      script: script.trim(),
+      totalDuration: totalTime
+    }
+
+    return composition;
 }
 
 export default {

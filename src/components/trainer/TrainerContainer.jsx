@@ -11,7 +11,7 @@ let noChars = false;
 let doNotMark = false;
 let restartRequired = false;
 
-let latestScript = "";
+let latestComposition = {script: "", totalDuration: 0};
 let latestAnswer = "";
 
 const TrainerContainer = () => {
@@ -84,13 +84,14 @@ const TrainerContainer = () => {
     if (isPlaying() === false) {
       setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
       latestAnswer = "";
-      latestScript = Composer.createScriptFromChars(state.selectedChars, {
+      latestComposition = Composer.createScriptFromChars(state.selectedChars, 
+      {
         randomSpacing: getRandomSpacing(), 
         charSpacing: getCharSpacing(),
         durationType: 1,
         charLimit: getSessionCharAmount()
       });
-      play(latestScript, playbackFinished, {
+      play(latestComposition.script, playbackFinished, {
         "preDelay": parseFloat(getPreDelay()),
         "postDelay": parseFloat(getPostDelay())
       });
@@ -123,6 +124,7 @@ const TrainerContainer = () => {
     stop();
     doNotMark = true;
     restartRequired = true;
+    setState(prevState => ({ ...prevState, inSession: false }));
   }
 
   function closeResultsClicked() {
@@ -144,9 +146,8 @@ const TrainerContainer = () => {
         beginWasClicked={beginWasClicked}
       />
       </div>
-      
-      <SessionReviewContainer visible={state.showResults} latestScript={latestScript} latestAnswer={latestAnswer} closeResultsClicked={() => closeResultsClicked()} retryClicked={() => retryClicked()}/>
-      <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} />
+      <SessionReviewContainer visible={state.showResults} latestScript={latestComposition.script} latestAnswer={latestAnswer} closeResultsClicked={() => closeResultsClicked()} retryClicked={() => retryClicked()} />
+      <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} testDuration={latestComposition.totalDuration + parseFloat(getPostDelay())} startDelay={parseFloat(getPreDelay())} />
     </div>
   );
 };
