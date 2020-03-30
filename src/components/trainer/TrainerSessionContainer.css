@@ -76,3 +76,20 @@
 #TrainerSessionContainer.inSession #sessionOptionContainer {
   transform: translateY(0px);
 }
+
+#TrainerSessionContainer #sessionProgressBar {
+  height: 4px;
+  width: 0%;
+  top: 0px;
+  left: 0px;
+  background-color: var(--tlk-blue);
+  transition-property: width;
+  transition-duration: 0s;
+  transition-timing-function: linear;
+}
+
+#TrainerSessionContainer.inSession #sessionProgressBar {
+  transition-duration: 100s;
+  transition-delay: 0.5s;
+  width: 100%;
+}

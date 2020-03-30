@@ -148,8 +148,8 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
             <MenuItem value={1}>Custom</MenuItem>
           </Select>
         </FormControl>
-        <SpacingContainer style={{paddingBottom: "20px"}} />
         <DurationContainer style={{paddingBottom: "20px"}} />
+        <SpacingContainer style={{paddingBottom: "20px"}} />
         <CharStepper
           initialValue={lastCount}
           min={2}

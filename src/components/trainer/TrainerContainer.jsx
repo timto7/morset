@@ -59,7 +59,16 @@ const TrainerContainer = () => {
     }
   }, [state.inSession, state.showResults])
 
-  const { play, stop, isPlaying, getPreDelay, getPostDelay, getSessionCharAmount, getRandomSpacing, getCharSpacing } = useContext(AudioContext);
+  const { 
+    play, 
+    stop, 
+    isPlaying,
+    getPreDelay, 
+    getPostDelay, 
+    getSessionCharAmount, 
+    getRandomSpacing, 
+    getCharSpacing 
+  } = useContext(AudioContext);
 
   noChars = state.selectedChars.length > 0 ? false : true;
 
@@ -75,7 +84,12 @@ const TrainerContainer = () => {
     if (isPlaying() === false) {
       setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
       latestAnswer = "";
-      latestScript = Composer.createScriptFromChars(state.selectedChars, { limit: getSessionCharAmount(), randomSpacing: getRandomSpacing(), charSpacing: getCharSpacing() });
+      latestScript = Composer.createScriptFromChars(state.selectedChars, {
+        randomSpacing: getRandomSpacing(), 
+        charSpacing: getCharSpacing(),
+        durationType: 1,
+        charLimit: getSessionCharAmount()
+      });
       play(latestScript, playbackFinished, {
         "preDelay": parseFloat(getPreDelay()),
         "postDelay": parseFloat(getPostDelay())

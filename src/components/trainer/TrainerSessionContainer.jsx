@@ -24,6 +24,7 @@ const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didC
         <AbortBtn actionType={"abort"} label="Abort" Icon={AbortIcon} onClick={abortClicked} />
         <RefreshBtn actionType={"restart"} label="Restart" Icon={RefreshIcon} onClick={restartClicked} />
       </div>
+      <div id="sessionProgressBar" />
       <textarea ref={textareaRef} spellCheck={false} readOnly={!inSession} onChange={didChangeText} />
     </div>
   );

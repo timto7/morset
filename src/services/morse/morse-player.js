@@ -1,5 +1,4 @@
 import morseTranslation, * as morsetrans from "./morse-translation.js";
-
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 let oscillator = audioCtx.createOscillator();
@@ -48,6 +47,7 @@ const audiofy = (str, callback = undefined) => {
 
     let morseGain = audioCtx.createGain();
     morseGain.gain.setValueAtTime(0.0, t);
+    let startT = t;
 
     t += 0.05; // To prevent initial pop
     t += preDelay;
