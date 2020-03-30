@@ -24,6 +24,9 @@
   --tlk-contrast: #000;
   --shadow: #000;
   --home-outline: "#fff";
+  --home-outline-idle: #fff;
+  --home-shadow: #000;
+  --home-icon: #b3b3b3;
   --mark-miss: #f1c40f;
   --mark-sub: #ff4495;
   --mark-extra: #f1c40f;

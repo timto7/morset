@@ -1,10 +1,15 @@
 @import "./colourScheme.css";
 @import "./pageAnimations.css";
 
+#UnderConstructionMasterContainer {
+  display: flex;
+  justify-content: center;
+}
+
 #UnderConstructionContainer {
   display: grid;
-  grid-template-columns: 100px calc(100% - 221px);
-  margin-top: 10px;
+  grid-template-columns: 120px auto;
+  margin-top: 50px;
 }
 
 #UnderConstructionMessage {
@@ -25,10 +30,9 @@
 
 #UnderConstructionIcon {
   position: relative;
-  text-align: right;
+  text-align: left;
   font-size: 24px;
   margin-top: 40px;
-  padding-right: 20px;
   color: var(--textAlt);
   transition: color .5s ease;
   animation: 0.2s ease 0s 1 peekRight;

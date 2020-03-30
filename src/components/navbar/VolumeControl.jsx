@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./VolumeControl.css";
 import VolumeBtn from "../common/IconButton";
 import { getValidVol } from "../../context/AudioContext";
-import { IoMdVolumeHigh as volumeHigh } from "react-icons/io";
-import { IoMdVolumeLow as volumeLow } from "react-icons/io";
-import { IoMdVolumeMute as volumeMute } from "react-icons/io";
+import { FiVolume2 as volumeHigh } from "react-icons/fi";
+import { FiVolume1 as volumeLow } from "react-icons/fi";
+import { FiVolumeX as volumeMute } from "react-icons/fi";
 import Slider from "@material-ui/core/Slider";
 
 const VolumeControl = ({ handleVolumeChange }) => {

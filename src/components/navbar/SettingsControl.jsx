@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import SettingsBtn from "../common/IconButton";
-import { IoMdSettings as settingsIcon } from "react-icons/io";
+import { FiSettings as settingsIcon } from "react-icons/fi";
 import SettingsDropdown from "./SettingsDropdown";
 import useOutsideClick from "../../services/useOutsideClick";
 

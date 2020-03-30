@@ -55,7 +55,8 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     minWidth: 120,
     marginRight: "20px",
-    marginBottom: "20px"
+    marginBottom: "20px",
+    fontWeight: "500"
   },
   selectEmpty: {}
 }));

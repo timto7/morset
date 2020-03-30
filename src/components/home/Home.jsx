@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import TrainIcon from "@material-ui/icons/FitnessCenter";
 import TranslateIcon from "@material-ui/icons/Translate";
+import HelpIcon from "@material-ui/icons/HelpOutline";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -36,6 +37,18 @@ const Home = () => {
               </div>
               <p>
                 <b>translate</b> morse to text or vice versa
+              </p>
+            </div>
+          </Link>
+        </div>
+        <div className="homeOptionOuter">
+          <Link to="/help">
+            <div className="homeOptionInner">
+              <div className="homeIconContainer">
+                <HelpIcon style={{ fontSize: 100 }} />
+              </div>
+              <p>
+                <b>help</b> is available from supporting documentation
               </p>
             </div>
           </Link>

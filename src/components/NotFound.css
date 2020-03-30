@@ -10,10 +10,16 @@
   }
 }
 
+#NFMasterContainer {
+  display: flex;
+  justify-content: center;
+}
+
 #NFErrorContainer {
   display: grid;
-  grid-template-columns: 200px calc(100% - 221px);
-  margin-top: 10px;
+  grid-template-columns: 240px calc(100% - 260px);
+  margin-top: 50px;
+  padding: 0px auto 0px auto;
 }
 
 #NFMessageContainer {

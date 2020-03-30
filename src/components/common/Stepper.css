@@ -19,8 +19,8 @@
   margin-bottom: 0px;
 }
 
-.StepperContainer .IconButton {
-  bottom: -4px;
+.StepperContainer > .IconButton {
+  bottom: -8px;
 }
 
 .IconButton.disabled {

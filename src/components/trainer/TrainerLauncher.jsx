@@ -19,14 +19,15 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#2980b9 !important",
       boxShadow: "none !important"
     },
-    fontSize: "16px",
-    letterSpacing: "1px",
+    fontSize: "18px",
+    letterSpacing: "2px",
     fontWeight: "600",
     margin: "none"
   },
   formControl: {
     minWidth: 120,
-    marginLeft: "20px"
+    marginLeft: "20px",
+    fontWeight: "500"
   },
   selectEmpty: {}
 }));

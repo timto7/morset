@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./Stepper.css";
-import DownArrow from "./IconButton";
-import { IoMdArrowDown as downArw } from "react-icons/io";
-import UpArrow from "./IconButton";
-import { IoMdArrowUp as upArw } from "react-icons/io";
+import IconButton from "./IconButton";
+import { FiChevronDown as downArw } from "react-icons/fi";
+import { FiChevronUp as upArw } from "react-icons/fi";
 import Input from "./Input";
 import PropTypes from "prop-types";
 
@@ -53,7 +52,7 @@ const Stepper = ({
 
   return (
     <div className={visible ? "StepperContainer visible" : "StepperContainer"}>
-      <DownArrow
+      <IconButton
         icon={downArw}
         tooltip={"Descrease Characters"}
         disabled={value === min}
@@ -72,7 +71,7 @@ const Stepper = ({
         onKeyDown={handleInputKeyDown}
         prompt={prompt}
       />
-      <UpArrow
+      <IconButton
         icon={upArw}
         tooltip={"Increase Characters"}
         disabled={value === max}

@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 import "./navBar.css";
 import ThemeContext from "../../context/ThemeContext";
 import AudioContext from "../../context/AudioContext";
-import { IoMdBulb as bulb } from "react-icons/io";
-import { IoMdInformationCircleOutline as info } from "react-icons/io";
+import { MdLightbulbOutline as bulb } from "react-icons/md";
+import { MdInfoOutline as info } from "react-icons/md";
+import { MdHelpOutline as help } from "react-icons/md";
 import BulbIcon from "../common/IconButton";
 import VolumeControl from "./VolumeControl";
 import SettingsControl from "./SettingsControl";
@@ -63,13 +64,16 @@ const NavBar = () => {
         </div>
         <div id="navOptionContainer">
           <VolumeControl handleVolumeChange={volume => setVolume(volume)} />
+          <InfoIcon className="infoBtn" icon={info} tooltip={"Info"} onClick={() => toggleInfo()}/>
+          <NavLink to="/help">
+            <InfoIcon className="helpBtn" icon={help} tooltip={"Help Documentation"}/>
+          </NavLink>
           <BulbIcon
             className="lightCtrl"
             icon={bulb}
             tooltip={"Light/Dark Mode"}
             onClick={() => toggle()}
           />
-          <InfoIcon className="infoBtn" icon={info} tooltip={"Info"} onClick={() => toggleInfo()}/>
           <SettingsControl />
         </div>
       </div>

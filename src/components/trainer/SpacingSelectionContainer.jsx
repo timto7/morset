@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: "auto",
     padding: "none",
     justifyContent: "center",
-    borderRadius: "16px"
+    borderRadius: "16px",
+    fontWeight: "500"
   },
   selectEmpty: {}
 }));
@@ -114,6 +115,7 @@ const SpacingSelectionContainer = () => {
             value={spacing}
             onBlur={handleCharSpacingInputBlur}
             onKeyDown={handleCharSpacingInputKeyDown}
+            tabentry={!random}
           />
         </div>
       </div>

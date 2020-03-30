@@ -1,8 +1,8 @@
 @import "../colourScheme.css";
 
 .morseSelectionPanel {
-  width: 220px;
-  height: 400px;
+  width: 204px;
+  height: 420px;
   color: var(--text);
   font-weight: 300;
   letter-spacing: 2px;
@@ -16,7 +16,8 @@
 }
 
 .morseButtonContainer {
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-left: -6px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

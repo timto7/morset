@@ -1,13 +1,13 @@
 @import "../colourScheme.css";
 
 .MorseButton {
-  width: 220px;
-  padding: 0px 20px 0px 0px;
+  width: 210px;
+  padding: 0px 0px 0px 0px;
   box-sizing: border-box;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 .morseButtonTextContainer {
-  padding: 0px 21px 0px 0px;
+  padding: 0px;
   width: 100%;
   height: 22px;
   overflow: visible;

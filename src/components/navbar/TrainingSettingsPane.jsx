@@ -101,7 +101,7 @@ const TrainingSettingsPane = ({visible}) => {
     <div className="SettingsPane">
       <h4>Session Character Amount</h4>
       <div className="settingsInputContainer">
-        <span>amount:</span>
+        <span>amount: </span>
         <LimitInput
           onChange={handleCharAmountInputChange}
           value={charAmount}
@@ -113,7 +113,7 @@ const TrainingSettingsPane = ({visible}) => {
       <h4>Session Timing Delays (seconds)</h4>
       <div id="delaySettingsContainer">
         <div className="settingsInputContainer">
-          <span>start:</span>
+          <span>start: </span>
           <StartDelayInput
             className="delayInput"
             onChange={handleStartInputChange}
@@ -124,7 +124,7 @@ const TrainingSettingsPane = ({visible}) => {
           />
         </div>
         <div className="settingsInputContainer">
-          <span>end:</span>
+          <span>end: </span>
           <EndDelayInput
             className="delayInput"
             onChange={handleEndInputChange}
