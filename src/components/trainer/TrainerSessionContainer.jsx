@@ -9,8 +9,6 @@ const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didC
   const textareaRef = useRef();
   let runProgressBar = false;
 
-  console.log("progress bar duration: " + totalDuration);
-
   useLayoutEffect(() => {
     if (textareaRef !== undefined) {
       textareaRef.current.focus();
@@ -30,10 +28,12 @@ const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didC
           restartClicked()
         }} />
       </div>
-      <div id="sessionProgressBar"
-        style={ inSession ? { transitionDuration: `${totalDuration - (totalDuration * 0.005)}s`, transitionDelay: `${startDelay}s`, width : "100%"} : {}}
-      />
-      <textarea ref={textareaRef} spellCheck={false} readOnly={!inSession} onChange={didChangeText} />
+      <div id="sessionTextareaContainer">
+        <div id="sessionProgressBar"
+          style={ inSession ? { transitionDuration: `${totalDuration - (totalDuration * 0.005)}s`, transitionDelay: `${startDelay}s`, width : "100%"} : {}}
+        />
+        <textarea ref={textareaRef} spellCheck={false} readOnly={!inSession} onChange={didChangeText} />
+      </div>
     </div>
   );
 };

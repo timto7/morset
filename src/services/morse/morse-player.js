@@ -41,10 +41,7 @@ const audiofy = (str, callback = undefined) => {
       }
     };
 
-    //console.log(`MORSEPLAYER .: ${dotLength}, -: ${dashLength}, p: ${pauseLength}, s: ${spaceLength}`);
-
     let t = audioCtx.currentTime;
-    const startT = t;
     oscillator.type = "sine";
     oscillator.frequency.value = toneFreq;
 
@@ -79,10 +76,8 @@ const audiofy = (str, callback = undefined) => {
         morseGain.gain.linearRampToValueAtTime(0.0, t + envelopeTime);
         t += dotLength; // intra-char gap
       }
-      console.log("mp: " + (t - startT));
     });
     t += postDelay;
-    console.log("mp total: " + (t - startT));
 
     oscillator.connect(morseGain);
     morseGain.connect(panner);
@@ -153,7 +148,6 @@ export function setSpeed(overallSpeed, charSpeed) {
   pauseLength = (3.0 * farns) / 19.0;
   spaceLength = (7.0 * farns) / 19.0;
   envelopeTime = 0.0025 * (1.0 / (charSpeed / 18.0));
-  console.log(`MORSEPLAYER cS: ${charSpeed}, oS: ${overallSpeed}`);
 }
 
 export function setVolume(vol) {

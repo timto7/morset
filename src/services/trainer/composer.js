@@ -88,8 +88,6 @@ export function createScriptFromChars(chars, options = undefined) {
     setSpacing();
     setSpeedElements();
 
-    console.log(`COMPOSER cS: ${charSpeed}, oS: ${overallSpeed}, .: ${dotLength}, -: ${dashLength}, p: ${pauseLength}, s: ${spaceLength}`);
-
     let i = 0;
     while ((durationType === 2 && i < charLimit) || (durationType === 1 && totalTime < durationTime)) {
       if (durationType === 1 && totalTime >= durationTime - spaceLength) {
@@ -106,14 +104,12 @@ export function createScriptFromChars(chars, options = undefined) {
         i++;
       }
       appendTime(script.slice(-1));
-      console.log("c: " + totalTime);
     }
     totalTime -= pauseLength;
     const composition = {
       script: script.trim(),
       totalDuration: totalTime
     }
-    console.log("composer total: " + totalTime);
     return composition;
 }
 

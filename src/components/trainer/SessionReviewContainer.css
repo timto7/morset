@@ -8,7 +8,7 @@
   margin: 0px auto;
   left: 0px;
   right: 0px;
-  top: 90px;
+  top: 100px;
   bottom: 0px;
   background-color: var(--tlk-brand-2);
   opacity: 0;
@@ -30,16 +30,16 @@
   width: 100%;
   position: block;
   display: flex;
-  max-width: 1440px;
+  max-width: 1520px;
   margin: 0 auto;
   height: 50px;
   box-sizing: border-box;
-  padding: 0px 40px 0px 40px;
+  padding: 0px 60px 0px 60px;
 }
 
 #SessionReviewContainer #reviewOptionContainer {
   width: 100%;
-  padding-top: 30px;
+  padding-top: 40px;
   box-sizing: border-box;
   margin: 0px auto;
   transition: top .2s ease;
@@ -50,15 +50,14 @@
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1520px;
   margin: 0 auto;
-  padding: 0px 40px 10px 40px;
+  padding: 0px 60px 10px 60px;
   box-sizing: border-box;
 }
 
 #sessionReviewStatsContainer {
   margin-right: 20px;
-  margin-left: 10px;
   position: relative;
 }
 
