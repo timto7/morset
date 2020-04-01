@@ -67,7 +67,8 @@ const TrainerContainer = () => {
     getPostDelay, 
     getSessionCharAmount, 
     getRandomSpacing, 
-    getCharSpacing 
+    getCharSpacing,
+    getSpeed
   } = useContext(AudioContext);
 
   noChars = state.selectedChars.length > 0 ? false : true;
@@ -84,12 +85,15 @@ const TrainerContainer = () => {
     if (isPlaying() === false) {
       setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
       latestAnswer = "";
+      const speeds = getSpeed();
       latestComposition = Composer.createScriptFromChars(state.selectedChars, 
       {
         randomSpacing: getRandomSpacing(), 
         charSpacing: getCharSpacing(),
         durationType: 1,
-        charLimit: getSessionCharAmount()
+        charLimit: getSessionCharAmount(),
+        overallSpeed: speeds[0],
+        charSpeed: speeds[1]
       });
       play(latestComposition.script, playbackFinished, {
         "preDelay": parseFloat(getPreDelay()),
@@ -147,7 +151,7 @@ const TrainerContainer = () => {
       />
       </div>
       <SessionReviewContainer visible={state.showResults} latestScript={latestComposition.script} latestAnswer={latestAnswer} closeResultsClicked={() => closeResultsClicked()} retryClicked={() => retryClicked()} />
-      <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} testDuration={latestComposition.totalDuration + parseFloat(getPostDelay())} startDelay={parseFloat(getPreDelay())} />
+      <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} totalDuration={latestComposition.totalDuration + parseFloat(getPostDelay())} startDelay={parseFloat(getPreDelay())} />
     </div>
   );
 };

@@ -7,9 +7,9 @@ export function createScriptFromChars(chars, options = undefined) {
       randomSpacing = true, 
       charSpacing = null, 
       spaceCountdown = 0, 
-      durationType = 1,
-      durationTime = 0,
-      totalTime = 0.0,
+      durationType = 2,
+      durationTime = 30,
+      totalTime = 0.05,
       dotLength = 0.0,
       dashLength = 0.0,
       pauseLength = 0.0,
@@ -42,6 +42,7 @@ export function createScriptFromChars(chars, options = undefined) {
 
     const appendTime = c => {
       let morseTrans = morsetrans.translateTextToMorse(c);
+
       if (c === " " ) {
         totalTime += spaceLength - pauseLength;
       } else {
@@ -77,18 +78,23 @@ export function createScriptFromChars(chars, options = undefined) {
         charSpacing = options["charSpacing"];
       }
       if ("overallSpeed" in options) {
-        overallSpeed = options["overallSpeed"];
+        overallSpeed = parseFloat(options["overallSpeed"]);
       }
       if ("charSpeed" in options) {
-        charSpeed = options["charSpeed"];
+        charSpeed = parseFloat(options["charSpeed"]);
       }
     }
 
     setSpacing();
     setSpeedElements();
 
+    console.log(`COMPOSER cS: ${charSpeed}, oS: ${overallSpeed}, .: ${dotLength}, -: ${dashLength}, p: ${pauseLength}, s: ${spaceLength}`);
+
     let i = 0;
-    while ((durationType === 1 && i < charLimit)) {
+    while ((durationType === 2 && i < charLimit) || (durationType === 1 && totalTime < durationTime)) {
+      if (durationType === 1 && totalTime >= durationTime - spaceLength) {
+        spaceCountdown = 1;
+      }
       if (!spaceCountdown && i > 0 && i < charLimit - 1) {
         script += " ";
         setSpacing();
@@ -96,19 +102,18 @@ export function createScriptFromChars(chars, options = undefined) {
         script += chars.charAt(Math.floor(Math.random() * chars.length));
         spaceCountdown--;
       }
-      if (durationType === 0) {
-        appendTime(script.slice(-1));
-      } else {
+      if (durationType === 2) {
         i++;
       }
       appendTime(script.slice(-1));
+      console.log("c: " + totalTime);
     }
-
+    totalTime -= pauseLength;
     const composition = {
       script: script.trim(),
       totalDuration: totalTime
     }
-
+    console.log("composer total: " + totalTime);
     return composition;
 }
 

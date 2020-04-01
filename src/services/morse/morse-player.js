@@ -41,15 +41,17 @@ const audiofy = (str, callback = undefined) => {
       }
     };
 
+    //console.log(`MORSEPLAYER .: ${dotLength}, -: ${dashLength}, p: ${pauseLength}, s: ${spaceLength}`);
+
     let t = audioCtx.currentTime;
+    const startT = t;
     oscillator.type = "sine";
     oscillator.frequency.value = toneFreq;
 
     let morseGain = audioCtx.createGain();
     morseGain.gain.setValueAtTime(0.0, t);
-    let startT = t;
 
-    t += 0.05; // To prevent initial pop
+    t += 0.05; // To prevent initial popx
     t += preDelay;
 
     str.split("").forEach(function(char) {
@@ -77,8 +79,10 @@ const audiofy = (str, callback = undefined) => {
         morseGain.gain.linearRampToValueAtTime(0.0, t + envelopeTime);
         t += dotLength; // intra-char gap
       }
+      console.log("mp: " + (t - startT));
     });
     t += postDelay;
+    console.log("mp total: " + (t - startT));
 
     oscillator.connect(morseGain);
     morseGain.connect(panner);
@@ -145,10 +149,11 @@ export function setSpeed(overallSpeed, charSpeed) {
   dotLength = 1.2 / charSpeed;
   dashLength = dotLength * 3.0;
   const farns =
-    (60 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
-  pauseLength = (3 * farns) / 19;
-  spaceLength = (7 * farns) / 19;
-  envelopeTime = 0.0025 * (1 / (charSpeed / 18));
+    (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
+  pauseLength = (3.0 * farns) / 19.0;
+  spaceLength = (7.0 * farns) / 19.0;
+  envelopeTime = 0.0025 * (1.0 / (charSpeed / 18.0));
+  console.log(`MORSEPLAYER cS: ${charSpeed}, oS: ${overallSpeed}`);
 }
 
 export function setVolume(vol) {
