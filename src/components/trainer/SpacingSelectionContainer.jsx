@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const validateSpacing = val => {
+  if (val === "") return 0;
   val = Number.parseInt(val);
   if (Number.isNaN(val)) return 10;
   if (val < 0) return 0;
@@ -95,7 +96,7 @@ const SpacingSelectionContainer = () => {
         variant="outlined"
         className={classes.button}
         onClick={toggleShow}
-        style={show ? {backgroundColor: "rgba(52, 152, 219, 0.5)"} : {}}
+        style={show ? {backgroundColor: "rgb(52, 152, 219)", color: "#fff"} : {}}
       >
         <span>{random ? "Insert Spaces Randomly" : getCharSpacing() !== 0 ? getCharSpacing() !== 1 ? `Insert Space Every ${getCharSpacing()} Characters`: "Insert Space After Every Character" : "Don't Insert Any Spaces"}</span>
       </SpacingButton>

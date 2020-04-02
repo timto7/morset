@@ -56,6 +56,18 @@ export function getValidStereo(s) {
   return Number(s);
 }
 
+export function getValidWaveform(s) {
+  s = parseInt(s);
+  if (s === null || s === undefined || Number.isNaN(s)) {
+    return 0;
+  } else if (s > 2) {
+    return 2;
+  } else if (s < 0) {
+    return 0;
+  }
+  return s;
+}
+
 export function AudioProvider(props) {
   const storedVol = window.localStorage.getItem("volume");
   const initialVol = getValidVol(storedVol);
@@ -68,6 +80,10 @@ export function AudioProvider(props) {
   const storedEnv = window.localStorage.getItem("envelope");
   const initialEnv = getValidFreq(storedEnv);
   Morse.setEnvelope(initialEnv);
+
+  const storedWf = parseInt(window.localStorage.getItem("waveform"));
+  const initialWf = getValidWaveform(storedWf);
+  Morse.setWaveform(initialWf);
 
   const play = (string, callback = undefined, timingOptions = undefined) => {
       Morse.play(string, callback, timingOptions);
@@ -194,7 +210,27 @@ export function AudioProvider(props) {
     window.localStorage.setItem("sessionTimeLimit", stl);
   }
   setSessionTimeLimit(getSessionTimeLimit());
+
+  const getProgressBar = () => {
+    let pb = window.localStorage.getItem("progressBar");
+    if (pb === null || pb === undefined) pb = "true";
+    return pb === "true";
+  }
   
+  const setProgressBar = pb => {
+    window.localStorage.setItem("progressBar", pb);
+  }
+  
+  const getWaveform = () => {
+    const wf = getValidWaveform(window.localStorage.getItem("waveform"));
+    return wf;
+  }
+
+  const setWaveform = wf => {
+    wf = getValidWaveform(wf);
+    window.localStorage.setItem("waveform", wf);
+    Morse.setWaveform(wf);
+  }
 
   return (
     <AudioContext.Provider
@@ -208,6 +244,8 @@ export function AudioProvider(props) {
         isPlaying,
         setSpeed,
         getSpeed,
+        getWaveform,
+        setWaveform,
         getPreDelay,
         setPreDelay,
         getPostDelay,
@@ -221,7 +259,9 @@ export function AudioProvider(props) {
         getDurationMode,
         setDurationMode,
         getSessionTimeLimit,
-        setSessionTimeLimit
+        setSessionTimeLimit,
+        getProgressBar,
+        setProgressBar
       }}
     >
       {props.children}

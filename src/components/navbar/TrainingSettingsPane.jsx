@@ -2,7 +2,16 @@ import React, { useState, useContext } from "react";
 import "./TrainingSettingsPane.css";
 import AudioContext from "../../context/AudioContext";
 import Input from "../common/Input";
+import Switch from "@material-ui/core/Switch";
+import { withStyles } from "@material-ui/core/styles";
 
+
+const SSwitch = withStyles({
+  root: { 
+    marginLeft: -10,
+    marginTop: "23px"
+  }
+})(Switch);
 
 const validateStart = val => {
   val = parseFloat(Number(val));
@@ -19,13 +28,16 @@ const validateEnd = val => {
 };
 
 const TrainingSettingsPane = ({visible}) => {
-  const { getPreDelay, setPreDelay, getPostDelay, setPostDelay } = useContext(AudioContext);
+  const { getPreDelay, setPreDelay, getPostDelay, setPostDelay, getProgressBar, setProgressBar } = useContext(AudioContext);
   
   const intialPreDelay = getPreDelay();
   const intialPostDelay = getPostDelay();
+  const initialProgressBar = getProgressBar();
 
   const [startDelay, setStartDelay] = useState(intialPreDelay);
   const [endDelay, setEndDelay] = useState(intialPostDelay);
+  const [progBar, setProgBar] = useState(initialProgressBar);
+
 
   const handleStartInputChange = event => {
     setStartDelay(event.target.value);
@@ -67,6 +79,11 @@ const TrainingSettingsPane = ({visible}) => {
     setPostDelay(v);
   };
 
+  const toggleProgressBar = () => {
+    setProgressBar(!progBar);
+    setProgBar(prev => !prev);
+  };
+
   return (
     <div className="SettingsPane">
       <h4>Session Timing Delays (seconds)</h4>
@@ -94,6 +111,14 @@ const TrainingSettingsPane = ({visible}) => {
           />
         </div>
       </div>
+      <h4 style={{width: "calc(100% - 50px)", float: "left", marginTop: "32px"}}>Session Progress Bar</h4>
+      <SSwitch
+        checked={progBar}
+        onChange={toggleProgressBar}
+        color="primary"
+        inputProps={{ "aria-label": "primary checkbox" }}
+        {...(visible === false && { tabIndex: "-1" })}
+      />
     </div>
   );
 };

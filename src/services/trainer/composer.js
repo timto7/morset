@@ -1,4 +1,4 @@
-import morseTranslation, * as morsetrans from "../morse/morse-translation.js";
+import * as morsetrans from "../morse/morse-translation.js";
 
 export function createScriptFromChars(chars, options = undefined) {
     let 
@@ -15,8 +15,7 @@ export function createScriptFromChars(chars, options = undefined) {
       pauseLength = 0.0,
       spaceLength = 0.0,
       overallSpeed = 15.0,
-      charSpeed = 18.0,
-      envelopeTime = 0;
+      charSpeed = 18.0;
 
     const setSpacing = () => {
       if (randomSpacing) {
@@ -37,7 +36,6 @@ export function createScriptFromChars(chars, options = undefined) {
         (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
       pauseLength = (3.0 * farns) / 19.0;
       spaceLength = (7.0 * farns) / 19.0;
-      envelopeTime = 0.0025 * (1.0 / (charSpeed / 18.0));
     }
 
     const appendTime = c => {

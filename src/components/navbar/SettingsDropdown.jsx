@@ -23,7 +23,7 @@ const SettingsDropdown = ({ show }) => {
   const [index, setIndex] = React.useState(0);
 
   const options = ["audio", "training", "translate"];
-  let cntnrClass = show ? "show" : "";
+  let cntnrClass = `${show ? "show" : ""} ${index === 0 ? "pane-0" : index === 1 ? "pane-1" : "pane-2"}`;
   const classes = useStyles();
 
   return (
@@ -56,7 +56,6 @@ const SettingsDropdown = ({ show }) => {
         </BottomNavigation>
         <div
           id="settingsContent"
-          className={index === 0 ? "pane-0" : index === 1 ? "pane-1" : "pane-2"}
         >
           <AudioPane visible={index === 0 ? true : false}></AudioPane>
           <TrainingPane visible={index === 1 ? true : false}></TrainingPane>

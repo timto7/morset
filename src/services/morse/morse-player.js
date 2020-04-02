@@ -15,7 +15,10 @@ let dotLength,
   playing = false,
   envelope = true,
   preDelay = 0,
-  postDelay = 0;
+  postDelay = 0,
+  waveform = 0;
+
+const waveforms = ["sine", "square", "triangle"];
 
 setSpeed(15, 18);
 
@@ -42,7 +45,7 @@ const audiofy = (str, callback = undefined) => {
     };
 
     let t = audioCtx.currentTime;
-    oscillator.type = "sine";
+    oscillator.type = waveforms[waveform];
     oscillator.frequency.value = toneFreq;
 
     let morseGain = audioCtx.createGain();
@@ -170,6 +173,11 @@ export function setEnvelope(env) {
   envelope = env;
 }
 
+export function setWaveform(wf) {
+  waveform = wf;
+  oscillator.type = waveforms[waveform];
+}
+
 export function isPlaying() {
   return playing;
 }
@@ -184,5 +192,6 @@ export default {
   setFrequency,
   setPanning,
   setEnvelope,
-  isPlaying
+  isPlaying,
+  setWaveform
 };

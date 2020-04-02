@@ -22,6 +22,7 @@ export default function App() {
           <Switch>
             <Route path="/trainer" component={TrainerContainer} />
             <Route path="/translator" component={UnderConstruction} />
+            <Route path="/help" component={UnderConstruction} />
             <Route path="/not-found" component={NotFound} />
             <Route path="/" exact component={Home} />
             <Redirect to="/not-found" />

@@ -18,7 +18,7 @@
 #settingsDDContainer {
   position: absolute;
   width: 300px;
-  height: 300px;
+  height: 390px;
   background-color: var(--tlk-brand-1);
   top: 67px;
   margin-left: -260px;
@@ -29,7 +29,7 @@
   border-radius: 3px;
   overflow: hidden;
   transition: opacity 0.2s ease, top 0.2s ease, background-color 0.5s ease,
-    border-bottom 0.5s ease, border 0.5s ease;
+    border-bottom 0.5s ease, border 0.5s ease, height .2s ease;
 }
 
 #settingsDDContainer.show {
@@ -38,7 +38,7 @@
   pointer-events: all;
 }
 
-#settingsContent {
+#settingsDDContainer #settingsContent {
   width: 300%;
   height: calc(100% - 56px);
   position: relative;
@@ -50,10 +50,18 @@
   column-width: 100%;
 }
 
-#settingsContent.pane-1 {
+#settingsDDContainer.pane-1 {
+  height: 220px;
+}
+
+#settingsDDContainer.pane-1 #settingsContent {
   left: -100%;
 }
 
-#settingsContent.pane-2 {
+#settingsDDContainer.pane-2 {
+  height: 130px;
+}
+
+#settingsDDContainer.pane-2 #settingsContent {
   left: -200%;
 }

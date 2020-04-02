@@ -1,6 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { grey } from "@material-ui/core/colors";
 
 const ThemeContext = React.createContext({
   dark: false,
