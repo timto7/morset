@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import AudioContext from "../../context/AudioContext";
 import { getValidFreq, getValidStereo } from "../../context/AudioContext";
 import Slider from "@material-ui/core/Slider";
@@ -18,7 +18,9 @@ const SSwitch = withStyles({
   }
 })(Switch);
 
+
 const AudioSettingsPane = ({visible}) => {
+
   const { setFrequency, setPanning } = useContext(AudioContext);
 
   const initialFreq = getValidFreq(window.localStorage.getItem("frequency"));

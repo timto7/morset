@@ -7,8 +7,8 @@ export function createScriptFromChars(chars, options = undefined) {
       randomSpacing = true, 
       charSpacing = null, 
       spaceCountdown = 0, 
-      durationType = 2,
-      durationTime = 30,
+      durationType = 0,
+      durationTime = 60,
       totalTime = 0.05,
       dotLength = 0.0,
       dashLength = 0.0,
@@ -68,6 +68,12 @@ export function createScriptFromChars(chars, options = undefined) {
     }
 
     if (options !== undefined) {
+      if ("durationType" in options) {
+        durationType = options["durationType"];
+      }
+      if ("durationTime" in options) {
+        durationTime = options["durationTime"] * 60.0;
+      }
       if ("charLimit" in options) {
         charLimit = options["charLimit"];
       }
@@ -89,23 +95,25 @@ export function createScriptFromChars(chars, options = undefined) {
     setSpeedElements();
 
     let i = 0;
-    while ((durationType === 2 && i < charLimit) || (durationType === 1 && totalTime < durationTime)) {
-      if (durationType === 1 && totalTime >= durationTime - spaceLength) {
+    while ((durationType === 1 && i < charLimit) || (durationType === 0 && totalTime < durationTime)) {
+      if (charSpacing === 0) {
         spaceCountdown = 1;
       }
-      if (!spaceCountdown && i > 0 && i < charLimit - 1) {
+      if (spaceCountdown < 1 && i > 0 && i < charLimit) {
         script += " ";
         setSpacing();
       } else {
         script += chars.charAt(Math.floor(Math.random() * chars.length));
         spaceCountdown--;
-      }
-      if (durationType === 2) {
-        i++;
+        i = durationType === 1 ? i + 1 : 1;
       }
       appendTime(script.slice(-1));
     }
-    totalTime -= pauseLength;
+    if (script.slice(-1) !== ' ') {
+      totalTime -= pauseLength;
+    } else {
+      totalTime -= spaceLength + pauseLength;
+    }
     const composition = {
       script: script.trim(),
       totalDuration: totalTime

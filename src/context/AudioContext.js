@@ -163,7 +163,7 @@ export function AudioProvider(props) {
   setRandomSpacing(getRandomSpacing());
 
   const getCharSpacing = () => {
-    let cs = window.localStorage.getItem("charSpacing");
+    let cs = parseInt(window.localStorage.getItem("charSpacing"));
     if (cs === null || cs === undefined || Number.isNaN(cs)) cs = 10;
     return cs;
   }
@@ -172,6 +172,29 @@ export function AudioProvider(props) {
     window.localStorage.setItem("charSpacing", cs);
   }
   setCharSpacing(getCharSpacing());
+
+  const getDurationMode = () => {
+    let dm = parseInt(window.localStorage.getItem("durationMode"));
+    if (dm === null || dm === undefined || Number.isNaN(dm)) dm = 0;
+    return dm;
+  }
+
+  const setDurationMode = dm => {
+    window.localStorage.setItem("durationMode", dm);
+  }
+  setDurationMode(getDurationMode());
+
+  const getSessionTimeLimit = () => {
+    let stl = parseFloat(window.localStorage.getItem("sessionTimeLimit"));
+    if (stl === null || stl === undefined || Number.isNaN(stl)) stl = 1.0;
+    return stl;
+  }
+
+  const setSessionTimeLimit = stl => {
+    window.localStorage.setItem("sessionTimeLimit", stl);
+  }
+  setSessionTimeLimit(getSessionTimeLimit());
+  
 
   return (
     <AudioContext.Provider
@@ -194,7 +217,11 @@ export function AudioProvider(props) {
         getRandomSpacing,
         setRandomSpacing,
         getCharSpacing,
-        setCharSpacing
+        setCharSpacing,
+        getDurationMode,
+        setDurationMode,
+        getSessionTimeLimit,
+        setSessionTimeLimit
       }}
     >
       {props.children}

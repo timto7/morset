@@ -26,9 +26,9 @@ const TrainerContainer = () => {
 
   const keyPress = event => {
     if (event.keyCode === 27) {
-     stop();
-     doNotMark = true;
-     setState(prevState => ({ ...prevState, inSession: false, showResults: false }));
+      stop();
+      doNotMark = true;
+      setState(prevState => ({ ...prevState, inSession: false, showResults: false }));
     }
     if ((event.ctrlKey || event.metaKey) && event.which === 13) {
       if (state.inSession === false) {
@@ -60,13 +60,15 @@ const TrainerContainer = () => {
   }, [state.inSession, state.showResults])
 
   const { 
-    play, 
-    stop, 
+    play,
+    stop,
     isPlaying,
-    getPreDelay, 
-    getPostDelay, 
-    getSessionCharAmount, 
-    getRandomSpacing, 
+    getPreDelay,
+    getPostDelay,
+    getDurationMode,
+    getSessionTimeLimit,
+    getSessionCharAmount,
+    getRandomSpacing,
     getCharSpacing,
     getSpeed
   } = useContext(AudioContext);
@@ -88,9 +90,10 @@ const TrainerContainer = () => {
       const speeds = getSpeed();
       latestComposition = Composer.createScriptFromChars(state.selectedChars, 
       {
-        randomSpacing: getRandomSpacing(), 
+        randomSpacing: getRandomSpacing(),
+        durationType: getDurationMode(),
+        durationTime: getSessionTimeLimit(),
         charSpacing: getCharSpacing(),
-        durationType: 1,
         charLimit: getSessionCharAmount(),
         overallSpeed: speeds[0],
         charSpeed: speeds[1]

@@ -133,7 +133,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
       <div id="selectionOptions">
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="selection-simple" color="primary">
-            selection
+            char. selection
           </InputLabel>
           <Select
             value={state.selection}

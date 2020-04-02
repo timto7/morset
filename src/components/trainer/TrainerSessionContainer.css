@@ -42,7 +42,7 @@
   box-shadow: 0px 4px 32px 8px var(--home-shadow);
   border-radius: 6px;
   transform: translateY(20px);
-  transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease, border 0.5s ease, transform .3s ease;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease, border 0.5s ease, transform .3s ease;
 }
 
 #TrainerSessionContainer textarea {
@@ -59,6 +59,7 @@
   border: none;
   font-size: 20px;
   font-family: Courier, Monaco, monospace !important;
+  transition: color 0.5s ease;
 }
 
 #TrainerSessionContainer.inSession #sessionTextareaContainer {
@@ -93,6 +94,7 @@
   top: 0px;
   left: 0px;
   background-color: var(--tlk-blue);
+  pointer-events: none;
   transition-property: width;
   transition-duration: 0s;
   transition-timing-function: linear;

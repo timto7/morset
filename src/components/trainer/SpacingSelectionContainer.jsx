@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "20px",
     height: "32px",
     width: "auto",
-    maxWidth: "250px",
+    maxWidth: "400px",
     marginTop: "auto",
     padding: "none",
     justifyContent: "center",
@@ -97,11 +97,11 @@ const SpacingSelectionContainer = () => {
         onClick={toggleShow}
         style={show ? {backgroundColor: "rgba(52, 152, 219, 0.5)"} : {}}
       >
-        <span>Character Spacing: {random ? "Random" : getCharSpacing()}</span>
+        <span>{random ? "Insert Spaces Randomly" : getCharSpacing() !== 0 ? getCharSpacing() !== 1 ? `Insert Space Every ${getCharSpacing()} Characters`: "Insert Space After Every Character" : "Don't Insert Any Spaces"}</span>
       </SpacingButton>
       <div id="spacingPopover" className={`${show ? "show" : ""} ${!random ? "notRandom" : ""}`}>
         <div id="spacingSegmentTop">
-          <span className="text">Random Spacing</span>
+          <span className="text">Insert Spaces Randomly</span>
           <RandomSwitch 
             checked={random}
             onChange={toggleRandom}
@@ -109,14 +109,14 @@ const SpacingSelectionContainer = () => {
             inputProps={{ "aria-label": "primary checkbox" }} />
         </div>
         <div id="spacingSegmentBottom" className={`${!random ? "notRandom" : ""}`}>
-          <span>character spacing: </span>
+          <span>insert space every</span>
           <SpacingInput
             onChange={handleCharSpacingInputChange}
             value={spacing}
             onBlur={handleCharSpacingInputBlur}
             onKeyDown={handleCharSpacingInputKeyDown}
             tabentry={!random}
-          />
+          /><span>characters</span>
         </div>
       </div>
     </div>
