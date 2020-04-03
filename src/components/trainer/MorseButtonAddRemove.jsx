@@ -17,7 +17,7 @@ const MorseButtonAddRemove = ({ selected, onClick }) => {
         event.stopPropagation();
       }}
     >
-      {selected ? <RemoveIcon /> : <AddIcon />}
+      {selected ? <RemoveIcon style={{width: "24px", height: "24px"}}/> : <AddIcon style={{width: "24px", height: "24px"}}/>}
     </div>
   );
 };

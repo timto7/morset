@@ -9,6 +9,6 @@
 .settingsInputContainer span {
   font-size: 14px;
   font-weight: 500;
-  color: var(--textAlt);
+  color: var(--text);
   transition: color .5s ease;
 }

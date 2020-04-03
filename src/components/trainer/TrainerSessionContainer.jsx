@@ -23,6 +23,7 @@ const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didC
       id="TrainerSessionContainer"
       className={`${inSession ? "inSession" : ""}`}
     >
+      <div id="trainerOverlay"/>
       <div id="sessionOptionContainer">
         <AbortBtn actionType={"abort"} label="Abort" Icon={AbortIcon} onClick={abortClicked} />
         <RefreshBtn actionType={"restart"} label="Restart" Icon={RefreshIcon} onClick={() => {

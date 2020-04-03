@@ -70,8 +70,8 @@
   box-shadow: none;
   box-sizing: border-box;
   border: 1px solid var(--home-outline-idle);
-  transition: margin-bottom 0.3s ease, background-color 0.5s ease,
-    box-shadow 0.3s ease, border 0.3s;
+  transition: margin-bottom 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease, border 0.5s;
 }
 
 .homeOptionOuter:hover .homeOptionInner {

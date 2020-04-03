@@ -1,8 +1,8 @@
 @import "../colourScheme.css";
 
 .MorseButton .MorseButtonAddRemove {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   color: var(--tlk-green);
   overflow: show;
   cursor: pointer;
@@ -10,6 +10,7 @@
   z-index: 800;
   padding-left: auto;
   padding-right: 4px;
+  padding-top: 2px;
   margin-bottom: 0.5px;
   transition: opacity 0.2s ease;
   pointer-events: none;

@@ -16,13 +16,14 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "none !important"
     },
     "&:hover": {
-      backgroundColor: "#2980b9 !important",
+      backgroundColor: "#0b8eff !important",
       boxShadow: "none !important"
     },
     fontSize: "18px",
     letterSpacing: "2px",
     fontWeight: "600",
-    margin: "none"
+    margin: "none",
+    borderRadius: "6px"
   },
   formControl: {
     minWidth: 120,

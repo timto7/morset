@@ -46,7 +46,7 @@
   margin-left: 5px;
   color: var(--idle);
   font-size: 30px;
-  line-height: 15px;
+  line-height: 14.5px;
   height: 25px;
   opacity: 0.72;
   letter-spacing: 1px;
@@ -67,8 +67,11 @@
 }
 
 .MorseButton .morseButtonTextContainer .btnSpeaker {
-  color: var(--tlk-yellow);
+  color: var(--tlk-orange);
   opacity: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -0.5px;
   margin-left: -18px;
   transition: opacity 0.12s ease, margin-left 0.12s ease;
   pointer-events: none;

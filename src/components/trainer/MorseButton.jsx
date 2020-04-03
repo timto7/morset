@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import "./MorseButton.css";
 import Button from "@material-ui/core/Button";
 import AudioContext from "../../context/AudioContext";
-import Speaker from "@material-ui/icons/VolumeUp";
+import { FiVolume2 as Speaker } from "react-icons/fi";
 import AddRemoveBtn from "./MorseButtonAddRemove";
 
 const MorseButton = ({
@@ -27,7 +27,7 @@ const MorseButton = ({
   return (
     <div className={`MorseButton ${custom ? "custom" : ""}`}>
       <Button
-        style={{ padding: "0px", height: "25px", width: "200px" }}
+        style={{ padding: "0px", height: "28px", width: "200px" }}
         onClick={() => {
           if (isPlaying() === false) {
             play(morse.replace(/−/g, "-").replace(/·/g, "."), () => {

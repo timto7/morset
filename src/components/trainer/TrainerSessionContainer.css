@@ -19,6 +19,19 @@
   transition: background-color 0.5s ease, opacity 0.3s ease;
 }
 
+#trainerOverlay {
+  position: fixed;
+  float: left;
+  height: calc(100% - 60px);
+  width: 100vw;
+  left: 0px;
+  right: 0px;
+  top: 60px;
+  bottom: 0px;
+  background-color: var(--tlk-brand-2);
+  transition: background-color 0.5s ease;
+}
+
 #TrainerSessionContainer.inSession {
   opacity: 1;
   pointer-events: all;

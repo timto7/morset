@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "none !important"
     },
     marginTop: "4px",
-    borderRadius: "5px",
+    borderRadius: "6px",
     border: "1px solid rgba(127, 127, 127, 0.23)"
   },
   grpButton: {
@@ -43,11 +43,11 @@ const useStyles = makeStyles(theme => ({
     },
     width: "calc(260px / 3)",
     height: "28px",
-    fontWeight: "500",
+    fontWeight: "600",
     letterSpacing: "1px",
     margin: "0px",
     border: "none",
-    lineHeight: "18px"
+    lineHeight: "17px"
   },
   selectEmpty: {}
 }));
@@ -152,21 +152,21 @@ const AudioSettingsPane = ({visible}) => {
       <BtnGrp 
           aria-label="text primary button group"
           className={classes.grpButtonContainer}
-          style={{border: "1px solid rgb(52, 152, 219)"}}
+          style={{border: "1px solid #3ea6ff"}}
         >
           <Button 
             variant={wf === 0 ? "contained" : "text"}
-            style={wf === 0 ? {backgroundColor: "rgb(52, 152, 219)", color: "#fff"} : {color: "rgb(52, 152, 219)"}}
+            style={wf === 0 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
             className={classes.grpButton} 
             onClick={() => wfBtnPressed(0)}>Sine</Button>
           <Button 
             variant={wf === 1 ? "contained" : "text"} 
-            style={wf === 1 ? {backgroundColor: "rgb(52, 152, 219)", color: "#fff"} : {color: "rgb(52, 152, 219)"}}
+            style={wf === 1 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
             className={classes.grpButton} 
             onClick={() => wfBtnPressed(1)}>Square</Button>
           <Button 
             variant={wf === 2 ? "contained" : "text"} 
-            style={wf === 2 ? {backgroundColor: "rgb(52, 152, 219)", color: "#fff"} : {color: "rgb(52, 152, 219)"}}
+            style={wf === 2 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
             className={classes.grpButton} 
             onClick={() => wfBtnPressed(2)}>Triangle</Button>
       </BtnGrp>

@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     },
     textTransform: "none",
     fontSize: "13px",
-    fontWeight: "400",
     margin: "none",
     marginRight: "12px",
     marginBottom: "20px",
@@ -29,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     padding: "none",
     justifyContent: "center",
     borderRadius: "16px",
-    fontWeight: "500"
+    fontWeight: "500",
+    lineHeight: "12px"
   },
   selectEmpty: {}
 }));
@@ -96,7 +96,7 @@ const SpacingSelectionContainer = () => {
         variant="outlined"
         className={classes.button}
         onClick={toggleShow}
-        style={show ? {backgroundColor: "rgb(52, 152, 219)", color: "#fff"} : {}}
+        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", color: "#fff"} : {}}
       >
         <span>{random ? "Insert Spaces Randomly" : getCharSpacing() !== 0 ? getCharSpacing() !== 1 ? `Insert Space Every ${getCharSpacing()} Characters`: "Insert Space After Every Character" : "Don't Insert Any Spaces"}</span>
       </SpacingButton>

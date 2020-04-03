@@ -16,6 +16,7 @@ a {
 p a {
   position: relative;
   color: var(--tlk-blue);
+  font-weight: 500;
   text-decoration: none;
 }
 
