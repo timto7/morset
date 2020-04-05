@@ -1,0 +1,81 @@
+#DurationSelectionContainer {
+  margin: auto 0px 0px 0px;
+}
+
+#durationPopover {
+  position: absolute;
+  display: grid;
+  grid-template-rows: 40px 60px;
+  overflow: hidden;
+  width: 260px;
+  height: 94px;
+  padding: 12px 16px;
+  transform: translateY(-14px);
+  z-index: 900;
+  opacity: 0;
+  background-color: var(--tlk-brand-1);
+  pointer-events: none;
+  border: solid 1px var(--border);
+  box-shadow: 0px 2px 14px 0px var(--shadow);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.5s ease,
+    border-bottom 0.5s ease, border 0.5s ease, height 0.2s ease;
+}
+
+#durationPopover.show {
+  opacity: 1;
+  transform: translateY(-10px);
+  pointer-events: all;
+}
+
+#durationSegmentTop {
+  margin-bottom: 10px;
+}
+
+#durationSegmentBottom {
+  display: grid;
+  position: relative;
+  padding-top: 20px;
+  grid-template-columns: 260px 260px;
+  left: 0px;
+  transition: left .3s ease;
+}
+
+#durationSegmentBottom.chars {
+  left: -260px;
+}
+
+#durationSegmentBottom > div {
+  width: 240px;
+}
+
+
+#charLimitSelectionPane, #timeSelectionPane {
+  transition: color .5s ease, opacity .3s ease;
+}
+
+#timeSelectionPane > span, #charLimitSelectionPane > span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  transition: color .5s ease;
+}
+
+#durationSegmentBottom.chars #charLimitSelectionPane {
+  opacity: 1;
+}
+
+#durationSegmentBottom.time #charLimitSelectionPane {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#durationSegmentBottom.time #timeSelectionPane {
+  opacity: 1;
+}
+
+#durationSegmentBottom.chars #timeSelectionPane {
+  opacity: 0;
+  pointer-events: none;
+}
