@@ -5,7 +5,7 @@
   float: left;
   height: calc(100% - 60px);
   width: 100%;
-  max-width: 1520px;
+  max-width: 1560px;
   margin: 0px auto;
   left: 0px;
   right: 0px;
@@ -42,7 +42,7 @@
   background-color: var(--session-background);
   width: calc(100% - 120px);
   height: calc(100% - 120px);
-  max-width: 1520px;
+  max-width: 1560px;
   max-height: 400px;
   top: 20px;
   bottom: 0;
@@ -83,7 +83,7 @@
   position: absolute;
   display: flex;
   width: calc(100% - 120px);
-  max-width: 1520px;
+  max-width: 1560px;
   z-index: 100;
   height: 40px;
   top: 40px;

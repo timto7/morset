@@ -87,11 +87,11 @@ export function ThemeProvider(props) {
 // styles
 const lightTheme = [
   "--border: rgba(0, 0, 0, 0.12);",
-  "--tooltip: #e9e9e9;",
+  "--tooltip: #828282;",
   "--dropdownBG: #fff;",
   "--prompt: rgba(0, 0, 0, 0.54);",
   "--shadow: rgba(0, 0, 0, 0.16);",
-  "--idle: rgba(0, 0, 0, 0.5);",
+  "--idle: rgba(0, 0, 0, 0.6);",
   "--text: #000;",
   "--textAlt: #222;",
   "--inactive: rgba(0, 0, 0, 0.3);",
@@ -131,7 +131,7 @@ const darkTheme = [
   "--dropdownBG: #40424f;",
   "--prompt: rgba(255, 255, 255, 0.7);",
   "--shadow: rgba(0, 0, 0, 0.16);",
-  "--idle: rgba(255, 255, 255, 0.5);",
+  "--idle: rgba(255, 255, 255, 0.6);",
   "--text: #fff;",
   "--textAlt: #eee;",
   "--inactive: rgba(0, 0, 0, 0.3);",

@@ -73,7 +73,7 @@
   text-align: center;
   background-color: var(--tooltip);
   border-radius: 3px;
-  color: var(--textAlt);
+  color: #fff;
   padding: 4px 6px 4px 6px;
   font-weight: 500;
   left: 50%;

@@ -9,11 +9,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import CharStepper from "../common/Stepper";
 import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import Translator from "../../services/morse/morse-translation";
 import SpacingContainer from "./SpacingSelectionContainer";
 import DurationContainer from "./DurationSelectionContainer";
+import MorseSnackBar from "../common/MorseSnackBar";
+
 
 const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
 let customChars = "abc";
@@ -73,10 +72,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
     selectedCharsDidChange(charOrder.substring(0, lastCount));
   }, []);
 
-  const handleCloseSB = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  const handleCloseSB = () => {
     setState(prevState => ({ ...prevState, openSB: false }));
   };
 
@@ -198,39 +194,39 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
           addCustomChars={addCustomChars}
           removeCustomChars={removeCustomChars}
         />
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right"
-          }}
-          open={state.openSB}
-          autoHideDuration={4000}
-          onClose={handleCloseSB}
-          ContentProps={{
-            "aria-describedby": "message-id"
-          }}
-          message={
-            <div id="message-id">
-              Latest: <b>{selectedChars.slice(-1).toUpperCase()}</b>
-              <em>
-                {Translator.translateTextToMorse(selectedChars.slice(-1))
-                  .replace(/-/g, "−")
-                  .replace(/\./g, "·")}
-              </em>
-            </div>
-          }
-          action={[
-            <IconButton
-              key="close"
-              aria-label="close"
-              color="inherit"
-              onClick={handleCloseSB}
-            >
-              <CloseIcon />
-            </IconButton>
-          ]}
-        />
       </div>
+      <MorseSnackBar
+        char={charOrder[lastCount - 1]}
+        open={state.openSB}
+        onClose={handleCloseSB}
+      >
+        <span>Hello</span>
+      </MorseSnackBar>
+      {/* <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right"
+        }}
+        open={state.openSB}
+        autoHideDuration={4000}
+        onClose={handleCloseSB}
+        ContentProps={{
+          "aria-describedby": "message-id"
+        }}
+        message={
+          <span id="message-id">hello</span>
+        }
+        action={[
+          <IconButton
+            key="close"
+            aria-label="close"
+            color="inherit"
+            onClick={handleCloseSB}
+          >
+            <CloseIcon />
+          </IconButton>
+        ]}
+      /> */}
     </div>
   );
 };

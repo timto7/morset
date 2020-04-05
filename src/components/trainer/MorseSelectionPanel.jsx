@@ -3,9 +3,9 @@ import "./MorseSelectionPanel.css";
 import PropTypes from "prop-types";
 import MorseButton from "./MorseButton";
 import Add from "../common/IconButton";
-import AddIcon from "@material-ui/icons/Add";
 import Remove from "../common/IconButton";
-import RemoveIcon from "@material-ui/icons/Remove";
+import { FiPlus as AddIcon } from "react-icons/fi";
+import { FiMinus as RemoveIcon } from "react-icons/fi";
 
 const MorseSelectionContainer = ({
   title,

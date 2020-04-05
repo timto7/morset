@@ -30,7 +30,7 @@
   width: 100%;
   position: block;
   display: flex;
-  max-width: 1520px;
+  max-width: 1560px;
   margin: 0 auto;
   height: 50px;
   box-sizing: border-box;
@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
-  max-width: 1520px;
+  max-width: 1560px;
   margin: 0 auto;
   padding: 0px 60px 10px 60px;
   box-sizing: border-box;
@@ -189,23 +189,22 @@
 
 .keyCircle {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-bottom: -1px;
   margin-right: 4px;
 }
 
 .keyCircle.red {
   background-color: var(--mark-sub);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 2px solid var(--tlk-red);
   box-sizing: border-box;
 }
 
 .keyCircle.yellow {
   background-color: var(--mark-miss);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 2px solid var(--tlk-yellow);
   box-sizing: border-box;
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./MorseButtonAddRemove.css";
-import RemoveIcon from "@material-ui/icons/RemoveCircle";
-import AddIcon from "@material-ui/icons/AddCircle";
+import { FiSquare as OmmittedIcon } from "react-icons/fi";
+import { FiCheckSquare as AddedIcon } from "react-icons/fi";
 
 const MorseButtonAddRemove = ({ selected, onClick }) => {
   function didClick(event) {
@@ -17,7 +17,10 @@ const MorseButtonAddRemove = ({ selected, onClick }) => {
         event.stopPropagation();
       }}
     >
-      {selected ? <RemoveIcon style={{width: "24px", height: "24px"}}/> : <AddIcon style={{width: "24px", height: "24px"}}/>}
+      <div>
+        <div className="addRemoveRipple" />
+        {selected ? <AddedIcon style={{width: "24px", height: "24px"}}/> : <OmmittedIcon style={{width: "24px", height: "24px"}}/>}
+      </div>
     </div>
   );
 };

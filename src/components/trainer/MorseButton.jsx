@@ -13,7 +13,7 @@ const MorseButton = ({
   removeChar,
   addChar
 }) => {
-  const { play, isPlaying } = useContext(AudioContext);
+  const {play, stop, isPlaying} = useContext(AudioContext);
   const [playing, setPlaying] = useState(false);
 
   function addRemoveClicked() {
@@ -27,27 +27,34 @@ const MorseButton = ({
   return (
     <div className={`MorseButton ${custom ? "custom" : ""}`}>
       <Button
-        style={{ padding: "0px", height: "28px", width: "200px" }}
+        style={{ padding: "0px",
+          height: "30px",
+          width: "200px",
+          borderRadius: "6px",
+          ...playing && {backgroundColor: "#77777722"}
+        }}
         onClick={() => {
           if (isPlaying() === false) {
             play(morse.replace(/−/g, "-").replace(/·/g, "."), () => {
               setPlaying(false);
             });
             setPlaying(true);
+          } else {
+            stop();
           }
         }}
         className={selected ? "selected" : ""}
       >
         <div className="morseButtonTextContainer">
+          <AddRemoveBtn selected={selected} onClick={() => addRemoveClicked()} />
+          <span>{character}</span>
+          <span>{morse}</span>
           <Speaker
             className={`btnSpeaker ${playing ? "show" : ""} ${
               custom ? "custom" : ""
             }`}
           />
-          <span>{character}</span>
-          <span>{morse}</span>
         </div>
-        <AddRemoveBtn selected={selected} onClick={() => addRemoveClicked()} />
       </Button>
     </div>
   );

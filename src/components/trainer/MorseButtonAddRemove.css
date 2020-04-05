@@ -1,37 +1,72 @@
 @import "../colourScheme.css";
 
 .MorseButton .MorseButtonAddRemove {
+  display: flex;
   width: 28px;
   height: 28px;
-  color: var(--tlk-green);
+  color: var(--tlk-idle);
   overflow: show;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0.6;
   z-index: 800;
   padding-left: auto;
   padding-right: 4px;
-  padding-top: 2px;
-  margin-bottom: 0.5px;
   transition: opacity 0.2s ease;
   pointer-events: none;
+  margin: -1px 0px 0px 3px;
+}
+
+.MorseButtonAddRemove > div {
+  position: relative;
+}
+
+.MorseButton .MorseButtonAddRemove {
+  opacity: 0.3;
 }
 
 .MorseButton.custom .MorseButtonAddRemove {
   pointer-events: all;
-}
-
-.MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove {
-  opacity: 0.8;
+  opacity: 0.65;
 }
 
 .MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove:hover {
   opacity: 1;
 }
 
-.MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove:active {
-  opacity: 0.65;
+.MorseButton .selected .MorseButtonAddRemove {
+  opacity: 1.0;
+  color: var(--tlk-blue);
 }
 
-.MorseButton .selected .MorseButtonAddRemove {
-  color: var(--tlk-red);
+.MorseButton .MorseButtonAddRemove .addRemoveRipple {
+  opacity: 0;
+}
+
+.MorseButton.custom .MorseButtonAddRemove .addRemoveRipple {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  border-radius: 6px;
+  background-color: rgba(127, 127, 127, 0.25);
+  transition: top 0.26s ease, left 0.26s ease, width 0.26s ease,
+  height 0.26s ease, opacity 0.26s ease;
+}
+
+.MorseButton.custom .MorseButtonAddRemove:hover .addRemoveRipple {
+  width: 30px;
+  height: 30px;
+  top: -3px;
+  left: -3px;
+  opacity: 0.4;
+  transition: top 0.13s ease, left 0.13s ease, width 0.13s ease,
+    height 0.13s ease, opacity 0.1s ease;
+}
+
+.MorseButton.custom .MorseButtonAddRemove:active:hover .addRemoveRipple {
+  opacity: 0.8;
+  transition: top 0.13s ease, left 0.13s ease, width 0.13s ease,
+    height 0.13s ease, opacity 0.1s ease;
 }
