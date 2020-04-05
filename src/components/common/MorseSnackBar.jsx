@@ -43,6 +43,7 @@ export default function SnackBar({char, open, onClose}) {
         <Button 
           icon={playing ? StopIcon : PlayIcon}
           tooltip={playing ? "Stop" : "Play"}
+          size={"large"}
           onClick={() => {
             if (isPlaying() === false) {
               play(morsetrans.translateTextToMorse(char), () => {
@@ -54,8 +55,13 @@ export default function SnackBar({char, open, onClose}) {
             }
           }
         }/>
-        <span className="msbChar">{char.toUpperCase()}</span>
-        <span className="msbMorse">{morsetrans.translateTextToMorse(char).replace(/-/g, "−").replace(/\./g, "·")}</span>
+        <div className="msbTextContainer">
+          <span className="msbTitle">Latest Addition:</span>
+          <div style={{marginLeft: "4px"}}>
+            <span className="msbChar">{char.toUpperCase()}</span>
+            <span className="msbMorse">{morsetrans.translateTextToMorse(char).replace(/-/g, "−").replace(/\./g, "·")}</span>
+          </div>
+        </div>
       </div>
       <Button icon={CloseIcon} 
         onClick={() => onClose()}

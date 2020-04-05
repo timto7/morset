@@ -3,6 +3,7 @@ import "./IconButton.css";
 
 export default function Switch(props) {
   const Icon = props.icon;
+  
   let tooltip;
   if (props.tooltip) {
     tooltip = <div className="icnBtnToolTip">{props.tooltip}</div>;
@@ -10,9 +11,9 @@ export default function Switch(props) {
 
   return (
     <button
-      className={`IconButton ${props.disabled ? "disabled" : ""} ${
-        props.small ? "small" : ""
-      }`}
+      className={
+        `IconButton ${props.disabled ? "disabled" : ""} ${props.size === "large" && "large" || props.size ==="small" && "small"}`
+      }
       onClick={props.onClick}
     >
       <div className="icnBtnBG" />

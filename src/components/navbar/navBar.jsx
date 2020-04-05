@@ -64,7 +64,7 @@ const NavBar = () => {
         </div>
         <div id="navOptionContainer">
           <VolumeControl handleVolumeChange={volume => setVolume(volume)} />
-          <InfoIcon className="infoBtn" icon={info} tooltip={"Info"} onClick={() => toggleInfo()}/>
+          <InfoIcon className="infoBtn" icon={info} tooltip={"Information"} onClick={() => toggleInfo()}/>
           <NavLink to="/help">
             <InfoIcon 
               className="helpBtn" 

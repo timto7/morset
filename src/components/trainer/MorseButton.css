@@ -49,7 +49,7 @@
   line-height: 16px;
   height: 25px;
   opacity: 0.72;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .MorseButton:hover .morseButtonTextContainer span:last-of-type {

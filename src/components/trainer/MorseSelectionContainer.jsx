@@ -57,6 +57,9 @@ const useStyles = makeStyles(theme => ({
     marginBottom: "20px",
     fontWeight: "500"
   },
+  menuItem: {
+    fontWeight: "500"
+  },
   selectEmpty: {}
 }));
 
@@ -140,8 +143,8 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
             }}
             color="primary"
           >
-            <MenuItem value={0}>Ordered</MenuItem>
-            <MenuItem value={1}>Custom</MenuItem>
+            <MenuItem value={0} className={classes.menuItem}>Ordered</MenuItem>
+            <MenuItem value={1} className={classes.menuItem}>Custom</MenuItem>
           </Select>
         </FormControl>
         <DurationContainer style={{paddingBottom: "20px"}} />
@@ -199,34 +202,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
         char={charOrder[lastCount - 1]}
         open={state.openSB}
         onClose={handleCloseSB}
-      >
-        <span>Hello</span>
-      </MorseSnackBar>
-      {/* <Snackbar
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right"
-        }}
-        open={state.openSB}
-        autoHideDuration={4000}
-        onClose={handleCloseSB}
-        ContentProps={{
-          "aria-describedby": "message-id"
-        }}
-        message={
-          <span id="message-id">hello</span>
-        }
-        action={[
-          <IconButton
-            key="close"
-            aria-label="close"
-            color="inherit"
-            onClick={handleCloseSB}
-          >
-            <CloseIcon />
-          </IconButton>
-        ]}
-      /> */}
+      />
     </div>
   );
 };

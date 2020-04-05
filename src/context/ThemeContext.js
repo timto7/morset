@@ -87,7 +87,7 @@ export function ThemeProvider(props) {
 // styles
 const lightTheme = [
   "--border: rgba(0, 0, 0, 0.12);",
-  "--tooltip: #828282;",
+  "--tooltip: rgba(60, 64, 67, 0.9);",
   "--dropdownBG: #fff;",
   "--prompt: rgba(0, 0, 0, 0.54);",
   "--shadow: rgba(0, 0, 0, 0.16);",

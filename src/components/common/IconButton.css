@@ -17,8 +17,12 @@
   height: 20px;
 }
 
+.IconButton.large {
+  width: 60px;
+  height: 60px;
+}
+
 .IconButton .icnBtnIcon {
-  font-size: 24px;
   color: var(--text);
   width: 60%;
   height: 60%;
@@ -72,10 +76,11 @@
   height: auto;
   text-align: center;
   background-color: var(--tooltip);
+  font-size: 12px;
   border-radius: 3px;
   color: #fff;
-  padding: 4px 6px 4px 6px;
-  font-weight: 500;
+  padding: 6px 8px 6px 8px;
+  font-weight: 600;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -85,11 +90,22 @@
   z-index: 1002;
 }
 
+.IconButton.large .icnBtnToolTip {
+  top: 58px;
+}
+
 .IconButton:hover:not(:active) .icnBtnToolTip {
   transition: opacity 0.2s ease, top 0.2s ease;
   transition-delay: 0.4s;
   opacity: 1;
   top: 44px;
+}
+
+.IconButton.large:hover:not(:active) .icnBtnToolTip {
+  transition: opacity 0.2s ease, top 0.2s ease;
+  transition-delay: 0.4s;
+  opacity: 1;
+  top: 64px;
 }
 
 button {
