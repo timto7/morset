@@ -27,7 +27,8 @@ const MorseButton = ({
   return (
     <div className={`MorseButton ${custom ? "custom" : ""}`}>
       <Button
-        style={{ padding: "0px",
+        style={{
+          padding: "0px",
           height: "30px",
           width: "200px",
           borderRadius: "6px",

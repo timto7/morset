@@ -86,7 +86,7 @@ const TrainingSettingsPane = ({visible}) => {
 
   return (
     <div className="SettingsPane">
-      <h4>Session Timing Delays (seconds)</h4>
+      <h4>Session Time Delays (seconds)</h4>
       <div id="delaySettingsContainer">
         <div className="settingsInputContainer">
           <span>start: </span>

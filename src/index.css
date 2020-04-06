@@ -31,6 +31,10 @@ body {
   overflow-y: visible;
 }
 
+body.block-scroll {
+  overflow: hidden !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./MorseSelectionContainer.css";
 import Panel from "./MorseSelectionPanel";
 import { makeTranslatedObject } from "../../services/morse/morse-translation";
@@ -8,10 +8,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import CharStepper from "../common/Stepper";
-import Snackbar from "@material-ui/core/Snackbar";
 import SpacingContainer from "./SpacingSelectionContainer";
 import DurationContainer from "./DurationSelectionContainer";
 import MorseSnackBar from "../common/MorseSnackBar";
+import Button from "../common/IconButton";
+import { FiPlayCircle  as PlayIcon } from "react-icons/fi";
+import { FiStopCircle  as StopIcon } from "react-icons/fi";
+import * as morsetrans from "../../services/morse/morse-translation.js";
+import AudioContext from "../../context/AudioContext";
 
 
 const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
@@ -63,13 +67,16 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {}
 }));
 
-const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
+const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange, show }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({
     selection: 0,
     openSB: false
   });
+
+  const {play, stop, isPlaying} = useContext(AudioContext);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     selectedCharsDidChange(charOrder.substring(0, lastCount));
@@ -127,7 +134,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
   }
 
   return (
-    <div id="MorseSelectionContainer">
+    <div id="MorseSelectionContainer" class={show && "show"}>
       <h3>Selected Morse Characters: {selectedChars.length}</h3>
       <div id="selectionOptions">
         <FormControl className={classes.formControl}>
@@ -199,10 +206,37 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange }) => {
         />
       </div>
       <MorseSnackBar
-        char={charOrder[lastCount - 1]}
         open={state.openSB}
         onClose={handleCloseSB}
-      />
+      >
+        <div>
+          <Button 
+            icon={playing ? StopIcon : PlayIcon}
+            tooltip={playing ? "Stop" : "Play"}
+            size={"large"}
+            onClick={() => 
+              {
+                if (isPlaying() === false) {
+                  play(morsetrans.translateTextToMorse(charOrder[lastCount - 1]), () => {
+                    setPlaying(false);
+                  });
+                  setPlaying(true);
+                } else {
+                  stop();
+                }
+              }
+            }
+            {...(!state.openSB && {tabentry: false})}
+          />
+          <div className="msbTextContainer">
+            <span className="msbTitle">Latest Addition:</span>
+            <div>
+              <span className="msbChar">{charOrder[lastCount - 1].toUpperCase()}</span>
+              <span className="msbMorse">{morsetrans.translateTextToMorse(charOrder[lastCount - 1]).replace(/-/g, "−").replace(/\./g, "·")}</span>
+            </div>
+          </div>
+        </div>
+      </MorseSnackBar>
     </div>
   );
 };

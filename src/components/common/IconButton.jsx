@@ -15,6 +15,7 @@ export default function Switch(props) {
         `IconButton ${props.disabled ? "disabled" : ""} ${props.size === "large" && "large" || props.size ==="small" && "small"}`
       }
       onClick={props.onClick}
+      {...(props.tabentry === false && { tabIndex: "-1" })}
     >
       <div className="icnBtnBG" />
       <Icon className={`icnBtnIcon`} />

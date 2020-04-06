@@ -6,6 +6,7 @@ import TrainerSessionContainer from "./TrainerSessionContainer";
 import AudioContext from "../../context/AudioContext";
 import Composer from "../../services/trainer/composer";
 import SessionReviewContainer from "./SessionReviewContainer";
+import MorseTextEntry from "./MorseTextEntry";
 
 let noChars = false;
 let doNotMark = false;
@@ -143,15 +144,26 @@ const TrainerContainer = () => {
     setState(prevState => ({ ...prevState, showResults: false}));
   }
 
+  function sourceChanged(s) {
+    setState(prevState => ({ ...prevState, source: s}));
+  }
+
   return (
-    <div id="TrainerContainer" className={`${state.inSession ? "inSession" : ""}`}>
-      <div id="TrainerConfigContent" className={`${state.inSession ? "inSession" : ""} ${state.showResults ? "showingResults" : ""}`}>
-      <Launcher noChars={noChars} beginWasClicked={() => beginWasClicked()} />
-      <MorseSelection
-        selectedChars={state.selectedChars}
-        selectedCharsDidChange={selectedCharsDidChange}
-        beginWasClicked={beginWasClicked}
-      />
+    <div id="TrainerContainer"
+      className={`${state.inSession ? "inSession" : ""}`} 
+    >
+      <div id="TrainerConfigContent" 
+        className={`${state.inSession ? "inSession" : ""} ${state.showResults ? "showingResults" : ""}`}
+      >
+        <Launcher noChars={noChars} beginWasClicked={() => beginWasClicked()} source={state.source} sourceChanged={s => sourceChanged(s)} />
+        <MorseSelection
+          selectedChars={state.selectedChars}
+          selectedCharsDidChange={selectedCharsDidChange}
+          beginWasClicked={beginWasClicked}
+          show={state.source === 0}
+          style={{...state.source === 1 && {overflow: "visible", height: "0px"}}}
+        />
+        <MorseTextEntry show={state.source === 1} />
       </div>
       <SessionReviewContainer visible={state.showResults} latestScript={latestComposition.script} latestAnswer={latestAnswer} closeResultsClicked={() => closeResultsClicked()} retryClicked={() => retryClicked()} />
       <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} totalDuration={latestComposition.totalDuration + parseFloat(getPostDelay())} startDelay={parseFloat(getPreDelay())} />

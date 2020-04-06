@@ -30,22 +30,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "20px",
     fontWeight: "500"
   },
+  menuItem: {
+    fontWeight: "500"
+  },
   selectEmpty: {}
 }));
 
-const TrainerLauncher = ({ noChars, beginWasClicked }) => {
+const TrainerLauncher = ({ noChars, beginWasClicked, source, sourceChanged }) => {
   const classes = useStyles();
-
-  const [state, setState] = useState({
-    source: 0
-  });
-
-  const handleChange = event => {
-    setState(oldValues => ({
-      ...oldValues,
-      [event.target.name]: event.target.value
-    }));
-  };
 
   return (
     <div id="TrainerLauncherContainer">
@@ -66,19 +58,19 @@ const TrainerLauncher = ({ noChars, beginWasClicked }) => {
         <SpeedEntry />
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="source-simple" color="primary">
-            source
+            session source
           </InputLabel>
           <Select
-            value={state.source}
-            onChange={handleChange}
+            value={source}
+            onChange={s => {sourceChanged(s.target.value)}}
             inputProps={{
               name: "source",
               id: "source-simple"
             }}
             color="primary"
-            disabled={true}
           >
-            <MenuItem value={0}>Character Select</MenuItem>
+            <MenuItem value={0} className={classes.menuItem}>Character Selector</MenuItem>
+            <MenuItem value={1} className={classes.menuItem}>Text Entry</MenuItem>
           </Select>
         </FormControl>
       </div>
