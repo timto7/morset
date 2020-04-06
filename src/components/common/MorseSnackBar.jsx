@@ -57,7 +57,7 @@ export default function SnackBar({char, open, onClose}) {
         }/>
         <div className="msbTextContainer">
           <span className="msbTitle">Latest Addition:</span>
-          <div style={{marginLeft: "4px"}}>
+          <div>
             <span className="msbChar">{char.toUpperCase()}</span>
             <span className="msbMorse">{morsetrans.translateTextToMorse(char).replace(/-/g, "−").replace(/\./g, "·")}</span>
           </div>
