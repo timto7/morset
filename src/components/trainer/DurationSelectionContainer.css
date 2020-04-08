@@ -39,7 +39,7 @@
   padding-top: 20px;
   grid-template-columns: 260px 260px;
   left: 0px;
-  transition: left .3s ease;
+  transition: left .2s ease;
 }
 
 #durationSegmentBottom.chars {

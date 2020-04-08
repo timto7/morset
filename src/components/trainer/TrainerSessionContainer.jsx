@@ -6,7 +6,7 @@ import RefreshBtn from "./SessionButton";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import AudioContext from "../../context/AudioContext";
 
-const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didChangeText, totalDuration = 10, startDelay = 0.5,  }) => {
+const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didChangeText, totalDuration = 10, startDelay = 0.5 }) => {
   const textareaRef = useRef();
 
   const { getProgressBar } = useContext(AudioContext);
@@ -34,7 +34,12 @@ const TrainerSessionContainer = ({ abortClicked, restartClicked, inSession, didC
         <div id="sessionProgressBar"
           style={ inSession ? { transitionDuration: `${totalDuration - (totalDuration * 0.005)}s`, transitionDelay: `${startDelay}s`, width: "100%", visibility: getProgressBar() ? "visible" : "hidden"} : {}}
         />
-        <textarea ref={textareaRef} spellCheck={false} readOnly={!inSession} onChange={didChangeText} />
+        <textarea 
+          ref={textareaRef}
+          spellCheck={false}
+          readOnly={!inSession}
+          onChange={didChangeText}
+        />
       </div>
     </div>
   );

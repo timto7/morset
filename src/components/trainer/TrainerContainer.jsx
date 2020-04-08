@@ -11,6 +11,7 @@ import MorseTextEntry from "./MorseTextEntry";
 let noChars = false;
 let doNotMark = false;
 let restartRequired = false;
+let textEntryString = "";
 
 let latestComposition = {script: "", totalDuration: 0};
 let latestAnswer = "";
@@ -18,11 +19,30 @@ let latestAnswer = "";
 const TrainerContainer = () => {
   document.title = "MorseT - Trainer";
 
+  const { 
+    playText,
+    stop,
+    isPlaying,
+    getPreDelay,
+    getPostDelay,
+    getDurationMode,
+    getSessionTimeLimit,
+    getSessionCharAmount,
+    getRandomSpacing,
+    getCharSpacing,
+    getSpeed,
+    getSessionSource,
+    setSessionSource,
+    getTextEntryString,
+    setTextEntryString,
+  } = useContext(AudioContext);
+
   const [state, setState] = useState({
     selectedChars: "",
-    source: 0,
+    source: getSessionSource(),
     inSession: false,
     showResults: false,
+    textEntryIsEmpty: true
   });
 
   const keyPress = event => {
@@ -37,6 +57,8 @@ const TrainerContainer = () => {
       }
     }
   };
+
+  noChars = state.source === 0 ? state.selectedChars.length > 0 ? false : true : state.textEntryIsEmpty;
 
   useEffect(() => {
     document.addEventListener("keydown", keyPress, false);
@@ -58,23 +80,13 @@ const TrainerContainer = () => {
     } else {
       document.body.style.overflow = "scroll";
     }
-  }, [state.inSession, state.showResults])
+  }, [state.inSession, state.showResults]);
 
-  const { 
-    play,
-    stop,
-    isPlaying,
-    getPreDelay,
-    getPostDelay,
-    getDurationMode,
-    getSessionTimeLimit,
-    getSessionCharAmount,
-    getRandomSpacing,
-    getCharSpacing,
-    getSpeed
-  } = useContext(AudioContext);
-
-  noChars = state.selectedChars.length > 0 ? false : true;
+  useEffect(() => {
+    textEntryString = getTextEntryString();
+    if (textEntryString.length > 0) setState(prevState => ({ ...prevState, textEntryIsEmpty: false }));
+  }, []);
+  
 
   function selectedCharsDidChange(chars) {
     setState(prevState => ({ ...prevState, selectedChars: chars }));
@@ -86,10 +98,10 @@ const TrainerContainer = () => {
 
   function beginSession() {
     if (isPlaying() === false) {
-      setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
       latestAnswer = "";
       const speeds = getSpeed();
-      latestComposition = Composer.createScriptFromChars(state.selectedChars, 
+      setState(prevState => ({ ...prevState, inSession: true, showResults: false }));
+      latestComposition = state.source === 0 ? Composer.createScriptFromChars(state.selectedChars, 
       {
         randomSpacing: getRandomSpacing(),
         durationType: getDurationMode(),
@@ -98,11 +110,17 @@ const TrainerContainer = () => {
         charLimit: getSessionCharAmount(),
         overallSpeed: speeds[0],
         charSpeed: speeds[1]
-      });
-      play(latestComposition.script, playbackFinished, {
+      }) : 
+      Composer.createScriptFromTextEntry(textEntryString,
+        {
+          overallSpeed: speeds[0],
+          charSpeed: speeds[1]
+        }
+      );
+      playText(latestComposition.script, playbackFinished, {
         "preDelay": parseFloat(getPreDelay()),
         "postDelay": parseFloat(getPostDelay())
-      });
+      }); 
     }
   }
 
@@ -145,8 +163,17 @@ const TrainerContainer = () => {
   }
 
   function sourceChanged(s) {
+    setSessionSource(s);
     setState(prevState => ({ ...prevState, source: s}));
   }
+
+  const handleMorseTextEntryChange = s => {
+    textEntryString = s;
+    setTextEntryString(s);
+    if (textEntryString.length === 0 !== state.textEntryIsEmpty) {
+      setState(prevState => ({ ...prevState, textEntryIsEmpty: textEntryString.length === 0}));
+    }
+  };
 
   return (
     <div id="TrainerContainer"
@@ -155,7 +182,12 @@ const TrainerContainer = () => {
       <div id="TrainerConfigContent" 
         className={`${state.inSession ? "inSession" : ""} ${state.showResults ? "showingResults" : ""}`}
       >
-        <Launcher noChars={noChars} beginWasClicked={() => beginWasClicked()} source={state.source} sourceChanged={s => sourceChanged(s)} />
+        <Launcher
+          noChars={noChars}
+          beginWasClicked={() => beginWasClicked()}
+          source={state.source}
+          sourceChanged={s => sourceChanged(s)}
+        />
         <MorseSelection
           selectedChars={state.selectedChars}
           selectedCharsDidChange={selectedCharsDidChange}
@@ -163,10 +195,28 @@ const TrainerContainer = () => {
           show={state.source === 0}
           style={{...state.source === 1 && {overflow: "visible", height: "0px"}}}
         />
-        <MorseTextEntry show={state.source === 1} />
+        <MorseTextEntry
+          show={state.source === 1}
+          didChangeText={handleMorseTextEntryChange}
+          inSession={state.inSession}
+          source={state.source}
+        />
       </div>
-      <SessionReviewContainer visible={state.showResults} latestScript={latestComposition.script} latestAnswer={latestAnswer} closeResultsClicked={() => closeResultsClicked()} retryClicked={() => retryClicked()} />
-      <TrainerSessionContainer inSession={state.inSession} abortClicked={() => abortClicked()} restartClicked={() => restartClicked()} didChangeText={answerDidChange} totalDuration={latestComposition.totalDuration + parseFloat(getPostDelay())} startDelay={parseFloat(getPreDelay())} />
+      <SessionReviewContainer
+        visible={state.showResults}
+        latestScript={latestComposition.script}
+        latestAnswer={latestAnswer}
+        closeResultsClicked={() => closeResultsClicked()}
+        retryClicked={() => retryClicked()}
+      />
+      <TrainerSessionContainer
+        inSession={state.inSession}
+        abortClicked={() => abortClicked()}
+        restartClicked={() => restartClicked()}
+        didChangeText={answerDidChange}
+        totalDuration={latestComposition.totalDuration + parseFloat(getPostDelay())}
+        startDelay={parseFloat(getPreDelay())}
+      />
     </div>
   );
 };

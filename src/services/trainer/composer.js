@@ -1,70 +1,25 @@
 import * as morsetrans from "../morse/morse-translation.js";
 
+
 export function createScriptFromChars(chars, options = undefined) {
-    let 
-      script = "", 
-      charLimit = 30, 
-      randomSpacing = true, 
-      charSpacing = null, 
-      spaceCountdown = 0, 
-      durationType = 0,
-      durationTime = 60,
-      totalTime = 0.05,
-      dotLength = 0.0,
-      dashLength = 0.0,
-      pauseLength = 0.0,
-      spaceLength = 0.0,
-      overallSpeed = 15.0,
-      charSpeed = 18.0;
 
-    const setSpacing = () => {
-      if (randomSpacing) {
-        spaceCountdown = Math.floor(Math.random() * (charLimit / (Math.random() * charLimit / 2) + 1)) + (Math.floor(Math.random() * 3) + 1);
-      } else  {
-        spaceCountdown = charSpacing;
-      }
-    }
+  let 
+    script = "",
+    durationType = 0,
+    totalTime = 0.05,
+    dotLength = 0.0,
+    dashLength = 0.0,
+    pauseLength = 0.0,
+    spaceLength = 0.0,
+    overallSpeed = 15.0,
+    charSpeed = 18.0,
+    charLimit = 30, 
+    randomSpacing = true, 
+    charSpacing = null, 
+    spaceCountdown = 0, 
+    durationTime = 60;
 
-    function setSpeedElements() {
-      if (charSpeed < 1 || overallSpeed < 1) return;
-      if (charSpeed < overallSpeed) {
-        charSpeed = overallSpeed;
-      }
-      dotLength = 1.2 / charSpeed;
-      dashLength = dotLength * 3.0;
-      const farns =
-        (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
-      pauseLength = (3.0 * farns) / 19.0;
-      spaceLength = (7.0 * farns) / 19.0;
-    }
-
-    const appendTime = c => {
-      let morseTrans = morsetrans.translateTextToMorse(c);
-
-      if (c === " " ) {
-        totalTime += spaceLength - pauseLength;
-      } else {
-        morseTrans.split("").forEach(function(char) {
-          if (char === " ") {
-            totalTime += pauseLength;
-          } else {
-            switch (char) {
-              case ".":
-                totalTime += dotLength;
-                break;
-              case "-":
-                totalTime += dashLength;
-                break;
-              default:
-                totalTime += 0;
-                break;
-            }
-            totalTime += dotLength;
-          }
-        });
-      }
-    }
-
+  function setOptions(options) {
     if (options !== undefined) {
       if ("durationType" in options) {
         durationType = options["durationType"];
@@ -88,37 +43,162 @@ export function createScriptFromChars(chars, options = undefined) {
         charSpeed = parseFloat(options["charSpeed"]);
       }
     }
+  }
 
-    setSpacing();
-    setSpeedElements();
-
-    let i = 0;
-    while ((durationType === 1 && i < charLimit) || (durationType === 0 && totalTime < durationTime)) {
-      if (charSpacing === 0) {
-        spaceCountdown = 1;
-      }
-      if (spaceCountdown < 1 && i > 0 && i < charLimit) {
-        script += " ";
-        setSpacing();
-      } else {
-        script += chars.charAt(Math.floor(Math.random() * chars.length));
-        spaceCountdown--;
-        i = durationType === 1 ? i + 1 : 1;
-      }
-      appendTime(script.slice(-1));
+  function setSpeedElements() {
+    if (charSpeed < 1 || overallSpeed < 1) return;
+    if (charSpeed < overallSpeed) {
+      charSpeed = overallSpeed;
     }
-    if (script.slice(-1) !== ' ') {
-      totalTime -= pauseLength;
+    dotLength = 1.2 / charSpeed;
+    dashLength = dotLength * 3.0;
+    const farns =
+      (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
+    pauseLength = (3.0 * farns) / 19.0;
+    spaceLength = (7.0 * farns) / 19.0;
+  }
+
+  const setSpacing = () => {
+    if (randomSpacing) {
+      spaceCountdown = Math.floor(Math.random() * (charLimit / (Math.random() * charLimit / 2) + 1)) + (Math.floor(Math.random() * 3) + 1);
+    } else  {
+      spaceCountdown = charSpacing;
+    }
+  }
+
+  const appendTime = c => {
+    let morseTrans = morsetrans.translateTextToMorse(c);
+  
+    if (c === " " ) {
+      totalTime += spaceLength - pauseLength;
     } else {
-      totalTime -= spaceLength + pauseLength;
+      morseTrans.split("").forEach(function(char) {
+        if (char === " ") {
+          totalTime += pauseLength;
+        } else {
+          switch (char) {
+            case ".":
+              totalTime += dotLength;
+              break;
+            case "-":
+              totalTime += dashLength;
+              break;
+            default:
+              totalTime += 0;
+              break;
+          }
+          totalTime += dotLength;
+        }
+      });
     }
-    const composition = {
-      script: script.trim(),
-      totalDuration: totalTime
+  }
+
+  setOptions(options);
+  setSpacing();
+  setSpeedElements();
+
+  let i = 0;
+  while ((durationType === 1 && i < charLimit) || (durationType === 0 && totalTime < durationTime)) {
+    if (charSpacing === 0) {
+      spaceCountdown = 1;
     }
-    return composition;
+    if (spaceCountdown < 1 && i > 0 && i < charLimit) {
+      script += " ";
+      setSpacing();
+    } else {
+      script += chars.charAt(Math.floor(Math.random() * chars.length));
+      spaceCountdown--;
+      i = durationType === 1 ? i + 1 : 1;
+    }
+    appendTime(script.slice(-1));
+  }
+  if (script.slice(-1) !== ' ') {
+    totalTime -= pauseLength;
+  } else {
+    totalTime -= spaceLength + pauseLength;
+  }
+  const composition = {
+    script: script.trim(),
+    totalDuration: totalTime
+  }
+  return composition;
+}
+
+export function createScriptFromTextEntry(textEntry, options = undefined) {
+
+  let 
+    script = "",
+    totalTime = 0.05,
+    dotLength = 0.0,
+    dashLength = 0.0,
+    pauseLength = 0.0,
+    spaceLength = 0.0,
+    overallSpeed = 15.0,
+    charSpeed = 18.0
+
+  function setOptions(options) {
+    if (options !== undefined) {
+      if ("overallSpeed" in options) {
+        overallSpeed = parseFloat(options["overallSpeed"]);
+      }
+      if ("charSpeed" in options) {
+        charSpeed = parseFloat(options["charSpeed"]);
+      }
+    }
+  }
+
+  function setSpeedElements() {
+    if (charSpeed < 1 || overallSpeed < 1) return;
+    if (charSpeed < overallSpeed) {
+      charSpeed = overallSpeed;
+    }
+    dotLength = 1.2 / charSpeed;
+    dashLength = dotLength * 3.0;
+    const farns =
+      (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
+    pauseLength = (3.0 * farns) / 19.0;
+    spaceLength = (7.0 * farns) / 19.0;
+  }
+
+  const calculateTotalTime = str => {
+    totalTime = 0.05;
+    const trans = morsetrans.formatMorse(morsetrans.translateTextToMorse(str));
+    trans.split("").forEach(function(char) {
+      if (char === " ") {
+        totalTime += pauseLength;
+      } else if (char === "/") {
+        totalTime += spaceLength;
+      } else {
+        switch (char) {
+          case ".":
+            totalTime += dotLength;
+            break;
+          case "-":
+            totalTime += dashLength;
+            break;
+          default:
+            break;
+        }
+        totalTime += dotLength;
+      }
+    });
+  }
+
+  setOptions(options);
+  setSpeedElements();
+  script = textEntry;
+
+  calculateTotalTime(script);
+  console.log(totalTime);
+
+  const composition = {
+    script: script.trim(),
+    totalDuration: totalTime
+  }
+  return composition;
 }
 
 export default {
-    createScriptFromChars
+  createScriptFromChars,
+  createScriptFromTextEntry
 };

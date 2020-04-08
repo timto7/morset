@@ -31,6 +31,7 @@ const runAudiofy = (str, callback) => {
 };
 
 const audiofy = (str, callback = undefined) => {
+
   str = morsetrans.formatMorse(str);
 
   if (playing === false) {

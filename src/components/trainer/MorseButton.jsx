@@ -13,7 +13,7 @@ const MorseButton = ({
   removeChar,
   addChar
 }) => {
-  const {play, stop, isPlaying} = useContext(AudioContext);
+  const {playText, stop, isPlaying} = useContext(AudioContext);
   const [playing, setPlaying] = useState(false);
 
   function addRemoveClicked() {
@@ -36,7 +36,7 @@ const MorseButton = ({
         }}
         onClick={() => {
           if (isPlaying() === false) {
-            play(morse.replace(/−/g, "-").replace(/·/g, "."), () => {
+            playText(character, () => {
               setPlaying(false);
             });
             setPlaying(true);

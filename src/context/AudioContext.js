@@ -56,12 +56,24 @@ export function getValidStereo(s) {
   return Number(s);
 }
 
-export function getValidWaveform(s) {
+export function getValidWaveform(wf) {
+  wf = parseInt(wf);
+  if (wf === null || wf === undefined || Number.isNaN(wf)) {
+    return 0;
+  } else if (wf > 2) {
+    return 2;
+  } else if (wf < 0) {
+    return 0;
+  }
+  return wf;
+}
+
+export function getValidSessionSource(s) {
   s = parseInt(s);
   if (s === null || s === undefined || Number.isNaN(s)) {
     return 0;
-  } else if (s > 2) {
-    return 2;
+  } else if (s > 1) {
+    return 1;
   } else if (s < 0) {
     return 0;
   }
@@ -88,6 +100,10 @@ export function AudioProvider(props) {
   const play = (string, callback = undefined, timingOptions = undefined) => {
       Morse.play(string, callback, timingOptions);
   };
+
+  const playText = (string, callback = undefined, timingOptions = undefined) => {
+    Morse.playText(string, callback, timingOptions);
+};
 
   const setVolume = volume => {
     Morse.setVolume(volume);
@@ -232,10 +248,31 @@ export function AudioProvider(props) {
     Morse.setWaveform(wf);
   }
 
+  const getSessionSource = () => {
+    let ss = getValidSessionSource(window.localStorage.getItem("sessionSource"));
+    return ss;
+  }
+
+  const setSessionSource = ss => {
+    window.localStorage.setItem("sessionSource", ss);
+  }
+
+  const getTextEntryString = () => {
+    let es = window.localStorage.getItem("textEntryString");
+    if (es === null || es === undefined) es = "";
+    es = es.toString().toLowerCase();
+    return es;
+  }
+
+  const setTextEntryString = es => {
+    window.localStorage.setItem("textEntryString", es.toString().toLowerCase());
+  }
+
   return (
     <AudioContext.Provider
       value={{
         play,
+        playText,
         stop,
         setVolume,
         setFrequency,
@@ -261,7 +298,11 @@ export function AudioProvider(props) {
         getSessionTimeLimit,
         setSessionTimeLimit,
         getProgressBar,
-        setProgressBar
+        setProgressBar,
+        getSessionSource,
+        setSessionSource,
+        getTextEntryString,
+        setTextEntryString
       }}
     >
       {props.children}
