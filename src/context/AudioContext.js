@@ -131,16 +131,16 @@ export function AudioProvider(props) {
   };
 
   const setSpeed = (overall, char) => {
-    Morse.setSpeed(overall, char);
-    window.localStorage.setItem("overallSpeed", overall);
-    window.localStorage.setItem("charSpeed", char);
+    Morse.setSpeed(parseInt(overall), parseInt(char));
+    window.localStorage.setItem("overallSpeed", parseInt(overall));
+    window.localStorage.setItem("charSpeed", parseInt(char));
   };
 
   const getSpeed = () => {
-    let os = window.localStorage.getItem("overallSpeed");
-    if (os === null || os === undefined || Number.isNaN(os)) os = 15;
+    let os = parseInt(window.localStorage.getItem("overallSpeed"));
+    if (os === null || os === undefined || Number.isNaN(os)) os = parseInt(15);
     let cs = window.localStorage.getItem("charSpeed");
-    if (cs === null || cs === undefined || Number.isNaN(cs)) cs = 18;
+    if (cs === null || cs === undefined || Number.isNaN(cs)) cs = parseInt(18);
     return [os, cs];
   }
   const speeds = getSpeed();
@@ -268,6 +268,26 @@ export function AudioProvider(props) {
     window.localStorage.setItem("textEntryString", es.toString().toLowerCase());
   }
 
+  const getFullTextMode = () => {
+    let ft = window.localStorage.getItem("fullTextMode");
+    if (ft === null || ft === undefined) ft = "true";
+    return ft === "true";
+  }
+  
+  const setFullTextMode = ft => {
+    window.localStorage.setItem("fullTextMode", ft);
+  }
+
+  const getTextLineLimit = () => {
+    let lm = parseInt(window.localStorage.getItem("textLineLimit"));
+    if (lm === null || lm === undefined || Number.isNaN(lm) || lm < 1) lm = 1;
+    return lm;
+  }
+
+  const setTextLineLimit = lm => {
+    window.localStorage.setItem("textLineLimit", parseInt(lm));
+  }
+
   return (
     <AudioContext.Provider
       value={{
@@ -302,7 +322,11 @@ export function AudioProvider(props) {
         getSessionSource,
         setSessionSource,
         getTextEntryString,
-        setTextEntryString
+        setTextEntryString,
+        getFullTextMode,
+        setFullTextMode,
+        getTextLineLimit,
+        setTextLineLimit
       }}
     >
       {props.children}

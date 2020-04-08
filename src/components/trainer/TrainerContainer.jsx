@@ -35,6 +35,8 @@ const TrainerContainer = () => {
     setSessionSource,
     getTextEntryString,
     setTextEntryString,
+    getFullTextMode,
+    getTextLineLimit
   } = useContext(AudioContext);
 
   const [state, setState] = useState({
@@ -114,7 +116,9 @@ const TrainerContainer = () => {
       Composer.createScriptFromTextEntry(textEntryString,
         {
           overallSpeed: speeds[0],
-          charSpeed: speeds[1]
+          charSpeed: speeds[1],
+          playMode: getFullTextMode,
+          lineLimit: getTextLineLimit
         }
       );
       playText(latestComposition.script, playbackFinished, {
@@ -170,7 +174,7 @@ const TrainerContainer = () => {
   const handleMorseTextEntryChange = s => {
     textEntryString = s;
     setTextEntryString(s);
-    if (textEntryString.length === 0 !== state.textEntryIsEmpty) {
+    if ((textEntryString.length === 0) !== state.textEntryIsEmpty) {
       setState(prevState => ({ ...prevState, textEntryIsEmpty: textEntryString.length === 0}));
     }
   };

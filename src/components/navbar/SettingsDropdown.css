@@ -4,13 +4,15 @@
   position: absolute;
   width: 40px;
   height: 0px;
+  opacity: 0;
   background-color: var(--tlk-blue);
   top: 60px;
   pointer-events: none;
-  transition: top 0.3s ease, height 0.3s ease;
+  transition: top 0.3s ease, height 0.3s ease, opacity .3s ease;
 }
 
 #settingsAciveIndicator.show {
+  opacity: 1;
   top: 57px;
   height: 3px;
 }

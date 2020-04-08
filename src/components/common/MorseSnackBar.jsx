@@ -5,7 +5,7 @@ import { FiX as CloseIcon } from "react-icons/fi";
 
 let timeout;
 
-export default function SnackBar({char, open, onClose, ...props}) {
+export default function SnackBar({open, onClose, ...props}) {
 
   useEffect(() => {
     if (open) {
@@ -16,7 +16,7 @@ export default function SnackBar({char, open, onClose, ...props}) {
     } else {
       window.clearTimeout(timeout);
     }
-  }, [open, char]);
+  }, [open]);
 
   return (
     <div 

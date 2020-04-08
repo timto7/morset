@@ -23,6 +23,13 @@
   transition: opacity .3s, top .2s ease;
 }
 
+#TextEntryOptionsContainer {
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 #MorseTextEntry.show {
   pointer-events: all;
   transition: opacity .2s ease;
@@ -30,6 +37,7 @@
   z-index: 800;
   opacity: 1;
   animation: 0.2s ease 0s 1 peekUp;
+  
 }
 
 #MorseTextEntryTFContainer {

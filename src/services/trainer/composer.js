@@ -134,7 +134,9 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
     pauseLength = 0.0,
     spaceLength = 0.0,
     overallSpeed = 15.0,
-    charSpeed = 18.0
+    charSpeed = 18.0,
+    playMode = 0,
+    lineLimit = 1;
 
   function setOptions(options) {
     if (options !== undefined) {
@@ -143,6 +145,12 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
       }
       if ("charSpeed" in options) {
         charSpeed = parseFloat(options["charSpeed"]);
+      }
+      if ("playMode" in options) {
+        playMode = parseFloat(options["playMode"]);
+      }
+      if ("lineLimit" in options) {
+        lineLimit = parseFloat(options["lineLimit"]);
       }
     }
   }
@@ -186,10 +194,34 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
 
   setOptions(options);
   setSpeedElements();
-  script = textEntry;
+  if (playMode === 0 ) {
+    script = textEntry
+    .replace(/(\r\n)/gm, " ")
+    .replace(/\n/gm, " ")
+    .replace(/\r/gm, " ")
+    .replace(/^\s+/g, "")
+    .replace(/[ \t]{2,}/g, " ");
+  } else {
+    const lines = textEntry.split(/\r?\n/);
+    lines.forEach((l, index) => {
+      lines[index] = lines[index].trim();
+    });
+    if (lines[lines.length - 1] === "") {
+      lines.splice(lines.length - 1, 1);
+    }
+    if (lineLimit > lines.length) {
+      lineLimit = lines.length;
+    }
+    let selectedLines = [];
+    for (let i = 0; i < lineLimit; i++) {
+      const lineNo = Math.floor(Math.random() * lines.length);
+      selectedLines.push(lines[lineNo]);
+      lines.splice(lineNo, 1);
+    }
+    script = selectedLines.join(" ");
+  }
 
   calculateTotalTime(script);
-  console.log(totalTime);
 
   const composition = {
     script: script.trim(),

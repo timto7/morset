@@ -12,7 +12,7 @@ export default function Switch(props) {
   return (
     <button
       className={
-        `IconButton ${props.disabled ? "disabled" : ""} ${props.size === "large" && "large" || props.size ==="small" && "small"}`
+        `IconButton ${props.disabled ? "disabled" : ""} ${props.size === "large" && "large"}`
       }
       onClick={props.onClick}
       {...(props.tabentry === false && { tabIndex: "-1" })}
