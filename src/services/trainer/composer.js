@@ -54,8 +54,8 @@ export function createScriptFromChars(chars, options = undefined) {
     dashLength = dotLength * 3.0;
     const farns =
       (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
-    pauseLength = (3.0 * farns) / 19.0;
-    spaceLength = (7.0 * farns) / 19.0;
+    pauseLength = (3.0 * farns) / 19.0 - dotLength;
+    spaceLength = (7.0 * farns) / 19.0 - dotLength;
   }
 
   const setSpacing = () => {
@@ -164,8 +164,8 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
     dashLength = dotLength * 3.0;
     const farns =
       (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
-    pauseLength = (3.0 * farns) / 19.0;
-    spaceLength = (7.0 * farns) / 19.0;
+    pauseLength = (3.0 * farns) / 19.0 - dotLength;
+    spaceLength = (7.0 * farns) / 19.0 - dotLength;
   }
 
   const calculateTotalTime = str => {

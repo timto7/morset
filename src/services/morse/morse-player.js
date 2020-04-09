@@ -33,6 +33,7 @@ const runAudiofy = (str, callback) => {
 const audiofy = (str, callback = undefined) => {
 
   str = morsetrans.formatMorse(str);
+  console.log(str);
 
   if (playing === false) {
     playing = true;
@@ -149,8 +150,8 @@ export function setSpeed(overallSpeed, charSpeed) {
   dashLength = dotLength * 3.0;
   const farns =
     (60.0 * charSpeed - 37.2 * overallSpeed) / (overallSpeed * charSpeed);
-  pauseLength = (3.0 * farns) / 19.0;
-  spaceLength = (7.0 * farns) / 19.0;
+  pauseLength = (3.0 * farns) / 19.0 - dotLength;
+  spaceLength = (7.0 * farns) / 19.0 - dotLength;
   envelopeTime = 0.0025 * (1.0 / (charSpeed / 18.0));
 }
 

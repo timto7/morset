@@ -117,7 +117,7 @@ const SpacingSelectionContainer = () => {
             onBlur={handleCharSpacingInputBlur}
             onKeyDown={handleCharSpacingInputKeyDown}
             tabentry={!random}
-          /><span>characters</span>
+          /><span>character{parseInt(spacing) === 1 ? '' : 's'}</span>
         </div>
       </div>
     </div>

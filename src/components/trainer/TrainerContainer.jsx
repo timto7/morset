@@ -117,8 +117,8 @@ const TrainerContainer = () => {
         {
           overallSpeed: speeds[0],
           charSpeed: speeds[1],
-          playMode: getFullTextMode,
-          lineLimit: getTextLineLimit
+          playMode: getFullTextMode(),
+          lineLimit: getTextLineLimit()
         }
       );
       playText(latestComposition.script, playbackFinished, {
