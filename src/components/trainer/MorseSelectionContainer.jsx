@@ -18,14 +18,14 @@ import * as morsetrans from "../../services/morse/morse-translation.js";
 import AudioContext from "../../context/AudioContext";
 
 
-const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
+const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?\'"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
 let customChars = "abc";
 let lastCount = 2;
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz";
 const numbers = "1234567890";
 const extended = "ÀÆĆĐĴĜŃØŠÞÜŹŻ";
-const punctuation = '.,?"!/()&:;=+-:@';
+const punctuation = '.,?\'"!/()&:;=+-:@';
 
 const alphabetTrans = makeTranslatedObject(alphabet);
 const numbersTrans = makeTranslatedObject(numbers);

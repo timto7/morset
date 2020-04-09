@@ -112,7 +112,7 @@
 
 #TrainerSessionContainer #sessionProgressBar {
   position: fixed;
-  height: 3px;
+  height: 4px;
   width: 0%;
   top: 0px;
   left: 0px;

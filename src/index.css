@@ -6,7 +6,15 @@ p {
 }
 
 h2 {
+  color: var(--text);
+  margin-top: 10px;
+  font-size: 40px;
+  font-weight: 300;
+}
+
+h3 {
   color: var(--tlk-blue);
+  margin-top: 50px;
 }
 
 .Switch {
