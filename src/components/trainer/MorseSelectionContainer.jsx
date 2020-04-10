@@ -142,6 +142,9 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange, show }
             char. selection
           </InputLabel>
           <Select
+            MenuProps={{
+              disableScrollLock: true
+            }}
             value={state.selection}
             onChange={handleDropDownChange}
             inputProps={{

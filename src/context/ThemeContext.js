@@ -121,7 +121,7 @@ const lightTheme = [
   "--mark-sub: #ff082c66;",
   "--mark-extra: #ffdb0877;",
   "--info-background: rgba(255, 255, 255, 0.65);",
-  "--logo-colour1: #3498db;",
+  "--logo-colour1: #3ea6ff;",
   "--logo-colour2: #1abc9c;"
 ];
 
@@ -161,6 +161,6 @@ const darkTheme = [
   "--mark-sub: #ff082c77;",
   "--mark-extra: #ffdb0877;",
   "--info-background: rgba(40, 40, 51, 0.65);",
-  "--logo-colour1: #3498db;",
+  "--logo-colour1: #3ea6ff;",
   "--logo-colour2: #9b59b6;"
 ];

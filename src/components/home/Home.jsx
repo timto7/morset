@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   document.title = "MorseT - Home";
+  document.body.style.overflow = "scroll";
   return (
     <div>
       <div id="welcomeContainer">

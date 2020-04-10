@@ -6,14 +6,12 @@ import NotFound from "./components/NotFound";
 import { Route, Redirect, Switch } from "react-router-dom";
 import UnderConstruction from "./components/UnderConstruction";
 import HelpGuide from "./components/help/HelpGuideContainer";
-import { sortScrollbars } from "./services/scroll-bar-sort";
 
 const TrainerContainer = lazy(() =>
   import("./components/trainer/TrainerContainer")
 );
 
 export default function App() {
-  sortScrollbars();
 
   return (
     <div className="App">

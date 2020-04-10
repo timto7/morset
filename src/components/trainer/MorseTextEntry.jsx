@@ -36,6 +36,9 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
     }
     textareaRef.current.focus();
     textareaRef.current.value = getTextEntryString();
+    return () => {
+      document.body.classList.remove('block-scroll');
+    }
   }, [show]);
 
   function clearTextBtnPressed() {
@@ -68,7 +71,7 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
   };
 
   return (
-    <div id="MorseTextEntry" className={show && "show"}>
+    <div id="MorseTextEntry" className={show ? "show" : ""}>
       <div id="TextEntryOptionsContainer">
         <TextEntryMode />
         <Button 
