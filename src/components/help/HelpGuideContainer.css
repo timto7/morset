@@ -1,0 +1,53 @@
+@import "../colourScheme.css";
+
+#helpTitleContainer {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  position: fixed;
+}
+
+#HelpGuideContainer h1 {
+  font-size: 44px;
+  letter-spacing: 1px;
+  transition: font-size .3s ease;
+  
+}
+
+#HelpGuideContainer h1.reduced {
+  font-size: 22px;
+  transition: font-size .18s ease;
+}
+
+#helpInnerContainer {
+  display: grid;
+  grid-template-columns: 300px auto;
+  padding-top: 100px;
+  margin-bottom: 80px;
+}
+
+#helpInnerContainer img {
+  scale: 0.5;
+  border-radius: 6px;
+  box-shadow: 0px 2px 16px 0px var(--shadow);
+}
+
+#helpInnerContainer .topicSection {
+  padding-top: 50px;
+}
+
+#helpInnerContainer .topicSection:last-of-type {
+  min-height: calc(100vh - 250px);
+}
+
+
+#helpContent {
+  margin: 0px auto 80px auto;
+  width: 100%;
+  max-width: 968px;
+}
+
+#helpContent p {
+  max-width: 800px;
+  line-height: 30px;
+}

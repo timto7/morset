@@ -1,0 +1,72 @@
+@import "../colourScheme.css";
+
+#helpMasterList {
+  position: fixed;
+  list-style-type: none;
+  padding: 0px;
+  user-select: none;
+}
+
+.helpSubject > span {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+  color: var(--idle);
+  border-bottom: 2px solid transparent;
+}
+
+.helpSubject:not(.selected) > span:hover {
+  color: var(--textAlt);
+}
+
+.helpSubject.selected > span {
+  color: var(--text);
+  border-bottom: 2px solid var(--tlk-blue);
+}
+
+.helpSubject > ul {
+  list-style-type: none;
+  width: 240px;
+  max-height: 0px;
+  box-sizing: border-box;
+  padding: 0px 0px 0px 8px;
+  overflow: hidden;
+  margin: 5px 0px 5px 0px;
+  color: var(--idle);
+  transition: max-height .0s linear, margin .0s linear;
+}
+
+.helpSubject.selected > ul {
+  max-height: 1000px;
+  transition: max-height 0.8s linear, margin .2s ease;
+  margin: 5px 0px 35px 0px;
+}
+
+.helpSubject > ul > .helpTopic {
+  display: block;
+  padding: 5px 0px 5px 0px;
+  cursor: pointer;
+  color: var(--idle);
+}
+
+
+.helpSubject.selected > ul > .helpTopic.active > div > span {
+  color: var(--textAlt);
+}
+
+.helpSubject.selected > ul > .helpTopic:hover {
+  color: var(--text);
+}
+
+.helpSubject.selected > ul > .helpTopic > div {
+  padding-left: 8px;
+  border-left: 3px solid transparent;
+}
+
+.helpSubject.selected > ul > .helpTopic.active > div {
+  border-left: 3px solid var(--tlk-blue);
+}
