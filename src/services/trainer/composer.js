@@ -147,10 +147,10 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
         charSpeed = parseFloat(options["charSpeed"]);
       }
       if ("playMode" in options) {
-        playMode = parseFloat(options["playMode"]);
+        playMode = parseInt(options["playMode"]);
       }
       if ("lineLimit" in options) {
-        lineLimit = parseFloat(options["lineLimit"]);
+        lineLimit = parseInt(options["lineLimit"]);
       }
     }
   }
@@ -194,6 +194,9 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
 
   setOptions(options);
   setSpeedElements();
+  console.log(playMode);
+
+
   if (playMode === 0 ) {
     script = textEntry
     .replace(/(\r\n)/gm, " ")

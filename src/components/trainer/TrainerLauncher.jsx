@@ -19,10 +19,10 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#0b8eff !important",
       boxShadow: "none !important"
     },
-    fontSize: "18px",
     letterSpacing: "2px",
     fontWeight: "600",
-    margin: "none",
+    height: "54px",
+    margin: "-2px 0px 0px 0px",
     borderRadius: "6px"
   },
   formControl: {
@@ -50,7 +50,7 @@ const TrainerLauncher = ({ noChars, beginWasClicked, source, sourceChanged }) =>
           disabled={noChars}
           onClick={beginWasClicked}
         >
-          <TrainIcon />
+          <TrainIcon style={{height: "30px", width: "30px"}}/>
           <span className="iconBtnText">BEGIN</span>
         </Button>
       </div>
@@ -61,6 +61,9 @@ const TrainerLauncher = ({ noChars, beginWasClicked, source, sourceChanged }) =>
             session source
           </InputLabel>
           <Select
+            MenuProps={{
+              disableScrollLock: true
+            }}
             value={source}
             onChange={s => {sourceChanged(s.target.value)}}
             inputProps={{

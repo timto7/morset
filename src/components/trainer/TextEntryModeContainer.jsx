@@ -60,7 +60,7 @@ const TextEntryModeContainer = () => {
   const [lineLimit, setLineLimit] = useState(initialLineLimit);
   
   const initialFullTextMode = getFullTextMode();
-  const [fullText, setFullText] = useState(initialFullTextMode);
+  const [textMode, setTextMode] = useState(initialFullTextMode);
 
   const [show, setShow] = useState(false);
   const toggleShow = () => {
@@ -68,8 +68,8 @@ const TextEntryModeContainer = () => {
   };
 
   const toggleFullText = () => {
-    setFullText(prev => !prev);
-    setFullTextMode(!fullText);
+    setTextMode(textMode === 0 ? 1 : 0);
+    setFullTextMode(textMode === 0 ? 1 : 0);
   };
 
   const handleLineLimitInputChange = event => {
@@ -102,26 +102,26 @@ const TextEntryModeContainer = () => {
         onClick={toggleShow}
         style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", color: "#fff"} : {}}
       >
-        <span>{fullText ? "Transmit Full Text" : getTextLineLimit() !== 1 ? `Transmit ${getTextLineLimit()} Random Lines`: "Transmit a Single Random Line"}</span>
+        <span>{textMode === 0 ? "Transmit Full Text" : getTextLineLimit() !== 1 ? `Transmit ${getTextLineLimit()} Random Lines`: "Transmit a Single Random Line"}</span>
       </Button>
-      <div id="textEntryModePopover" className={`${show ? "show" : ""} ${!fullText ? "notFullText" : ""}`}>
+      <div id="textEntryModePopover" className={`${show ? "show" : ""} ${textMode === 1 ? "notFullText" : ""}`}>
         <div id="teModeSegmentTop">
           <span className="text">Transmit Full Text</span>
           <Switch 
-            checked={fullText}
+            checked={textMode === 0}
             onChange={toggleFullText}
             color="primary"
             inputProps={{ "aria-label": "primary checkbox" }}
           />
         </div>
-        <div id="teModeSegmentBottom" className={`${!fullText ? "notFullText" : ""}`}>
+        <div id="teModeSegmentBottom" className={`${textMode === 1 ? "notFullText" : ""}`}>
           <span>transmit</span>
           <Input
             onChange={handleLineLimitInputChange}
             value={lineLimit}
             onBlur={handleLineLimitInputBlur}
             onKeyDown={handleLineLimitInputKeyDown}
-            tabentry={!fullText}
+            tabentry={textMode === 0}
           /><span>random line{parseInt(lineLimit) === 1 ? '' : 's'}</span>
         </div>
       </div>

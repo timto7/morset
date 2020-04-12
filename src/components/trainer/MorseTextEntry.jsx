@@ -18,6 +18,7 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
   useEffect(() => {
     if (!(binPressed || inSession || source === 0)) textareaRef.current.focus();
     binPressed = false;
+    window.scrollTo(0, 0);
   });
 
   useLayoutEffect(() => {

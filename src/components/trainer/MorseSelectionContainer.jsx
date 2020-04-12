@@ -135,7 +135,7 @@ const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange, show }
 
   return (
     <div id="MorseSelectionContainer" className={show ? "show" : ""}>
-      <h3>Selected Morse Characters: {selectedChars.length}</h3>
+      <h3 style={{fontSize: "24px"}}>Selected Morse Characters: {selectedChars.length}</h3>
       <div id="selectionOptions">
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="selection-simple" color="primary">

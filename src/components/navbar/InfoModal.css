@@ -29,7 +29,7 @@
 	margin: auto auto;
 	background-color: var(--tlk-brand-1);
 	border-radius: 6px;
-	box-shadow: 0px 4px 32px 8px var(--home-shadow);
+  box-shadow: 0px 12px 28px 0px var(--shadow), 0px 2px 4px 0px var(--shadow-2);
 	box-sizing: border-box;
 	border: 1px solid var(--home-outline);
 	transition: background-color .5s ease, top .3s ease, box-shadow .5s ease, border .5s ease;

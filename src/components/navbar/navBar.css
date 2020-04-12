@@ -27,22 +27,23 @@
   outline: none;
 }
 
-#navContent h3 {
+#navContent #navLinkContainer h3 {
   position: relative;
   justify-self: flex-start;
   display: inline-block;
   color: var(--text);
   opacity: 0.5;
+  font-size: 20px;
   margin: 0px 5px 0px 5px;
   transition: opacity 0.2s ease, color 0.5s ease;
   cursor: pointer;
 }
 
-#navContent h3:hover {
+#navContent #navLinkContainer h3:hover {
   opacity: 0.65;
 }
 
-#navContent .active h3 {
+#navContent #navLinkContainer .active h3 {
   opacity: 1;
 }
 

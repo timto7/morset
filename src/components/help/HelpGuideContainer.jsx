@@ -31,12 +31,13 @@ export default function HelpGuideContainer(props) {
   };
 
   useEffect(() => {
+    scrollProgress();
     document.addEventListener("scroll", scrollProgress);
     return (() => {
       document.removeEventListener("scroll", scrollProgress);
     });
   });
-  
+
   return (
     <div id="HelpGuideContainer" style={{paddingTop: "20px"}}>
       <ScrollProgess 

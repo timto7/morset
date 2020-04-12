@@ -54,7 +54,7 @@ const Stepper = ({
     <div className={visible ? "StepperContainer visible" : "StepperContainer"}>
       <IconButton
         icon={downArw}
-        tooltip={"Descrease Characters"}
+        tooltip={"Decrease Characters"}
         disabled={value === min}
         onClick={() => {
           const v = validateValue(value - 1);

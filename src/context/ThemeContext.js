@@ -43,7 +43,6 @@ export function ThemeProvider(props) {
     }
   });
 
-  // paints the app before it renders elements
   useLayoutEffect(() => {
     const lastTheme = window.localStorage.getItem("darkTheme");
 
@@ -56,8 +55,6 @@ export function ThemeProvider(props) {
       setDark(false);
       applyTheme(lightTheme);
     }
-
-    // if state changes, repaints the app
   }, [dark]);
 
   const applyTheme = theme => {
@@ -86,11 +83,12 @@ export function ThemeProvider(props) {
 
 // styles
 const lightTheme = [
-  "--border: rgba(0, 0, 0, 0.12);",
+  "--border: rgba(0, 0, 0, 0.08);",
   "--tooltip: rgba(60, 64, 67, 0.9);",
   "--dropdownBG: #fff;",
   "--prompt: rgba(0, 0, 0, 0.54);",
   "--shadow: rgba(0, 0, 0, 0.16);",
+  "--shadow-2: rgba(0, 0, 0, 0.08);",
   "--idle: rgba(0, 0, 0, 0.6);",
   "--text: #000;",
   "--textAlt: #222;",
@@ -130,7 +128,6 @@ const darkTheme = [
   "--tooltip: #40424f;",
   "--dropdownBG: #40424f;",
   "--prompt: rgba(255, 255, 255, 0.7);",
-  "--shadow: rgba(0, 0, 0, 0.16);",
   "--idle: rgba(255, 255, 255, 0.6);",
   "--text: #fff;",
   "--textAlt: #eee;",
@@ -153,7 +150,8 @@ const darkTheme = [
   "--tlk-brand-7: #b4b8cd;",
   "--tlk-contrast: #fff;",
   "--session-background: #1f1f28;",
-  "--home-shadow: rgba(52, 152, 219, 0.16);",
+  "--shadow: rgba(0, 0, 0, 0.16);",
+  "--shadow-2: rgba(0, 0, 0, 0.08);",
   "--home-outline: #3498db;",
   "--home-outline-idle: rbga(52, 152, 219, 0);",
   "--home-icon: #ccc;",

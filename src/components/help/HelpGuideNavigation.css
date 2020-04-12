@@ -5,6 +5,8 @@
   list-style-type: none;
   padding: 0px;
   user-select: none;
+  height: calc(100vh - 206px);
+  overflow: auto
 }
 
 .helpSubject > span {
@@ -52,7 +54,6 @@
   cursor: pointer;
   color: var(--idle);
 }
-
 
 .helpSubject.selected > ul > .helpTopic.active > div > span {
   color: var(--textAlt);

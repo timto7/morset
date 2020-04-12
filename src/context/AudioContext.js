@@ -269,9 +269,9 @@ export function AudioProvider(props) {
   }
 
   const getFullTextMode = () => {
-    let ft = window.localStorage.getItem("fullTextMode");
-    if (ft === null || ft === undefined) ft = "true";
-    return ft === "true";
+    let ft = parseInt(window.localStorage.getItem("fullTextMode"));
+    if (ft === null || ft === undefined || Number.isNaN(ft) || ft < 0 || ft > 1) ft = 0;
+    return ft;
   }
   
   const setFullTextMode = ft => {

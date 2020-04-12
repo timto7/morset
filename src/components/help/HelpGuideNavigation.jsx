@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./HelpGuideNavigation.css";
 import { Link } from "react-scroll";
 
@@ -15,13 +15,22 @@ export default function HelpGuideNavigation({selectedSubject, subjectClicked}) {
       "toggling the amplitude envelope"
     ],
     "Trainer": [
-      "stuff"
+      "overview",
+      "setting the morse speed",
+      "setting the session duration",
+      "tailoring the session in character selector",
+      "custom character selection",
+      "previewing a morse character",
+      "using text entry",
+      "beginning a session",
+      "session review",
+      
     ],
     "Translator": [
       "still under construction"
     ]
   }
-  
+
   return (
     <div id="HelpGuideNavigation">
       <ul id="helpMasterList">

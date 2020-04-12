@@ -11,7 +11,7 @@ export default function GeneralHelpPage(props) {
 
   return (
     <div id="GeneralHelpContainer" style={{paddingBottom: "20px"}}>
-      <div>
+      <div className="helpSubjectTitle">
         <h2>General</h2>
         <p>This section provides an introduction to the general features that persist across the application.</p>
       </div>
