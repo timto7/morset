@@ -33,7 +33,6 @@ const runAudiofy = (str, callback) => {
 const audiofy = (str, callback = undefined) => {
 
   str = morsetrans.formatMorse(str);
-  console.log(str);
 
   if (playing === false) {
     playing = true;

@@ -198,6 +198,7 @@ const TrainerContainer = () => {
           beginWasClicked={beginWasClicked}
           show={state.source === 0}
           style={{...state.source === 1 && {overflow: "visible", height: "0px"}}}
+          disabled={state.source === 1}
         />
         <MorseTextEntry
           show={state.source === 1}

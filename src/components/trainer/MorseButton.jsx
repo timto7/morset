@@ -11,7 +11,8 @@ const MorseButton = ({
   selected,
   custom,
   removeChar,
-  addChar
+  addChar,
+  disabled
 }) => {
   const {playText, stop, isPlaying} = useContext(AudioContext);
   const [playing, setPlaying] = useState(false);
@@ -27,6 +28,7 @@ const MorseButton = ({
   return (
     <div className={`MorseButton ${custom ? "custom" : ""}`}>
       <Button
+        disabled={disabled}
         style={{
           padding: "0px",
           height: "30px",

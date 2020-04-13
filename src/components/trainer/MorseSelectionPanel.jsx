@@ -15,7 +15,8 @@ const MorseSelectionContainer = ({
   selectedChars,
   custom,
   addCustomChars,
-  removeCustomChars
+  removeCustomChars,
+  disabled
 }) => {
   const listItems = Object.keys(translation).map(key => (
     <MorseButton
@@ -26,6 +27,7 @@ const MorseSelectionContainer = ({
       custom={custom}
       removeChar={() => removeCustomChars(key)}
       addChar={() => addCustomChars(key)}
+      disabled={disabled}
     />
   ));
   return (

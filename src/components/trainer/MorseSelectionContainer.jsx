@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {}
 }));
 
-const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange, show }) => {
+const MorseSelectionContainer = ({ selectedChars, selectedCharsDidChange, show, disabled }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({

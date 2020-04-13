@@ -37,8 +37,9 @@
   height: 320px;
   margin-top: -100px;
   mask: url("../../images/MorseLogo.svg");
-  background: linear-gradient(-71deg, var(--logo-colour1), var(--logo-colour2) 95%);
+  background-color: var(--textAlt);
   mask-repeat: no-repeat;
+  transition: background-color .5s ease;
 }
 
 #homeOptionContainer {
@@ -77,7 +78,7 @@
 .homeOptionOuter:hover .homeOptionInner {
   margin-bottom: 20px;
   background-color: var(--tlk-brand-2);
-  box-shadow: 0px 12px 28px 0px var(--shadow), 0px 2px 4px 0px var(--shadow-2);
+  box-shadow: 0px 0px 28px 2px var(--shadow), 0px 2px 4px 0px var(--shadow-2);
   border: 1px solid var(--home-outline);
   background-color: var(--tlk-brand-1);
 }

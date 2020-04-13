@@ -14,7 +14,6 @@ export default function SpeedEntry() {
     val = parseInt(Number(val));
     if (Number.isNaN(val)) return 15;
     if (val < 1) return 1;
-    if (val > charSpeed) setCharSpeed(validateChar(val));
     return val;
   };
 
@@ -22,7 +21,6 @@ export default function SpeedEntry() {
     val = parseInt(Number(val));
     if (Number.isNaN(val)) return 18;
     if (val < 1) return 1;
-    if (val < overallSpeed) setOverallSpeed(validateOverall(val));
     return val;
   };
   
@@ -43,7 +41,8 @@ export default function SpeedEntry() {
   const submitOverallInputValue = v => {
     v = validateOverall(overallSpeed);
     setOverallSpeed(v);
-    setSpeed(v, charSpeed);
+    if (overallSpeed > charSpeed) setCharSpeed(overallSpeed);
+    setSpeed(v, overallSpeed > charSpeed ? v : charSpeed);
   };
 
   const handleCharInputChange = event => {
@@ -63,7 +62,8 @@ export default function SpeedEntry() {
   const submitCharInputValue = v => {
     v = validateChar(charSpeed);
     setCharSpeed(v);
-    setSpeed(overallSpeed, v);
+    if (charSpeed < overallSpeed) setOverallSpeed(charSpeed);
+    setSpeed(charSpeed < overallSpeed ? v : overallSpeed, v);
   };
 
   return (

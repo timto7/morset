@@ -20,9 +20,10 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "none !important"
     },
     letterSpacing: "2px",
+    lineHeight: "20px",
     fontWeight: "600",
-    height: "54px",
-    margin: "-2px 0px 0px 0px",
+    height: "52px",
+    margin: "0px",
     borderRadius: "6px"
   },
   formControl: {

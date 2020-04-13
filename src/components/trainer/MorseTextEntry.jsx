@@ -55,11 +55,11 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
       s = s.replace(/^\r\n|^\r|^\n/gm, "");
       event.target.value = s;
     }
-    if (s === "" || /^[\s0-9A-Za-z.,=/?"!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
+    if (s === "" || /^[\s0-9A-Za-z.,=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
       s = s.replace(/[ \t]{2,}/g, " ");
       event.target.value = s;
     } else {
-      s = s.replace(/[^\s\n\r0-9A-Za-z.,=/?"!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");
+      s = s.replace(/[^\s\n\r0-9A-Za-z.,=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");
       event.target.value = s;
       setOpenSB(true);
     }

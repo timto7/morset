@@ -194,8 +194,6 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
 
   setOptions(options);
   setSpeedElements();
-  console.log(playMode);
-
 
   if (playMode === 0 ) {
     script = textEntry
