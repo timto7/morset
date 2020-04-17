@@ -95,8 +95,10 @@
 }
 
 #sessionReviewContent table tr td:first-of-type {
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 20px;
   font-family: Courier, Monaco, monospace !important;
+  padding: 7px 10px 9px 0px;
 }
 
 #SessionReviewContainer #sessionReviewHeader p {

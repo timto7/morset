@@ -84,7 +84,7 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
       </div>
       <div id="sessionReviewContent">
         <div id="sessionReviewStatsContainer">
-          <div id="sessionReviewHeader"><p>{overallScore}%</p><p>{noOfErrors} error{noOfErrors === 1 ? "" : "s"}</p></div>
+          <div id="sessionReviewHeader"><p>{(overallScore < 1 && Object.keys(latestResults.hits).length > 0) ? "<1" : overallScore}%</p><p>{noOfErrors} error{noOfErrors === 1 ? "" : "s"}</p></div>
           <div id="sessionReviewStatsPanel"></div>
           <table>
             <tbody>

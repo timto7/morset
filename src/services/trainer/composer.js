@@ -203,21 +203,22 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
     .replace(/^\s+/g, "")
     .replace(/[ \t]{2,}/g, " ");
   } else {
-    const lines = textEntry.split(/\r?\n/);
+    let lines = textEntry.split(/\r?\n/);
     lines.forEach((l, index) => {
       lines[index] = lines[index].trim();
     });
     if (lines[lines.length - 1] === "") {
       lines.splice(lines.length - 1, 1);
     }
-    if (lineLimit > lines.length) {
-      lineLimit = lines.length;
-    }
+    const linesCopy = [...lines];
     let selectedLines = [];
     for (let i = 0; i < lineLimit; i++) {
       const lineNo = Math.floor(Math.random() * lines.length);
       selectedLines.push(lines[lineNo]);
       lines.splice(lineNo, 1);
+      if (lines.length === 0) {
+        lines = [...linesCopy];
+      }
     }
     script = selectedLines.join(" ");
   }

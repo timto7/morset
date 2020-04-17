@@ -83,11 +83,11 @@ export function ThemeProvider(props) {
 
 // styles
 const lightTheme = [
-  "--border: rgba(0, 0, 0, 0.08);",
-  "--tooltip: rgba(60, 64, 67, 0.9);",
+  "--border: rgba(0, 0, 0, 0.2);",
+  "--tooltip: rgba(60, 64, 67, 0.92);",
   "--dropdownBG: #fff;",
   "--prompt: rgba(0, 0, 0, 0.54);",
-  "--shadow: rgba(0, 0, 0, 0.16);",
+  "--shadow: rgba(0, 0, 0, 0.13);",
   "--shadow-2: rgba(0, 0, 0, 0.08);",
   "--idle: rgba(0, 0, 0, 0.6);",
   "--text: #000;",
@@ -124,7 +124,7 @@ const lightTheme = [
 ];
 
 const darkTheme = [
-  "--border: rgba(255, 255, 255, 0.1);",
+  "--border: rgba(255, 255, 255, 0.14);",
   "--tooltip: #40424f;",
   "--dropdownBG: #40424f;",
   "--prompt: rgba(255, 255, 255, 0.7);",
@@ -150,7 +150,7 @@ const darkTheme = [
   "--tlk-brand-7: #b4b8cd;",
   "--tlk-contrast: #fff;",
   "--session-background: #1f1f28;",
-  "--shadow: rgba(0, 0, 0, 0.16);",
+  "--shadow: rgba(0, 0, 0, 0.13);",
   "--shadow-2: rgba(0, 0, 0, 0.08);",
   "--home-outline: #3498db;",
   "--home-outline-idle: rbga(52, 152, 219, 0);",

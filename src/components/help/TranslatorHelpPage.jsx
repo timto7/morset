@@ -4,7 +4,7 @@ export default function TranslatorHelpPage(props) {
 
   return (
     <div id="TrainerHelpContainer" style={{paddingBottom: "20px"}}>
-      <div>
+      <div className="helpSubjectTitle">
         <h2>Translator</h2>
         <p>This section will provide guidance regarding the use of the morse translation portion of the application.</p>
       </div>

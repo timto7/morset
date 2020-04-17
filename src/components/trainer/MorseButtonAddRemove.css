@@ -30,7 +30,7 @@
 }
 
 .MorseButton.custom span.MuiButton-label:hover .MorseButtonAddRemove:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .MorseButton .selected .MorseButtonAddRemove {

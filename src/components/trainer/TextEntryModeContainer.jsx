@@ -102,11 +102,11 @@ const TextEntryModeContainer = () => {
         onClick={toggleShow}
         style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", color: "#fff"} : {}}
       >
-        <span>{textMode === 0 ? "Transmit Full Text" : getTextLineLimit() !== 1 ? `Transmit ${getTextLineLimit()} Random Lines`: "Transmit a Single Random Line"}</span>
+        <span>{textMode === 0 ? "Play the Whole Text" : getTextLineLimit() !== 1 ? `Play ${getTextLineLimit()} Random Lines From Text`: "Play a Single Random Line From Text"}</span>
       </Button>
       <div id="textEntryModePopover" className={`${show ? "show" : ""} ${textMode === 1 ? "notFullText" : ""}`}>
         <div id="teModeSegmentTop">
-          <span className="text">Transmit Full Text</span>
+          <span className="text">Play the Whole Text</span>
           <Switch 
             checked={textMode === 0}
             onChange={toggleFullText}
@@ -115,14 +115,14 @@ const TextEntryModeContainer = () => {
           />
         </div>
         <div id="teModeSegmentBottom" className={`${textMode === 1 ? "notFullText" : ""}`}>
-          <span>transmit</span>
+          <span>play</span>
           <Input
             onChange={handleLineLimitInputChange}
             value={lineLimit}
             onBlur={handleLineLimitInputBlur}
             onKeyDown={handleLineLimitInputKeyDown}
             tabentry={textMode === 0}
-          /><span>random line{parseInt(lineLimit) === 1 ? '' : 's'}</span>
+          /><span>random line{parseInt(lineLimit) === 1 ? '' : 's'} from text</span>
         </div>
       </div>
     </div>

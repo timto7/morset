@@ -14,8 +14,10 @@ export default function ScrollProgress ({menuIndex}) {
 
   useEffect(() => {
     window.addEventListener("scroll", scrollProgress);
+    window.addEventListener('resize', scrollProgress);
     return (() => {
       window.removeEventListener("scroll", scrollProgress);
+      window.removeEventListener('resize', scrollProgress);
     });
   });
 

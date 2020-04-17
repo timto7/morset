@@ -1,4 +1,5 @@
 import React from "react";
+import { FiAlertTriangle as WarningIcon } from "react-icons/fi";
 import ImgNavItems from "../../images/helpdocs/general_navitems.png";
 import ImgVolume from "../../images/helpdocs/general_volume.png";
 import ImgLightDark from "../../images/helpdocs/general_lightdark.png";
@@ -52,7 +53,11 @@ export default function GeneralHelpPage(props) {
         <p>To change the oscillator waveform, use the <b>oscillator waveform segmented control</b> in order to select between 
         sine, square and triangle waveforms. This can be done in the <b>audio section</b> of the <b>settings</b> located at 
         the top right of the application.</p>
-        <img src={ImgOsc} alt="Oscillator waveform segmented control" width='329' height='474' />
+        <img src={ImgOsc} alt="Oscillator waveform segmented control" width='329' height='474' /><br />
+        <div className="helpdocs-warningContainer">
+          <WarningIcon style={{fontSize: "50px", color: "var(--tlk-yellow)"}}/>
+          <span>The square waveform is considerably louder, ensure you lower the volume before selecting.</span>
+        </div>
       </div>
       <div id="nav-general-toggling-the-amplitude-envelope" className="topicSection">
         <h3>Toggling the Amplitude Envelope</h3>

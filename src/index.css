@@ -20,6 +20,11 @@ h3 {
   margin-top: 0px;
 }
 
+h4 {
+  color: var(--text);
+  transition: color .5s ease;
+}
+
 .Switch {
   border-color: var(--border);
 }

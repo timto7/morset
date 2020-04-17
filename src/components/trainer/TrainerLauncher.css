@@ -34,7 +34,7 @@ button .iconBtnText {
 }
 
 .MuiPaper-elevation8 {
-  box-shadow: 0px 12px 28px 0px var(--shadow), 0px 2px 4px 0px var(--shadow-2);
+  box-shadow: 0px 4px 12px 0px var(--shadow), 0px 1px 2px 0px var(--shadow-2);
   border: 1px solid var(--border);
   border-radius: 6px;
 }

@@ -87,7 +87,7 @@ const TrainerContainer = () => {
   useEffect(() => {
     textEntryString = getTextEntryString();
     if (textEntryString.length > 0) setState(prevState => ({ ...prevState, textEntryIsEmpty: false }));
-  }, []);
+  }, ["onlyOnMount"]);
   
 
   function selectedCharsDidChange(chars) {

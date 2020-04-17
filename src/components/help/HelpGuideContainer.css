@@ -1,30 +1,50 @@
 @import "../colourScheme.css";
+@import "../pageAnimations.css";
 
 #helpTitleContainer {
   display: flex;
   height: 100px;
   align-items: center;
   position: fixed;
+  user-select: none;
+  animation: 0.2s ease 0s 1 peekRight;
 }
 
-#HelpGuideContainer h1 {
+#HelpGuideContainer #helpTitleContainer h1 {
   font-size: 44px;
   letter-spacing: 1px;
+  color: var(--textAlt);
   text-shadow: 1px 1px var(--tlk-brand-2);
   transition: font-size .3s ease, text-shadow .5s ease;
-  
 }
 
-#HelpGuideContainer h1.reduced {
+#HelpGuideContainer #helpTitleContainer.reduced h1 {
   font-size: 22px;
-  transition: font-size .18s ease;
+  transition: font-size .18s ease, text-shadow .5s ease;
 }
+
+#HelpGuideContainer #helpTitleContainer #titleHelpIcon {
+  height: 64px;
+  width: 64px;
+  margin-right: 10px;
+  color: var(--textAlt);
+  transition: width .3s ease, height .3s ease;
+}
+
+#HelpGuideContainer #helpTitleContainer.reduced #titleHelpIcon {
+  height: 32px;
+  width: 32px;
+  margin-right: 5px;
+  transition: width .18s ease, height .18s ease;
+}
+
 
 #helpInnerContainer {
   display: grid;
   grid-template-columns: 300px auto;
   padding-top: 110px;
   margin-bottom: 80px;
+  animation: 0.2s ease 0s 1 fadeIn;
 }
 
 #helpInnerContainer .helpSubjectTitle > p {
@@ -32,13 +52,18 @@
   color: var(--idle);
 }
 
+#helpInnerContainer p {
+  margin-bottom: 0px;
+}
+
 #helpInnerContainer img {
   border-radius: 6px;
-  box-shadow: 0px 2px 16px 0px var(--shadow);
+  margin-top: 10px;
+  box-shadow: 0px 2px 12px 0px var(--shadow);
 }
 
 #helpInnerContainer .topicSection {
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
 #helpInnerContainer .topicSection:last-of-type {
@@ -51,7 +76,28 @@
   max-width: 968px;
 }
 
-#helpContent p {
+#helpContent p, #helpContent span {
   max-width: 800px;
   line-height: 30px;
+  color: var(--text);
+}
+
+.helpdocs-infoContainer, .helpdocs-warningContainer {
+  border-radius: 6px;
+  margin: 30px 0px 30px 0px;
+  background-color: var(--tlk-brand-1);
+  box-shadow: 0px 2px 12px 0px var(--shadow);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 80px auto;
+  max-width: 800px;
+  transition: background-color .5s ease;
+}
+
+.helpdocs-infoContainer {
+  border-top: 4px solid var(--tlk-blue);
+}
+
+.helpdocs-warningContainer {
+  border-top: 4px solid var(--tlk-yellow);
 }

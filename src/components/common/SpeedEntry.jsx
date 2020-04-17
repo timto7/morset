@@ -4,6 +4,8 @@ import OverallSpeedInput from "./Input.jsx";
 import CharSpeedInput from "./Input.jsx";
 import AudioContext from "../../context/AudioContext";
 
+const TABKEY = 0;
+
 export default function SpeedEntry() {
   const { setSpeed, getSpeed } = useContext(AudioContext);
   const initialSpeeds = getSpeed();
@@ -29,8 +31,8 @@ export default function SpeedEntry() {
   };
 
   const handleOverallInputKeyDown = event => {
-    if (event.key === "Enter") {
-      submitOverallInputValue(event.target.value);
+    if (event.key === "Enter" || event.keyCode === TABKEY) {
+      submitOverallInputValue(validateOverall(event.target.value));
     }
   };
 
@@ -50,8 +52,8 @@ export default function SpeedEntry() {
   };
 
   const handleCharInputKeyDown = event => {
-    if (event.key === "Enter") {
-      submitCharInputValue(event.target.value);
+    if (event.key === "Enter" || event.keyCode === TABKEY) {
+      submitCharInputValue(validateChar(event.target.value));
     }
   };
 

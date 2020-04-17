@@ -139,7 +139,7 @@ export function AudioProvider(props) {
   const getSpeed = () => {
     let os = parseInt(window.localStorage.getItem("overallSpeed"));
     if (os === null || os === undefined || Number.isNaN(os)) os = parseInt(15);
-    let cs = window.localStorage.getItem("charSpeed");
+    let cs = parseInt(window.localStorage.getItem("charSpeed"));
     if (cs === null || cs === undefined || Number.isNaN(cs)) cs = parseInt(18);
     return [os, cs];
   }

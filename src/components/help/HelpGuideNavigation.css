@@ -18,7 +18,7 @@
   padding-bottom: 2px;
   margin-bottom: 10px;
   color: var(--idle);
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
 }
 
 .helpSubject:not(.selected) > span:hover {
@@ -27,7 +27,7 @@
 
 .helpSubject.selected > span {
   color: var(--text);
-  border-bottom: 2px solid var(--tlk-blue);
+  border-bottom: 3px solid var(--tlk-blue);
 }
 
 .helpSubject > ul {

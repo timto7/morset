@@ -30,36 +30,38 @@ const SettingsDropdown = ({ show }) => {
     <div>
       <div id="settingsAciveIndicator" className={cntnrClass} />
       <div id="settingsDDContainer" className={cntnrClass}>
-        <BottomNavigation
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-            setIndex(options.indexOf(newValue));
-          }}
-          className={classes.root}
-        >
-          <BottomNavigationAction
-            label="Audio"
-            value="audio"
-            icon={<AudioIcon />}
-          />
-          <BottomNavigationAction
-            label="Training"
-            value="training"
-            icon={<TrainIcon />}
-          />
-          <BottomNavigationAction
-            label="Translation"
-            value="translation"
-            icon={<TranslateIcon />}
-          />
-        </BottomNavigation>
-        <div
-          id="settingsContent"
-        >
-          <AudioPane visible={index === 0 ? true : false}></AudioPane>
-          <TrainingPane visible={index === 1 ? true : false}></TrainingPane>
-          <TranslationPane visible={index === 2 ? true : false}></TranslationPane>
+        <div id="settingsInnerContainer">
+          <BottomNavigation
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+              setIndex(options.indexOf(newValue));
+            }}
+            className={classes.root}
+          >
+            <BottomNavigationAction
+              label="Audio"
+              value="audio"
+              icon={<AudioIcon />}
+            />
+            <BottomNavigationAction
+              label="Training"
+              value="training"
+              icon={<TrainIcon />}
+            />
+            <BottomNavigationAction
+              label="Translation"
+              value="translation"
+              icon={<TranslateIcon />}
+            />
+          </BottomNavigation>
+          <div
+            id="settingsContent"
+          >
+            <AudioPane visible={index === 0 ? true : false}></AudioPane>
+            <TrainingPane visible={index === 1 ? true : false}></TrainingPane>
+            <TranslationPane visible={index === 2 ? true : false}></TranslationPane>
+          </div>
         </div>
       </div>
     </div>
