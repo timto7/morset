@@ -82,12 +82,15 @@ const TrainerContainer = () => {
     } else {
       document.body.style.overflow = "scroll";
     }
+    return () => {
+      document.body.style.overflow = "scroll";
+    }
   }, [state.inSession, state.showResults]);
 
   useEffect(() => {
     textEntryString = getTextEntryString();
     if (textEntryString.length > 0) setState(prevState => ({ ...prevState, textEntryIsEmpty: false }));
-  }, ["onlyOnMount"]);
+  }, []);
   
 
   function selectedCharsDidChange(chars) {

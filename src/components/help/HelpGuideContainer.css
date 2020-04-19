@@ -26,18 +26,17 @@
 #HelpGuideContainer #helpTitleContainer #titleHelpIcon {
   height: 64px;
   width: 64px;
-  margin-right: 10px;
+  margin: 0px 10px 0px -5px;
   color: var(--textAlt);
-  transition: width .3s ease, height .3s ease;
+  transition: width .3s ease, height .3s ease, margin .3s ease;
 }
 
 #HelpGuideContainer #helpTitleContainer.reduced #titleHelpIcon {
   height: 32px;
   width: 32px;
-  margin-right: 5px;
-  transition: width .18s ease, height .18s ease;
+  margin: 0px 5px 0px -2.5px;
+  transition: width .18s ease, height .18s ease, margin .3s ease;
 }
-
 
 #helpInnerContainer {
   display: grid;
@@ -67,7 +66,7 @@
 }
 
 #helpInnerContainer .topicSection:last-of-type {
-  min-height: calc(100vh - 250px);
+  min-height: calc(100vh - 300px);
 }
 
 #helpContent {
@@ -84,7 +83,7 @@
 
 .helpdocs-infoContainer, .helpdocs-warningContainer {
   border-radius: 6px;
-  margin: 30px 0px 30px 0px;
+  margin: 30px 0px 0px 0px;
   background-color: var(--tlk-brand-1);
   box-shadow: 0px 2px 12px 0px var(--shadow);
   padding: 10px;

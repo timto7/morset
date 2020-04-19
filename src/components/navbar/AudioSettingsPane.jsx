@@ -157,17 +157,20 @@ const AudioSettingsPane = ({visible}) => {
           <Button 
             variant={wf === 0 ? "contained" : "text"}
             style={wf === 0 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
-            className={classes.grpButton} 
+            className={classes.grpButton}
+            disabled={!visible}
             onClick={() => wfBtnPressed(0)}>Sine</Button>
           <Button 
             variant={wf === 1 ? "contained" : "text"} 
             style={wf === 1 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
-            className={classes.grpButton} 
+            className={classes.grpButton}
+            disabled={!visible}
             onClick={() => wfBtnPressed(1)}>Square</Button>
           <Button 
             variant={wf === 2 ? "contained" : "text"} 
             style={wf === 2 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
-            className={classes.grpButton} 
+            className={classes.grpButton}
+            disabled={!visible}
             onClick={() => wfBtnPressed(2)}>Triangle</Button>
       </BtnGrp>
       <h4 style={{width: "calc(100% - 50px)", float: "left", marginTop: "32px"}}>Amplitude Envelope</h4>

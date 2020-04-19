@@ -28,7 +28,7 @@ const navTree = {
     "using text entry",
     "configuring full text or random line selection",
     "beginning a session",
-    "reviewing a session",
+    "reviewing a session"
   ],
   "Translator": [
     "still under construction"

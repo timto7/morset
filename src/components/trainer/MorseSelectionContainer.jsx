@@ -17,8 +17,7 @@ import { FiStopCircle  as StopIcon } from "react-icons/fi";
 import * as morsetrans from "../../services/morse/morse-translation.js";
 import AudioContext from "../../context/AudioContext";
 
-
-const charOrder = 'kmrsuaptlowinjefyvgqzhbcdx1928374650.,=/?\'"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
+const charOrder = 'kmrsuaptlowi.njef0y,vg5/q9zh38b?427c1d6x=\'"!()&:;+-:@ÀÆĆĐĴĜŃØŠÞÜŹŻ';
 let customChars = "abc";
 let lastCount = 2;
 

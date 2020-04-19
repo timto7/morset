@@ -15,7 +15,7 @@
   font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   margin-bottom: 10px;
   color: var(--idle);
   border-bottom: 3px solid transparent;
@@ -35,7 +35,7 @@
   width: 240px;
   max-height: 0px;
   box-sizing: border-box;
-  padding: 0px 0px 0px 8px;
+  padding: 0px;
   overflow: hidden;
   margin: 5px 0px 5px 0px;
   color: var(--idle);

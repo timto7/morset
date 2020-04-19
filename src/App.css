@@ -11,6 +11,7 @@ main {
 
 a {
   outline: none;
+  cursor: pointer;
 }
 
 p a {
@@ -23,9 +24,10 @@ p a {
 p a:before {
   content: "";
   position: absolute;
+  pointer-events: none;
   width: 100%;
   height: 2px;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   margin-bottom: -1px;
   background-color: var(--tlk-blue);

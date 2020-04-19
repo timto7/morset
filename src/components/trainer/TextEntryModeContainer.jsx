@@ -121,7 +121,7 @@ const TextEntryModeContainer = () => {
             value={lineLimit}
             onBlur={handleLineLimitInputBlur}
             onKeyDown={handleLineLimitInputKeyDown}
-            tabentry={textMode === 0}
+            tabentry={textMode === 1}
           /><span>random line{parseInt(lineLimit) === 1 ? '' : 's'} from text</span>
         </div>
       </div>

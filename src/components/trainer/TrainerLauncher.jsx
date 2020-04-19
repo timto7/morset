@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./TrainerLauncher.css";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import ThemeContext from "../../context/ThemeContext";
 import TrainIcon from "@material-ui/icons/FitnessCenter";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -9,42 +10,49 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import SpeedEntry from "../common/SpeedEntry";
 
-const useStyles = makeStyles(theme => ({
-  button: {
-    shadow: 0,
-    "&": {
-      boxShadow: "none !important"
-    },
-    "&:hover": {
-      backgroundColor: "#0b8eff !important",
-      boxShadow: "none !important"
-    },
-    letterSpacing: "2px",
-    lineHeight: "20px",
-    fontWeight: "600",
-    height: "52px",
-    margin: "0px",
-    borderRadius: "6px"
-  },
-  formControl: {
-    minWidth: 120,
-    marginLeft: "20px",
-    fontWeight: "500"
-  },
-  menuItem: {
-    fontWeight: "500"
-  },
-  selectEmpty: {}
-}));
-
 const TrainerLauncher = ({ noChars, beginWasClicked, source, sourceChanged }) => {
+  const {dark} = useContext(ThemeContext);
+
+  const useStyles = makeStyles(theme => ({
+    button: {
+      shadow: 0,
+      "&": {
+        boxShadow: "none !important"
+      },
+      "&:hover": {
+        backgroundColor: (dark ? "rbga(255, 255, 255, 0.1)" : "#0b8eff"),
+        boxShadow: "none !important"
+      },
+      letterSpacing: "2px",
+      lineHeight: "20px",
+      fontWeight: "600",
+      height: "52px",
+      margin: "0px",
+      borderRadius: "6px"
+    },
+    formControl: {
+      minWidth: 120,
+      marginLeft: "20px",
+      fontWeight: "500"
+    },
+    select: {
+      border: "none"
+    },
+    menuItem: {
+      fontWeight: "500"
+    },
+    selectEmpty: {}
+  }));
   const classes = useStyles();
 
   return (
     <div id="TrainerLauncherContainer">
       <div id="launchPrimary">
         <Button
-          variant="contained"
+          variant={dark ? "outlined" : "contained"}
+          style={{
+            ...(dark && {border: !noChars ? "2px solid #3ea6ff" : "2px solid #77777777"}),
+          }}
           color="primary"
           className={classes.button}
           starticon={<TrainIcon />}

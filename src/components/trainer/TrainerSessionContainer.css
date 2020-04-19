@@ -39,7 +39,7 @@
 
 #TrainerSessionContainer #sessionTextareaContainer {
   position: absolute;
-  background-color: var(--session-background);
+  background-color: var(--textBox);
   width: calc(100% - 120px);
   height: calc(100% - 120px);
   max-width: 1560px;
