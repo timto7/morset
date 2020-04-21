@@ -100,3 +100,8 @@
 .helpdocs-warningContainer {
   border-top: 4px solid var(--tlk-yellow);
 }
+
+#HelpGuideContainer h4{
+  font-size: 20px;
+  transition: none;
+}

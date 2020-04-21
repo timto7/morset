@@ -202,13 +202,17 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
     .replace(/\r/gm, " ")
     .replace(/^\s+/g, "")
     .replace(/[ \t]{2,}/g, " ");
+    script = script.trim();
   } else {
     let lines = textEntry.split(/\r?\n/);
     lines.forEach((l, index) => {
-      lines[index] = lines[index].trim();
+      lines[index] = lines[index].replace(/[ \t]{2,}/g, " ").trim();
     });
-    if (lines[lines.length - 1] === "") {
-      lines.splice(lines.length - 1, 1);
+    for (let x = 0; x < lines.length; x++) {
+      if (lines[x].match(/^\s*$/)) {
+        lines.splice(x, 1);
+        x--;
+      }
     }
     const linesCopy = [...lines];
     let selectedLines = [];

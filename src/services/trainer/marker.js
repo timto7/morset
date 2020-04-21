@@ -46,6 +46,7 @@ export function getResult(a, b) {
       x--;
       y--;
       subs[a.charAt(y)] = subs[a.charAt(y)] + 1 || 1;
+      subs[b.charAt(x)] = subs[b.charAt(x)] + 1 || 1;
       mistakesPresent = true;
     }
   }

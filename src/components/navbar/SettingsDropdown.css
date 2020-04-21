@@ -74,3 +74,15 @@
 #settingsDDContainer.pane-2 #settingsContent {
   left: -200%;
 }
+
+#audioWarnPopoverContainer {
+  position: absolute;
+  width: 340px;
+  margin: 200px 0px 0px -280px;
+  height: 200px;
+  pointer-events: none;
+}
+
+#audioWarnPopoverContainer.show {
+  pointer-events: all;
+}

@@ -50,13 +50,7 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
 
   const handleTextChange = event => {
     let s = event.target.value.toString().toLowerCase();
-    if (/\r|\n/g.test(s)) {
-      s = s.replace(/(\r\n){2,}/gm, "\r\n").replace(/\n{2,}/gm, "\n").replace(/\r{2,}/gm, "\r");
-      s = s.replace(/^\r\n|^\r|^\n/gm, "");
-      event.target.value = s;
-    }
     if (s === "" || /^[\s0-9A-Za-z.,=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
-      s = s.replace(/[ \t]{2,}/g, " ");
       event.target.value = s;
     } else {
       s = s.replace(/[^\s\n\r0-9A-Za-z.,=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");

@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {}
 }));
 
-const AudioSettingsPane = ({visible}) => {
+const AudioSettingsPane = ({visible, oscWaveHover}) => {
 
   const { setFrequency, setPanning, getWaveform, setWaveform } = useContext(AudioContext);
   const [wf, setWf] = useState(getWaveform());
@@ -153,6 +153,7 @@ const AudioSettingsPane = ({visible}) => {
           aria-label="text primary button group"
           className={classes.grpButtonContainer}
           style={{border: "1px solid #3ea6ff"}}
+          onMouseEnter={() => oscWaveHover()} 
         >
           <Button 
             variant={wf === 0 ? "contained" : "text"}

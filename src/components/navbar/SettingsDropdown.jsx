@@ -10,6 +10,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import AudioIcon from "@material-ui/icons/Speaker";
 import TrainIcon from "@material-ui/icons/FitnessCenter";
 import TranslateIcon from "@material-ui/icons/Translate";
+import WarningPopover from "../common/WarningPopover";
 
 const useStyles = makeStyles({
   root: {
@@ -21,10 +22,22 @@ const useStyles = makeStyles({
 const SettingsDropdown = ({ show }) => {
   const [value, setValue] = React.useState("audio");
   const [index, setIndex] = React.useState(0);
+  const [showOscWarn, setShowOscWarn] = React.useState(false);
 
   const options = ["audio", "training", "translate"];
   let cntnrClass = `${show ? "show" : ""} ${index === 0 ? "pane-0" : index === 1 ? "pane-1" : "pane-2"}`;
   const classes = useStyles();
+
+  function oscWaveHover() {
+    if (window.localStorage.getItem("oscWarningConfirmed") !== "true") {
+      setShowOscWarn(true);
+    }
+  }
+
+  function onOscWarnConfirm() {
+    window.localStorage.setItem("oscWarningConfirmed", true);
+    setShowOscWarn(false);
+  }
 
   return (
     <div>
@@ -58,11 +71,18 @@ const SettingsDropdown = ({ show }) => {
           <div
             id="settingsContent"
           >
-            <AudioPane visible={index === 0 ? true : false}></AudioPane>
+            <AudioPane visible={index === 0 ? true : false} oscWaveHover={oscWaveHover}></AudioPane>
             <TrainingPane visible={index === 1 ? true : false}></TrainingPane>
             <TranslationPane visible={index === 2 ? true : false}></TranslationPane>
           </div>
         </div>
+      </div>
+      <div id="audioWarnPopoverContainer">
+        <WarningPopover 
+          text="WARNING: The square wave is loud, ensure you lower the volume before selecting."
+          show={showOscWarn && show && index === 0}
+          onConfirm={onOscWarnConfirm}
+        />
       </div>
     </div>
   );

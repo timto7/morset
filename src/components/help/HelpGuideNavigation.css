@@ -39,13 +39,17 @@
   overflow: hidden;
   margin: 5px 0px 5px 0px;
   color: var(--idle);
-  transition: max-height .0s linear, margin .0s linear;
 }
 
 .helpSubject.selected > ul {
   max-height: 1000px;
-  transition: max-height 0.8s linear, margin .2s ease;
   margin: 5px 0px 35px 0px;
+  animation: Expand 1s ease;
+}
+
+@keyframes Expand {
+  0%   { max-height: 0px;}
+  100% { max-height: 1000px;  }
 }
 
 .helpSubject > ul > .helpTopic {

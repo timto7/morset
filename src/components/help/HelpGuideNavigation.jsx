@@ -3,8 +3,7 @@ import "./HelpGuideNavigation.css";
 import { Link } from "react-scroll";
 
 export default function HelpGuideNavigation({selectedSubject, subjectClicked, navTree}) {
-
-
+  
   return (
     <div id="HelpGuideNavigation">
       <ul id="helpMasterList">
@@ -16,7 +15,7 @@ export default function HelpGuideNavigation({selectedSubject, subjectClicked, na
             <span onClick={() => {
               window.scrollTo({top: 0, left: 0});
               const activeElement = document.getElementsByClassName("active")[0];
-              if (activeElement !== undefined) {
+              if (activeElement !== undefined && activeElement.classList.contains("active")) {
                 activeElement.classList.remove("active");
               }
               subjectClicked(i);
@@ -26,11 +25,11 @@ export default function HelpGuideNavigation({selectedSubject, subjectClicked, na
                 <Link
                   className="helpTopic"
                   activeClass=" active"
-                  to={`nav-${item.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}-${topic.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`}
+                  to={`section-${item.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}-${topic.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`}
                   spy={true}
                   smooth={true}
                   offset={-55}
-                  duration={400}
+                  duration={500}
                   key={"s"+index}
                 ><div><span>{topic}</span></div></Link>
               )}

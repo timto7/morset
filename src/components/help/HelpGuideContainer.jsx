@@ -21,13 +21,14 @@ const navTree = {
   "Trainer": [
     "overview",
     "setting the morse speed",
+    "character selector and text entry",
     "tailoring the sessions in character selector",
     "adding more ordered characters in character selector",
     "custom character selection",
     "previewing a morse character",
     "using text entry",
     "configuring full text or random line selection",
-    "beginning a session",
+    "beginning and configuring a session",
     "reviewing a session"
   ],
   "Translator": [
@@ -35,8 +36,9 @@ const navTree = {
   ]
 }
 
-
 export default function HelpGuideContainer(props) {
+
+  document.title = "MorseT - Help Documentation";
 
   const [selectedSubject, setSelectedSubject] = useState(0);
   const [scrolled, setScrolled] = useState(false);
@@ -73,16 +75,36 @@ export default function HelpGuideContainer(props) {
       />
       <div id="helpTitleContainer" className={scrolled ? "reduced" : ""} ><HelpIcon id="titleHelpIcon" /> <h1> Help Documentation</h1></div>
       <div id="helpInnerContainer">
-        <HelpNav 
-          selectedSubject={parseInt(selectedSubject)}
-          subjectClicked={subjectClicked}
-          navTree={navTree}
-        />
-        <div id="helpContent">
-          {selectedSubject === 0 && <GeneralHelp />}
-          {selectedSubject === 1 && <TrainerHelp />}
-          {selectedSubject === 2 && <TranslatorHelp />}
-        </div>
+        {selectedSubject === 0 && <>
+            <HelpNav 
+              selectedSubject={parseInt(selectedSubject)}
+              subjectClicked={subjectClicked}
+              navTree={navTree}
+            />
+            <div id="helpContent">
+              <GeneralHelp />
+            </div>
+          </>}
+        {selectedSubject === 1 && <>
+            <HelpNav 
+              selectedSubject={parseInt(selectedSubject)}
+              subjectClicked={subjectClicked}
+              navTree={navTree}
+            />
+            <div id="helpContent">
+              <TrainerHelp />
+            </div>
+          </>}
+        {selectedSubject === 2 && <>
+            <HelpNav 
+              selectedSubject={parseInt(selectedSubject)}
+              subjectClicked={subjectClicked}
+              navTree={navTree}
+            />
+            <div id="helpContent">
+              <TranslatorHelp />
+            </div>
+          </>}
       </div>
       <GotoTop />
     </div>
