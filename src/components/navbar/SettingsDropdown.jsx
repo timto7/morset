@@ -43,7 +43,6 @@ const SettingsDropdown = ({ show }) => {
     <div>
       <div id="settingsAciveIndicator" className={cntnrClass} />
       <div id="settingsDDContainer" className={cntnrClass}>
-        <div id="settingsInnerContainer">
           <BottomNavigation
             value={value}
             onChange={(event, newValue) => {
@@ -76,7 +75,6 @@ const SettingsDropdown = ({ show }) => {
             <TranslationPane visible={index === 2 ? true : false}></TranslationPane>
           </div>
         </div>
-      </div>
       <div id="audioWarnPopoverContainer">
         <WarningPopover 
           text="WARNING: The square wave is loud, ensure you lower the volume before selecting."

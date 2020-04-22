@@ -13,7 +13,7 @@
   padding-right: 4px;
   transition: opacity 0.2s ease;
   pointer-events: none;
-  margin: -1px 0px 0px 3px;
+  margin: -1px 0px 0px 4px;
 }
 
 .MorseButtonAddRemove > div {

@@ -3,8 +3,10 @@
 
 #TrainerLauncherContainer {
   animation: 0.2s ease 0s 1 peekDown;
-  margin-top: 40px;
+  margin-top: 30px;
   display: grid;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border);
   grid-template-columns: 50% 50%;
 }
 

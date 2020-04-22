@@ -39,6 +39,7 @@
   overflow-y: auto;
   padding-bottom: 15px;
   max-height: calc(100vh - 80px);
+  width: 300px;
 }
 
 #settingsDDContainer.show {
