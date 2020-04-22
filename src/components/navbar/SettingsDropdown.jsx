@@ -77,7 +77,7 @@ const SettingsDropdown = ({ show }) => {
         </div>
       <div id="audioWarnPopoverContainer">
         <WarningPopover 
-          text="WARNING: The square wave is loud, ensure you lower the volume before selecting."
+          text="WARNING: The square waveform is considerably louder, ensure you lower the volume before selecting."
           show={showOscWarn && show && index === 0}
           onConfirm={onOscWarnConfirm}
         />
