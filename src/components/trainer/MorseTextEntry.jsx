@@ -8,7 +8,7 @@ import TextEntryMode from "./TextEntryModeContainer";
 
 let binPressed = false;
 
-const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
+const MorseTextEntry = ({show, value, didChangeText, inSession, source, inReview}) => {
 
   const textareaRef = useRef();
   const {getTextEntryString} = useContext(AudioContext);
@@ -81,7 +81,7 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source}) => {
           placeholder="Enter text here..."
           value={value}
           onChange={handleTextChange}
-          disabled={inSession || source === 0}
+          disabled={inSession || inReview || source === 0}
         />
       </div>
       <MorseSnackBar

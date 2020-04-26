@@ -31,7 +31,7 @@ export default function GeneralHelpPage(props) {
         <img src={ImgVolume} alt="Volume control"  width='58' height='229' />
       </div>
       <div id="section-general-switching-between-light-dark-modes" className="topicSection">
-        <h3>Switched Between Light/Dark Modes</h3>
+        <h3>Switching Between Light/Dark Modes</h3>
         <p>The application can switch between light and dark mode by clicking the <b>light/dark mode 
         button</b> located towards the right in the <b>navigation bar</b>.</p>
         <img src={ImgLightDark} alt="Light/dark mode" width='94' height='100' />

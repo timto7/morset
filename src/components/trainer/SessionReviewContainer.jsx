@@ -1,10 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useContext} from "react";
 import "./SessionReviewContainer.css";
 import CloseBtn from "./SessionButton";
 import CloseIcon from "@material-ui/icons/Close";
 import RetryBtn from "./SessionButton";
 import RetryIcon from "@material-ui/icons/Refresh";
 import Marker from "../../services/trainer/marker";
+import AudioContext from "../../context/AudioContext";
 
 let overallScore, 
   noOfErrors, 
@@ -36,21 +37,34 @@ const getResultType = c => {
 }
 
 const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResultsClicked, retryClicked}) => {
+  
+  const {playReviewSound} = useContext(AudioContext);
 
   useEffect(() => {
-    latestResults = Marker.getResult(latestScript, latestAnswer.trim().toLowerCase());
-    stats = latestResults.stats;
-    noOfErrors = latestResults.errors;
-    overallScore = Math.floor((((latestScript.length - noOfErrors) > 0 ? latestScript.length - noOfErrors : 0) / latestScript.length) * 100);
-    scriptText = latestScript.split("").map((c, index) =>
-      <span key={index} className={`${getResultType(latestResults.errorPlacements.charAt(index))}`}>{c}</span>
-    );
-    resultText = latestAnswer.split("").map((c, index) =>
-      <span key={index} className={`${getResultType(latestResults.errorPlacements2.charAt(index))}`}>{c}</span>
-    );
-    mistakesPresent = latestResults.mistakesPresent;
-    missesPresent = latestResults.missesPresent;
-    extraPresent = latestResults.extraPresent;
+    if (visible) {
+      latestResults = Marker.getResult(latestScript, latestAnswer.trim().toLowerCase());
+      stats = latestResults.stats;
+      noOfErrors = latestResults.errors;
+      overallScore = Math.floor((((latestScript.length - noOfErrors) > 0 ? latestScript.length - noOfErrors : 0) / latestScript.length) * 100);
+      scriptText = latestScript.split("").map((c, index) =>
+        <span key={index} className={`${getResultType(latestResults.errorPlacements.charAt(index))}`}>{c}</span>
+      );
+      resultText = latestAnswer.split("").map((c, index) =>
+        <span key={index} className={`${getResultType(latestResults.errorPlacements2.charAt(index))}`}>{c}</span>
+      );
+      mistakesPresent = latestResults.mistakesPresent;
+      missesPresent = latestResults.missesPresent;
+      extraPresent = latestResults.extraPresent;
+      if (overallScore < 90) {
+        playReviewSound(2);
+      } else {
+        if (overallScore < 100) {
+          playReviewSound(1);
+        } else {
+          playReviewSound(0);
+        }
+      }
+    }
   }, [visible]);
 
   let transcriptKey; 

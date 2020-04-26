@@ -208,6 +208,7 @@ const TrainerContainer = () => {
           didChangeText={handleMorseTextEntryChange}
           inSession={state.inSession}
           source={state.source}
+          inReview={state.showResults}
         />
       </div>
       <SessionReviewContainer

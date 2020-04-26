@@ -1,5 +1,6 @@
 import React from "react";
 import Morse from "../services/morse/morse-player";
+import ReviewSounds from "../services/trainer/review-sounds";
 
 const AudioContext = React.createContext({
   playing: false,
@@ -103,10 +104,11 @@ export function AudioProvider(props) {
 
   const playText = (string, callback = undefined, timingOptions = undefined) => {
     Morse.playText(string, callback, timingOptions);
-};
+  };
 
   const setVolume = volume => {
     Morse.setVolume(volume);
+    ReviewSounds.setVolume(volume);
   };
 
   const setFrequency = freq => {
@@ -116,6 +118,7 @@ export function AudioProvider(props) {
   const setPanning = panning => {
     const panningScale = panning / 100.0;
     Morse.setPanning(panningScale);
+    ReviewSounds.setPanning(panning);
   };
 
   const setEnvelope = envelope => {
@@ -288,6 +291,10 @@ export function AudioProvider(props) {
     window.localStorage.setItem("textLineLimit", parseInt(lm));
   }
 
+  const playReviewSound = soundId => {
+    ReviewSounds.playSound(soundId);
+  }
+
   return (
     <AudioContext.Provider
       value={{
@@ -326,7 +333,8 @@ export function AudioProvider(props) {
         getFullTextMode,
         setFullTextMode,
         getTextLineLimit,
-        setTextLineLimit
+        setTextLineLimit,
+        playReviewSound
       }}
     >
       {props.children}
