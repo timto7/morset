@@ -6,6 +6,7 @@ import useOutsideClick from "../../services/useOutsideClick";
 import RandomSwitch from "@material-ui/core/Switch";
 import AudioContext from "../../context/AudioContext";
 import SpacingInput from "../common/Input";
+import ThemeContext from "../../context/ThemeContext";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -50,6 +51,7 @@ const SpacingSelectionContainer = () => {
   });
 
   const { getRandomSpacing, setRandomSpacing, getCharSpacing, setCharSpacing } = useContext(AudioContext);
+  const { dark } = useContext(ThemeContext);
 
   const initialCharSpacing = getCharSpacing();
   const [spacing, setSpacing] = useState(initialCharSpacing);
@@ -96,7 +98,7 @@ const SpacingSelectionContainer = () => {
         variant="outlined"
         className={classes.button}
         onClick={toggleShow}
-        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", color: "#fff"} : {}}
+        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {}}
       >
         <span>{random ? "Insert Spaces Randomly" : getCharSpacing() !== 0 ? getCharSpacing() !== 1 ? `Insert Space Every ${getCharSpacing()} Characters`: "Insert Space After Every Character" : "Don't Insert Any Spaces"}</span>
       </SpacingButton>

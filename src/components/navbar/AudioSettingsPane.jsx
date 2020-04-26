@@ -8,6 +8,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { setEnvelope } from "../../services/morse/morse-player";
 import BtnGrp from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
+import ThemeContext from "../../context/ThemeContext";
 
 const SSlider = withStyles({
   root: { width: 180 }
@@ -53,6 +54,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AudioSettingsPane = ({visible, oscWaveHover}) => {
+  
+  const { dark } = useContext(ThemeContext);
 
   const { setFrequency, setPanning, getWaveform, setWaveform } = useContext(AudioContext);
   const [wf, setWf] = useState(getWaveform());
@@ -157,19 +160,19 @@ const AudioSettingsPane = ({visible, oscWaveHover}) => {
         >
           <Button 
             variant={wf === 0 ? "contained" : "text"}
-            style={wf === 0 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
+            style={wf === 0 ? {backgroundColor: "#3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {color: "#3ea6ff"}}
             className={classes.grpButton}
             disabled={!visible}
             onClick={() => wfBtnPressed(0)}>Sine</Button>
           <Button 
             variant={wf === 1 ? "contained" : "text"} 
-            style={wf === 1 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
+            style={wf === 1 ? {backgroundColor: "#3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {color: "#3ea6ff"}}
             className={classes.grpButton}
             disabled={!visible}
             onClick={() => wfBtnPressed(1)}>Square</Button>
           <Button 
             variant={wf === 2 ? "contained" : "text"} 
-            style={wf === 2 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
+            style={wf === 2 ? {backgroundColor: "#3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {color: "#3ea6ff"}}
             className={classes.grpButton}
             disabled={!visible}
             onClick={() => wfBtnPressed(2)}>Triangle</Button>

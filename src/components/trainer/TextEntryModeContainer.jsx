@@ -6,6 +6,7 @@ import useOutsideClick from "../../services/useOutsideClick";
 import Switch from "@material-ui/core/Switch";
 import AudioContext from "../../context/AudioContext";
 import Input from "../common/Input";
+import ThemeContext from "../../context/ThemeContext";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -56,6 +57,8 @@ const TextEntryModeContainer = () => {
     setTextLineLimit
   } = useContext(AudioContext);
 
+  const { dark } = useContext(ThemeContext);
+
   const initialLineLimit = getTextLineLimit();
   const [lineLimit, setLineLimit] = useState(initialLineLimit);
   
@@ -100,7 +103,7 @@ const TextEntryModeContainer = () => {
         variant="outlined"
         className={classes.button}
         onClick={toggleShow}
-        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", color: "#fff"} : {}}
+        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {}}
       >
         <span>{textMode === 0 ? "Play the Whole Text" : getTextLineLimit() !== 1 ? `Play ${getTextLineLimit()} Random Lines From Text`: "Play a Single Random Line From Text"}</span>
       </Button>

@@ -7,7 +7,7 @@ import AudioContext from "../../context/AudioContext";
 import Button from "@material-ui/core/Button";
 import DurationTypeBtnGrp from "@material-ui/core/ButtonGroup";
 import Input from "../common/Input";
-
+import ThemeContext from "../../context/ThemeContext";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -89,6 +89,7 @@ const DurationSelectionContainer = () => {
     setSessionCharAmount
   } = useContext(AudioContext);
 
+  const { dark } = useContext(ThemeContext);
 
   const intialCharAmount = getSessionCharAmount();
   const [charAmount, setCharAmount] = useState(intialCharAmount);
@@ -172,7 +173,7 @@ const DurationSelectionContainer = () => {
         variant="outlined"
         className={classes.button}
         onClick={toggleShow}
-        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", color: "#fff"} : {}}
+        style={show ? {backgroundColor: "#3ea6ff", border: "1px solid #3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {}}
       >
         <span>{`Session Duration: ${durationType === 0 ? `${getSessionTimeLimit()} minute${getSessionTimeLimit() === 1 ? '' : 's'}` : 
         `${getSessionCharAmount()} character${getSessionCharAmount() === 1 ? '' : 's'}`}`}</span>
@@ -186,12 +187,12 @@ const DurationSelectionContainer = () => {
         >
           <Button 
             variant={durationType === 0 ? "contained" : "text"}
-            style={durationType === 0 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
+            style={durationType === 0 ? {backgroundColor: "#3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {color: "#3ea6ff"}}
             className={classes.grpButton} 
             onClick={btnTimeLimitClicked}>Time</Button>
           <Button 
             variant={durationType === 1 ? "contained" : "text"} 
-            style={durationType === 1 ? {backgroundColor: "#3ea6ff", color: "#fff"} : {color: "#3ea6ff"}}
+            style={durationType === 1 ? {backgroundColor: "#3ea6ff", ...!dark ? {color: "#fff"} : {color: "#000"}} : {color: "#3ea6ff"}}
             className={classes.grpButton} 
             onClick={btnCharLimitClicked}>Characters</Button>
         </DurationTypeBtnGrp>
