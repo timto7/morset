@@ -22,7 +22,6 @@ export function playSound(x) {
   track = reviewAudioContext.createMediaElementSource(reviewAudioFile);
   track.connect(gainNode).connect(panner).connect(reviewAudioContext.destination);
   reviewAudioFile.play();
-  console.log();
 }
 
 export function setVolume(volume) {
