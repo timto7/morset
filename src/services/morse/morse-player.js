@@ -2,7 +2,7 @@ import morseTranslation, * as morsetrans from "./morse-translation.js";
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 let oscillator = audioCtx.createOscillator();
-let panner = audioCtx.createStereoPanner();
+let panner = new StereoPannerNode(audioCtx, {pan: 0});
 let masterGain = audioCtx.createGain();
 masterGain.gain.setValueAtTime(Math.pow(0.8, 2.0), audioCtx.currentTime);
 

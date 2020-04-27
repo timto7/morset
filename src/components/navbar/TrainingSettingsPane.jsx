@@ -28,15 +28,17 @@ const validateEnd = val => {
 };
 
 const TrainingSettingsPane = ({visible}) => {
-  const { getPreDelay, setPreDelay, getPostDelay, setPostDelay, getProgressBar, setProgressBar } = useContext(AudioContext);
+  const { getPreDelay, setPreDelay, getPostDelay, setPostDelay, getProgressBar, setProgressBar, getReviewSounds, setReviewSounds } = useContext(AudioContext);
   
   const intialPreDelay = getPreDelay();
   const intialPostDelay = getPostDelay();
   const initialProgressBar = getProgressBar();
+  const initialReviewSounds = getReviewSounds();
 
   const [startDelay, setStartDelay] = useState(intialPreDelay);
   const [endDelay, setEndDelay] = useState(intialPostDelay);
   const [progBar, setProgBar] = useState(initialProgressBar);
+  const [revSounds, setRevSounds] = useState(initialReviewSounds);
 
 
   const handleStartInputChange = event => {
@@ -84,6 +86,11 @@ const TrainingSettingsPane = ({visible}) => {
     setProgBar(prev => !prev);
   };
 
+  const toggleReviewSounds = () => {
+    setReviewSounds(!revSounds);
+    setRevSounds(prev => !prev);
+  };
+
   return (
     <div className="SettingsPane">
       <h4>Session Time Delays (seconds)</h4>
@@ -115,6 +122,14 @@ const TrainingSettingsPane = ({visible}) => {
       <SSwitch
         checked={progBar}
         onChange={toggleProgressBar}
+        color="primary"
+        inputProps={{ "aria-label": "primary checkbox" }}
+        {...(visible === false && { tabIndex: "-1" })}
+      />
+      <h4 style={{width: "calc(100% - 50px)", float: "left", marginTop: "32px"}}>Session Review Sounds</h4>
+      <SSwitch
+        checked={revSounds}
+        onChange={toggleReviewSounds}
         color="primary"
         inputProps={{ "aria-label": "primary checkbox" }}
         {...(visible === false && { tabIndex: "-1" })}

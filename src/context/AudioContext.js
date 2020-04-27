@@ -239,6 +239,16 @@ export function AudioProvider(props) {
   const setProgressBar = pb => {
     window.localStorage.setItem("progressBar", pb);
   }
+
+  const getReviewSounds = () => {
+    let rs = window.localStorage.getItem("reviewSounds");
+    if (rs === null || rs === undefined) rs = "true";
+    return rs === "true";
+  }
+  
+  const setReviewSounds = rs => {
+    window.localStorage.setItem("reviewSounds", rs);
+  }
   
   const getWaveform = () => {
     const wf = getValidWaveform(window.localStorage.getItem("waveform"));
@@ -326,6 +336,8 @@ export function AudioProvider(props) {
         setSessionTimeLimit,
         getProgressBar,
         setProgressBar,
+        getReviewSounds,
+        setReviewSounds,
         getSessionSource,
         setSessionSource,
         getTextEntryString,

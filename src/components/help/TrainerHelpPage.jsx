@@ -19,11 +19,14 @@ import ImgTxtEnt from "../../images/helpdocs/trainer_txtent.png";
 import ImgTxtBin from "../../images/helpdocs/trainer_txtbin.png";
 import ImgBegin from "../../images/helpdocs/trainer_begin.png";
 import ImgSession from "../../images/helpdocs/trainer_session.png";
-import ImgProgress from "../../images/helpdocs/trainer_progress.png";
+import ImgProgress from "../../images/helpdocs/trainer_progressbar.png";
 import ImgDelays from "../../images/helpdocs/trainer_delays.png";
 import ImgStats from "../../images/helpdocs/trainer_reviewstats.png";
 import ImgTextReview from "../../images/helpdocs/trainer_textreview.png";
 import ImgReviewOptions from "../../images/helpdocs/trainer_reviewoptions.png";
+import ImgReviewSounds from "../../images/helpdocs/trainer_reviewsounds.png";
+import ImgAllowSounds from "../../images/helpdocs/trainer_allowreviewsounds.png";
+
 
 export default function TrainerHelpPage(props) {
 
@@ -195,12 +198,12 @@ export default function TrainerHelpPage(props) {
         session has been completed. The presence of the <b>progress bar</b> can be set using a <b>toggle switch</b> labelled <em>Session Progress 
         Bar</em> in the <b>training section</b> of the <b>settings</b> located at the top right of the application. This 
         change takes effect in the next session.</p>
-        <img src={ImgProgress} alt="Progress bar" width='335' height='307' />
+        <img src={ImgProgress} alt="Progress bar" width='328' height='361' />
         <p>A time delay can be added before the start of a session in order to give the user time to compose themselves before the morse 
         code begins to play. Additionally, time can be added to the end of a session in order for the user to finish transcribing the morse 
         code. These delays can be altered using the respective <b>input fields</b> in the <b>training section</b> of 
         the <b>settings</b> located in the top right of the application. These changes take effect in the next session.</p>
-        <img src={ImgDelays} alt="Delays" width='335' height='307' />
+        <img src={ImgDelays} alt="Delays" width='328' height='361' />
       </div>
       <div id="section-trainer-reviewing-a-session" className="topicSection">
         <h3>Reviewing a Session</h3>
@@ -213,6 +216,15 @@ export default function TrainerHelpPage(props) {
         are highlighted yellow. Similarly to the sent transcript, characters that were mistakes that should have been copied as differing characters 
         are highlighted red in the user entry and any characters that were extra are highlighted yellow.</p>
         <img src={ImgTextReview} alt="Text review" width='556' height='224' />
+        <p>A <b>session review sound effect</b> will also play which gives you an immediate indication of your performance upon completing a 
+        session. This can be toggled on or off using a <b>toggle switch</b> labelled <em>Session Review Sounds</em> in 
+        the <b>training section</b> of the <b>settings</b> located at the top right of the application.</p>
+        <img src={ImgReviewSounds} alt="Toggle review sounds" width='328' height='361' />
+        <p>Some users may not be able to hear the session review sounds when using Google Chrome as some audio playback is blocked by Chrome's 
+        anti-autoplay feature. The feature is intended to prevent irritating background audio adverts that plague some sites, however, the morse 
+        trainer does not feature any such crimes against user experience. To allowlist the morse trainer, click on the <b>padlock</b> in 
+        the <b>address bar</b> and ensure that <em>Sound</em> is set to <em>Allow</em>.</p>
+        <img src={ImgAllowSounds} alt="Allow review sounds" width='439' height='390' />
         <p>In order to close the session review, click on the <b>close button</b>. To try again, click on the <b>retry button</b>.</p>
         <img src={ImgReviewOptions} alt="Review options" width='193' height='55' />
       </div>

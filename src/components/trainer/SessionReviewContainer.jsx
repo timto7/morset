@@ -38,7 +38,7 @@ const getResultType = c => {
 
 const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResultsClicked, retryClicked}) => {
   
-  const {playReviewSound} = useContext(AudioContext);
+  const { playReviewSound, getReviewSounds } = useContext(AudioContext);
 
   useEffect(() => {
     if (visible) {
@@ -55,13 +55,15 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
       mistakesPresent = latestResults.mistakesPresent;
       missesPresent = latestResults.missesPresent;
       extraPresent = latestResults.extraPresent;
-      if (overallScore < 90) {
-        playReviewSound(2);
-      } else {
-        if (overallScore < 100) {
-          playReviewSound(1);
+      if (getReviewSounds()) {
+        if (overallScore < 90) {
+          playReviewSound(2);
         } else {
-          playReviewSound(0);
+          if (overallScore < 100) {
+            playReviewSound(1);
+          } else {
+            playReviewSound(0);
+          }
         }
       }
     }
