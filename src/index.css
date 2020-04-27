@@ -44,7 +44,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--tlk-brand-2);
-  overflow-y: visible;
+  overflow-y: scroll;
 }
 
 body.block-scroll {
