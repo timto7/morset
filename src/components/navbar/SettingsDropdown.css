@@ -31,8 +31,9 @@
   box-shadow: 0px 4px 12px 0px var(--shadow), 0px 1px 2px 0px var(--shadow-2);
   border-radius: 6px;
   overflow: hidden;
+  transform: perspective(100px) translateX(4px)  translateY(-8px) translateZ(-4px);
   transition: opacity 0.2s ease, top 0.2s ease, background-color 0.5s ease,
-    border-bottom 0.5s ease, border 0.5s ease, height .2s ease;
+    border-bottom 0.5s ease, border 0.5s ease, height .2s ease, transform .3s ease;
 }
 
 #settingsInnerContainer {
@@ -46,6 +47,7 @@
   top: 70px;
   opacity: 1;
   pointer-events: all;
+  transform: perspective(100px) translateX(0px) translateY(0px) translateZ(0px);
 }
 
 #settingsDDContainer #settingsContent {

@@ -45,6 +45,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--tlk-brand-2);
   overflow-y: scroll;
+  overflow-x: visible !important;
 }
 
 body.block-scroll {

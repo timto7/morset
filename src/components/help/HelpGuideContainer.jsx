@@ -10,6 +10,7 @@ import GotoTop from "../common/GotoTopButton";
 
 const navTree = {
   "General": [
+    "browser support",
     "navigation",
     "changing the volume",
     "switching between light/dark modes",

@@ -197,9 +197,7 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
 
   if (playMode === 0 ) {
     script = textEntry
-    .replace(/(\r\n)/gm, " ")
-    .replace(/\n/gm, " ")
-    .replace(/\r/gm, " ")
+    .replace(/(\r?\n)/gm, " ")
     .replace(/^\s+/g, "")
     .replace(/[ \t]{2,}/g, " ");
     script = script.trim();

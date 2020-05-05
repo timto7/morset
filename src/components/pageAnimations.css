@@ -50,3 +50,22 @@
     opacity: 1;
   }
 }
+
+@keyframes zoomIn {
+  0% {
+    transform: perspective(100px) translateZ(-10px);
+  }
+  100% {
+    transform: perspective(100px) translateZ(0px);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: perspective(100px) translateZ(10px);
+  }
+  100% {
+    transform: perspective(100px) translateZ(0px);
+  }
+}
+

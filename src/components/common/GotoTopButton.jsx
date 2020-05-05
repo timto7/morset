@@ -55,7 +55,7 @@ export default function GotoTopButton({el = document.body}) {
   const classes = useStyles();
 
   function scrollToTop() {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({top: 0, left: 0 });
   }
 
   return (

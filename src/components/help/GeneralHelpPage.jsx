@@ -16,6 +16,12 @@ export default function GeneralHelpPage(props) {
         <h2>General</h2>
         <p>This section provides an introduction to the general features that persist across the application.</p>
       </div>
+      <div id="section-general-browser-support" className="topicSection">
+        <h3>Browser Support</h3>
+        <p>There are two recommended browsers for running this application: <b>Google Chrome</b> and <b>Mozilla Firefox</b>. 
+        Other browsers have not kept up-to-date with, or incorporated, some of the latest web standards and technologies required 
+        to run this application properly.</p>
+      </div>
       <div id="section-general-navigation" className="topicSection">
         <h3>Navigation</h3>
         <p>Different parts of the application can be accessed easily via the <b>navigation bar</b> that is

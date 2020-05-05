@@ -43,7 +43,7 @@
 	height: 100%;
 	display: grid;
 	grid-template-columns: 100%;
-	grid-template-rows: 50% 25% 25%;
+	grid-template-rows: 58% 15% 27%;
 	user-select: text;
 }
 
@@ -56,9 +56,9 @@
 	background-color: var(--text);
 	mask-repeat: no-repeat;
 	transition: background-color 0.5s ease;
-	width: 140px;
-	height: 140px;
-	margin: 0 auto;
+	width: 240px;
+	height: 240px;
+	margin: -40px auto 0px auto;
 }
 
 #infoModalBG #infoModalContainer #infoVersion {

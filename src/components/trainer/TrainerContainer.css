@@ -19,3 +19,7 @@
 #TrainerConfigContent.inSession, #TrainerConfigContent.showingResults {
   opacity: 0;
 }
+
+#TrainerContainer {
+  overflow: visible;
+}
