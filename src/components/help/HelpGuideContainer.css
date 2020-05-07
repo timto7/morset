@@ -105,3 +105,9 @@
   font-size: 20px;
   transition: none;
 }
+
+#helpMasterList {
+  overflow-x: visible;
+  padding: 0px 17px 0px 0px;
+  width: 260px;
+}
