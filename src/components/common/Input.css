@@ -7,6 +7,7 @@
   width: 60px;
   position: relative;
   overflow: show;
+  box-shadow: none !important;
 }
 
 .Input input {

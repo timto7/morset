@@ -34,7 +34,7 @@ h4 {
 }
 
 #root {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 body {
