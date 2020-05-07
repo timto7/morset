@@ -7,7 +7,6 @@
   width: 60px;
   position: relative;
   overflow: show;
-  box-shadow: none !important;
 }
 
 .Input input {
@@ -27,6 +26,7 @@
   bottom: 0px;
   box-sizing: border-box;
   transition: color 0.5s ease;
+  box-shadow: none !important;
 }
 
 .Input input:focus {
