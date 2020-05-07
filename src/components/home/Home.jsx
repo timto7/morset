@@ -10,7 +10,7 @@ import ThemeContext from "../../context/ThemeContext";
 
 const Home = () => {
   document.title = "MorseT - Home";
-  document.body.style.overflow = "scroll";
+  document.body.style.overflow = "hidden";
   const { dark } = useContext(ThemeContext);
   return (
     <div>
