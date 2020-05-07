@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "./static/css/main.0213fa31.chunk.css",
+    "main.css": "./static/css/main.f249fd51.chunk.css",
     "main.js": "./static/js/main.06c8f149.chunk.js",
     "main.js.map": "./static/js/main.06c8f149.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.be5d08e7.js",
-    "runtime-main.js.map": "./static/js/runtime-main.be5d08e7.js.map",
-    "static/css/2.50a55508.chunk.css": "./static/css/2.50a55508.chunk.css",
+    "runtime-main.js": "./static/js/runtime-main.e7f7f5f3.js",
+    "runtime-main.js.map": "./static/js/runtime-main.e7f7f5f3.js.map",
+    "static/css/2.fc263666.chunk.css": "./static/css/2.fc263666.chunk.css",
     "static/js/2.bf712afd.chunk.js": "./static/js/2.bf712afd.chunk.js",
     "static/js/2.bf712afd.chunk.js.map": "./static/js/2.bf712afd.chunk.js.map",
     "static/js/3.7b9bb2a3.chunk.js": "./static/js/3.7b9bb2a3.chunk.js",
@@ -18,11 +18,11 @@
     "static/js/6.487482dc.chunk.js": "./static/js/6.487482dc.chunk.js",
     "static/js/6.487482dc.chunk.js.map": "./static/js/6.487482dc.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.23c6ce60f4c3cf4279e500ad16685eac.js": "./precache-manifest.23c6ce60f4c3cf4279e500ad16685eac.js",
+    "precache-manifest.dd618375b26bd10d8be189e6b92a8878.js": "./precache-manifest.dd618375b26bd10d8be189e6b92a8878.js",
     "service-worker.js": "./service-worker.js",
-    "static/css/2.50a55508.chunk.css.map": "./static/css/2.50a55508.chunk.css.map",
+    "static/css/2.fc263666.chunk.css.map": "./static/css/2.fc263666.chunk.css.map",
     "static/css/5.2da8fb22.chunk.css.map": "./static/css/5.2da8fb22.chunk.css.map",
-    "static/css/main.0213fa31.chunk.css.map": "./static/css/main.0213fa31.chunk.css.map",
+    "static/css/main.f249fd51.chunk.css.map": "./static/css/main.f249fd51.chunk.css.map",
     "static/js/3.7b9bb2a3.chunk.js.LICENSE.txt": "./static/js/3.7b9bb2a3.chunk.js.LICENSE.txt",
     "static/js/4.e6208f41.chunk.js.LICENSE.txt": "./static/js/4.e6208f41.chunk.js.LICENSE.txt",
     "static/media/Flawless.mp3": "./static/media/Flawless.3cbe033e.mp3",
@@ -61,9 +61,9 @@
     "static/media/trainer_txtent.png": "./static/media/trainer_txtent.4ca94e73.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.be5d08e7.js",
+    "static/js/runtime-main.e7f7f5f3.js",
     "static/js/4.e6208f41.chunk.js",
-    "static/css/main.0213fa31.chunk.css",
+    "static/css/main.f249fd51.chunk.css",
     "static/js/main.06c8f149.chunk.js"
   ]
 }
