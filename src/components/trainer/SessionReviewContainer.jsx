@@ -42,7 +42,10 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
 
   useEffect(() => {
     if (visible && latestAnswer !== undefined) {
-      latestAnswer = latestAnswer.replace(/(\r?\n)/gm, "").trim().toLowerCase();
+      latestAnswer = latestAnswer
+        .replace(/(\r?\n)/gm, "")
+        .trim()
+        .toLowerCase();
       latestResults = Marker.getResult(latestScript, latestAnswer);
       stats = latestResults.stats;
       noOfErrors = latestResults.errors;

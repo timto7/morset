@@ -30,6 +30,10 @@
   justify-content: space-between;
 }
 
+#optionsSubContainer {
+  display: flex;
+}
+
 #MorseTextEntry.show {
   pointer-events: all;
   transition: opacity .2s ease;

@@ -16,7 +16,8 @@ let dotLength,
   envelope = true,
   preDelay = 0,
   postDelay = 0,
-  waveform = 0;
+  waveform = 0,
+  pipeDelay = 0;
 
 const waveforms = ["sine", "square", "triangle"];
 
@@ -60,6 +61,8 @@ const audiofy = (str, callback = undefined) => {
         t += pauseLength;
       } else if (char === "/") {
         t += spaceLength;
+      } else if (char === "|") {
+        t += pipeDelay;
       } else {
         let duration;
         switch (char) {
@@ -128,6 +131,11 @@ export function setTimingOptions(timingOptions) {
       postDelay = timingOptions["postDelay"];
     } else {
       postDelay = 0;
+    }
+    if ("pipeDelay" in timingOptions) {
+      pipeDelay = timingOptions["pipeDelay"];
+    } else {
+      pipeDelay = 0;
     }
   } else {
     preDelay = postDelay = 0;

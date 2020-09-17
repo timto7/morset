@@ -1,7 +1,7 @@
 import { textToMorse } from "./text-to-morse.js";
 
 export function isValidMorse(str) {
-  return str.match(/^[-./\s]+$/g);
+  return str.match(/^[-.|/\s]+$/g);
 }
 
 export function formatMorse(morse) {
@@ -23,8 +23,12 @@ export function translateTextToMorse(str) {
   let translation = "";
   const chars = str.split("");
   chars.forEach(c => {
-    let morse = textToMorse[c.toUpperCase()];
-    if (morse) translation += morse === "/ " ? `${morse}` : `${morse} `;
+    if (c === '|') {
+      translation += '|';
+    } else {
+      let morse = textToMorse[c.toUpperCase()];
+      if (morse) translation += morse === "/ " ? `${morse}` : `${morse} `;
+    }
   });
   return translation;
 }

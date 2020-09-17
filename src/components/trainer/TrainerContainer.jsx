@@ -36,7 +36,8 @@ const TrainerContainer = () => {
     getTextEntryString,
     setTextEntryString,
     getFullTextMode,
-    getTextLineLimit
+    getTextLineLimit,
+    getPipeDelay,
   } = useContext(AudioContext);
 
   const [state, setState] = useState({
@@ -121,12 +122,14 @@ const TrainerContainer = () => {
           overallSpeed: speeds[0],
           charSpeed: speeds[1],
           playMode: getFullTextMode(),
-          lineLimit: getTextLineLimit()
+          lineLimit: getTextLineLimit(),
+          pipeDelay: getPipeDelay(),
         }
       );
-      playText(latestComposition.script, playbackFinished, {
+      playText(latestComposition.scriptToPlay, playbackFinished, {
         "preDelay": parseFloat(getPreDelay()),
-        "postDelay": parseFloat(getPostDelay())
+        "postDelay": parseFloat(getPostDelay()),
+        "pipeDelay": parseFloat(getPipeDelay()),
       }); 
     }
   }

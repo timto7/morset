@@ -136,7 +136,8 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
     overallSpeed = 15.0,
     charSpeed = 18.0,
     playMode = 0,
-    lineLimit = 1;
+    lineLimit = 1,
+    pipeDelay = 0;
 
   function setOptions(options) {
     if (options !== undefined) {
@@ -151,6 +152,9 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
       }
       if ("lineLimit" in options) {
         lineLimit = parseInt(options["lineLimit"]);
+      }
+      if ("pipeDelay" in options) {
+        pipeDelay = parseFloat(options["pipeDelay"]);
       }
     }
   }
@@ -176,6 +180,8 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
         totalTime += pauseLength;
       } else if (char === "/") {
         totalTime += spaceLength;
+      } else if (char === "|") {
+        totalTime += pipeDelay;
       } else {
         switch (char) {
           case ".":
@@ -197,6 +203,7 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
 
   if (playMode === 0 ) {
     script = textEntry
+    .replace(/\s*\|+\s*/g, "|")
     .replace(/(\r?\n)/gm, " ")
     .replace(/^\s+/g, "")
     .replace(/[ \t]{2,}/g, " ");
@@ -228,7 +235,8 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
   calculateTotalTime(script);
 
   const composition = {
-    script: script.trim(),
+    script: script.replace(/\s*\|+\s*/g, " ").trim(),
+    scriptToPlay: script.trim(),
     totalDuration: totalTime
   }
   return composition;

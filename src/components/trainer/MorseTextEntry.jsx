@@ -5,6 +5,7 @@ import Button from "../common/IconButton"
 import { FiTrash2 as trashIcon } from "react-icons/fi";
 import MorseSnackBar from "../common/MorseSnackBar";
 import TextEntryMode from "./TextEntryModeContainer";
+import PipeDelay from "./PipeDelayContainer";
 
 let binPressed = false;
 
@@ -50,10 +51,10 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source, inReview
 
   const handleTextChange = event => {
     let s = event.target.value.toString().toLowerCase();
-    if (s === "" || /^[\s0-9A-Za-z.,=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
+    if (s === "" || /^[\s0-9A-Za-z\|.,_=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
       event.target.value = s;
     } else {
-      s = s.replace(/[^\s\n\r0-9A-Za-z.,=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");
+      s = s.replace(/[^\s\n\r0-9A-Za-z\|.,_=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");
       event.target.value = s;
       setOpenSB(true);
     }
@@ -68,7 +69,10 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source, inReview
   return (
     <div id="MorseTextEntry" className={show ? "show" : ""}>
       <div id="TextEntryOptionsContainer">
-        <TextEntryMode />
+        <div id="optionsSubContainer">
+          <TextEntryMode />
+          <PipeDelay />
+        </div>
         <Button 
           icon={trashIcon}
           tooltip={"Clear"}

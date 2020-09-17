@@ -301,6 +301,16 @@ export function AudioProvider(props) {
     window.localStorage.setItem("textLineLimit", parseInt(lm));
   }
 
+  const getPipeDelay = () => {
+    let pd = parseFloat(window.localStorage.getItem("pipeDelay"));
+    if (pd === null || pd === undefined || Number.isNaN(pd) || pd <= 0) pd = 1;
+    return pd;
+  }
+
+  const setPipeDelay = pd => {
+    window.localStorage.setItem("pipeDelay", parseFloat(pd));
+  }
+
   const playReviewSound = soundId => {
     ReviewSounds.playSound(soundId);
   }
@@ -346,6 +356,8 @@ export function AudioProvider(props) {
         setFullTextMode,
         getTextLineLimit,
         setTextLineLimit,
+        getPipeDelay,
+        setPipeDelay,
         playReviewSound
       }}
     >
