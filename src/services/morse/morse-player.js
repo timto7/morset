@@ -32,7 +32,7 @@ const runAudiofy = (str, callback) => {
 };
 
 const audiofy = (str, callback = undefined) => {
-
+  
   str = morsetrans.formatMorse(str);
 
   if (playing === false) {
@@ -138,7 +138,7 @@ export function setTimingOptions(timingOptions) {
       pipeDelay = 0;
     }
   } else {
-    preDelay = postDelay = 0;
+    preDelay = postDelay = pipeDelay = 0;
   }
 }
 

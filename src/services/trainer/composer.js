@@ -119,6 +119,7 @@ export function createScriptFromChars(chars, options = undefined) {
   }
   const composition = {
     script: script.trim(),
+    scriptToPlay: script.trim(),
     totalDuration: totalTime
   }
   return composition;

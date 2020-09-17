@@ -21,7 +21,7 @@ export function formatMorse(morse) {
 
 export function translateTextToMorse(str) {
   let translation = "";
-  const chars = str.split("");
+  const chars = (str || "").split("");
   chars.forEach(c => {
     if (c === '|') {
       translation += '|';
