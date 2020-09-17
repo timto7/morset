@@ -6,7 +6,6 @@ import RetryBtn from "./SessionButton";
 import RetryIcon from "@material-ui/icons/Refresh";
 import Marker from "../../services/trainer/marker";
 import AudioContext from "../../context/AudioContext";
-import UnderConstruction from "../UnderConstruction";
 
 let overallScore, 
   noOfErrors, 
@@ -43,8 +42,8 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
 
   useEffect(() => {
     if (visible && latestAnswer !== undefined) {
-      latestAnswer = latestAnswer.replace(/(\r?\n)/gm, "");
-      latestResults = Marker.getResult(latestScript, latestAnswer.trim().toLowerCase());
+      latestAnswer = latestAnswer.replace(/(\r?\n)/gm, "").trim().toLowerCase();
+      latestResults = Marker.getResult(latestScript, latestAnswer);
       stats = latestResults.stats;
       noOfErrors = latestResults.errors;
       overallScore = Math.floor((((latestScript.length - noOfErrors) > 0 ? latestScript.length - noOfErrors : 0) / latestScript.length) * 100);
