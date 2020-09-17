@@ -9,17 +9,19 @@
   top: 0px;
   object-fit: cover;
   animation: 0.3s ease 0s 1 zoomOut;
+  overflow: hidden;
 }
 
 #homeContainer {
-  width: 100vw;
-  height: calc(100vh - 60px);
+  width: 100%;
+  height: calc(100% - 60px);
   top: 60px;
   left: 0px;
   position: absolute;
   display: grid;
   align-content: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 #homeOptionContainer {

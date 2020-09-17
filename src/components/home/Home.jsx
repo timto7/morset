@@ -7,11 +7,18 @@ import { Link } from "react-router-dom";
 import Background from "../../images/HomeBG.svg";
 import BackgroundDark from "../../images/HomeBGDark.svg";
 import ThemeContext from "../../context/ThemeContext";
+import { useEffect } from "react";
 
 const Home = () => {
   document.title = "MorseT - Home";
-  document.body.style.overflow = "hidden";
   const { dark } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => document.body.style.overflow = "scroll";
+  });
+
   return (
     <div>
       <img id="homeBackground" src={!dark ? Background : BackgroundDark} alt="Background" />
