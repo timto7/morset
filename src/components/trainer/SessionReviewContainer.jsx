@@ -36,7 +36,18 @@ const getResultType = c => {
     return resultType;
 }
 
-const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResultsClicked, retryClicked}) => {
+const SessionReviewContainer = ({
+  latestScript, 
+  latestAnswer, 
+  visible, 
+  closeResultsClicked, 
+  retryClicked,
+  speeds,
+  source,
+  durationMode,
+  durationTime,
+  charLimit
+}) => {
   
   const { playReviewSound, getReviewSounds } = useContext(AudioContext);
 
@@ -102,10 +113,18 @@ const SessionReviewContainer = ({latestScript, latestAnswer, visible, closeResul
           <RetryBtn label="Retry" Icon={RetryIcon} onClick={retryClicked} />
         </div>
       </div>
+      <div id="sessionDescContainer">
+        <span>overall/character speed: <b>{speeds[0]}/{speeds[1]} WPM</b></span>
+        {
+          !source &&
+        <span>duration: <b>{`${durationMode ? `${charLimit} character${charLimit !== 1 ? 's' : ''}` :
+         `${durationTime} minute${durationTime !== 1.0 ? 's' : ''}`}`}</b></span>
+        }
+      </div>
       <div id="sessionReviewContent">
         <div id="sessionReviewStatsContainer">
           <div id="sessionReviewHeader"><p>{(overallScore < 1 && Object.keys(latestResults.hits).length > 0) ? "<1" : overallScore}%</p><p>{noOfErrors} error{noOfErrors === 1 ? "" : "s"}</p></div>
-          <div id="sessionReviewStatsPanel"></div>
+          <div id="sessionReviewStatsPanel" />
           <table>
             <tbody>
               <tr><th></th><th>overall</th><th>hit</th><th>mistake</th><th>miss</th><th>extra</th></tr>

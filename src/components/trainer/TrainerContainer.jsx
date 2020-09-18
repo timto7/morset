@@ -180,8 +180,12 @@ const TrainerContainer = () => {
   const handleMorseTextEntryChange = s => {
     textEntryString = s;
     setTextEntryString(s);
-    if ((textEntryString.length === 0) !== state.textEntryIsEmpty) {
-      setState(prevState => ({ ...prevState, textEntryIsEmpty: textEntryString.length === 0}));
+    if (textEntryString.length > 0 && /^[\s|]+$/.test(textEntryString)) {
+      setState(prevState => ({ ...prevState, textEntryIsEmpty: true}));
+    } else {
+      if ((textEntryString.length === 0) !== state.textEntryIsEmpty) {
+        setState(prevState => ({ ...prevState, textEntryIsEmpty: textEntryString.length === 0}));
+      }
     }
   };
 
@@ -220,6 +224,11 @@ const TrainerContainer = () => {
         latestAnswer={latestAnswer}
         closeResultsClicked={() => closeResultsClicked()}
         retryClicked={() => retryClicked()}
+        speeds={getSpeed()}
+        source={getSessionSource()}
+        durationMode={getDurationMode()}
+        durationTime={getSessionTimeLimit()}
+        charLimit={getSessionCharAmount()}
       />
       <TrainerSessionContainer
         inSession={state.inSession}

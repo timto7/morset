@@ -37,6 +37,27 @@
   padding: 0px 60px 0px 60px;
 }
 
+#sessionDescContainer {
+  width: 100%;
+  position: block;
+  display: flex;
+  max-width: 1560px;
+  margin: 0 auto;
+  height: 50px;
+  box-sizing: border-box;
+  color: var(--textAlt);
+  padding: 0px 60px;
+  margin: 20px 0px 30px 0px;
+}
+
+#sessionDescContainer > span {
+  margin-left: 20px;
+}
+
+#sessionDescContainer > span:first-of-type {
+  margin-left: 0px;
+}
+
 #SessionReviewContainer #reviewOptionContainer {
   width: 100%;
   padding-top: 40px;

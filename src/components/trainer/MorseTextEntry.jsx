@@ -51,10 +51,10 @@ const MorseTextEntry = ({show, value, didChangeText, inSession, source, inReview
 
   const handleTextChange = event => {
     let s = event.target.value.toString().toLowerCase();
-    if (s === "" || /^[\s0-9A-Za-z\|.,_=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
+    if (s === "" || /^[\s0-9A-Za-z|.,_=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]+$/.test(s)) {
       event.target.value = s;
     } else {
-      s = s.replace(/[^\s\n\r0-9A-Za-z\|.,_=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");
+      s = s.replace(/[^\s\n\r0-9A-Za-z|.,_=/?"'!()&:;+-:@àæćđĵĝńøšþüźż]/g, "");
       event.target.value = s;
       setOpenSB(true);
     }

@@ -97,7 +97,7 @@ const PipeDelayContainer = () => {
         <span>Pipe Delay: {getPipeDelay() + ` second${getPipeDelay() !== 1.0 ? 's' : ''}`}</span>
       </Button>
       <div id="pipeDelayPopover" className={`${show ? "show" : ""}`}>
-        <span>pipe delay time (secs):</span>
+        <span>pipe (|) delay time (secs):</span>
         <Input
           onChange={handlePipeDelayInputChange}
           value={delay}
