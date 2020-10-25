@@ -28,6 +28,7 @@ const navTree = {
     "custom character selection",
     "previewing a morse character",
     "using text entry",
+    "using pipes to add delays",
     "configuring full text or random line selection",
     "beginning and configuring a session",
     "reviewing a session"

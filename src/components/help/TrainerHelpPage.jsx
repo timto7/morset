@@ -26,7 +26,8 @@ import ImgTextReview from "../../images/helpdocs/trainer_textreview.png";
 import ImgReviewOptions from "../../images/helpdocs/trainer_reviewoptions.png";
 import ImgReviewSounds from "../../images/helpdocs/trainer_reviewsounds.png";
 import ImgAllowSounds from "../../images/helpdocs/trainer_allowreviewsounds.png";
-
+import ImgAddPipes from "../../images/helpdocs/trainer_add_pipes.png";
+import ImgChangePipeDelay from "../../images/helpdocs/trainer_change_pipe_delay.png";
 
 export default function TrainerHelpPage(props) {
 
@@ -173,6 +174,18 @@ export default function TrainerHelpPage(props) {
         <img src={ImgTextEntry} alt="Text entry field" width='599' height='299' />
         <p>The <b>clear button</b> to the right above the <b>text area</b> can be used to clear all entered text.</p>
         <img src={ImgTxtBin} alt="Clear text" width='43' height='45' />
+      </div>
+      <div id="section-trainer-using-pipes-to-add-delays" className="topicSection">
+        <h3>Using Pipes to Add Delays</h3>
+        <p>In text entry mode it is possible to add a delay during playback by inserting the <b>pipe character (|)</b>. Multiple 
+        pipe characters can be chained together in order to increase the delay time. A pipe character, or chain of pipe 
+        characters, will be substituted by a single space character during the marking process - thus, the user should not input 
+        more spaces to indicate a longer delay, just a single space for any variably lengthed delay shall suffice.</p>
+        <img src={ImgAddPipes} alt="Using pipes to add delays" width='597' height='387' />
+        <p>The delay a single pipe character represents can be altered using the <b>pipe delay selector</b>. By clicking on 
+        the <b>pipe delay selector</b>, a dropdown menu appears containing a <b>text field</b> in which to specify the number of 
+        seconds in delay time a single pipe character represents.</p>
+        <img src={ImgChangePipeDelay} alt="Change the delay time of a single pipe" width='323' height='155' />
       </div>
       <div id="section-trainer-configuring-full-text-or-random-line-selection" className="topicSection">
         <h3>Configuring Full Text Or Random Line Selection</h3>
