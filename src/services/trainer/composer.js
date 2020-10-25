@@ -204,7 +204,7 @@ export function createScriptFromTextEntry(textEntry, options = undefined) {
 
   if (playMode === 0 ) {
     script = textEntry
-    .replace(/\s*\|+\s*/g, "|")
+    .replace(/\s*\|\s*/g, "|")
     .replace(/(\r?\n)/gm, " ")
     .replace(/^\s+/g, "")
     .replace(/[ \t]{2,}/g, " ");
